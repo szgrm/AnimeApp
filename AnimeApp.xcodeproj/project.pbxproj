@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7569EF642C44930B00E3DAF1 /* TextUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7569EF632C44930B00E3DAF1 /* TextUtil.swift */; };
 		75752F952C413D30000F447E /* AnilistAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 75752F942C413D30000F447E /* AnilistAPI */; };
 		75752F972C413F21000F447E /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75752F962C413F21000F447E /* Network.swift */; };
 		75752F992C414E05000F447E /* AnimeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75752F982C414E05000F447E /* AnimeListViewModel.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7569EF632C44930B00E3DAF1 /* TextUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextUtil.swift; sourceTree = "<group>"; };
 		75752F912C413AC8000F447E /* apollo-codegen-config.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "apollo-codegen-config.json"; sourceTree = SOURCE_ROOT; };
 		75752F922C413B69000F447E /* schema.graphqls */ = {isa = PBXFileReference; lastKnownFileType = text; path = schema.graphqls; sourceTree = "<group>"; };
 		75752F962C413F21000F447E /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -55,6 +57,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7569EF622C4492D800E3DAF1 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				7569EF632C44930B00E3DAF1 /* TextUtil.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		75CF43B82C4109A9003D24F1 = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +87,7 @@
 			children = (
 				75CF43C42C4109A9003D24F1 /* AnimeAppApp.swift */,
 				75CF43D32C410BF3003D24F1 /* Pages */,
+				7569EF622C4492D800E3DAF1 /* Util */,
 				75CF44032C412EED003D24F1 /* GraphQL */,
 				75CF43C82C4109AB003D24F1 /* Assets.xcassets */,
 				75CF43CA2C4109AB003D24F1 /* Preview Content */,
@@ -263,6 +274,7 @@
 				75CF43EB2C41111B003D24F1 /* TabbarView.swift in Sources */,
 				75752F972C413F21000F447E /* Network.swift in Sources */,
 				75CF43F12C41118B003D24F1 /* CharacterListView.swift in Sources */,
+				7569EF642C44930B00E3DAF1 /* TextUtil.swift in Sources */,
 				75CF43F52C4111BB003D24F1 /* SearchView.swift in Sources */,
 				75CF43F32C4111A4003D24F1 /* CharacterDetailView.swift in Sources */,
 				75752F9B2C4155FF000F447E /* AnimeListRowView.swift in Sources */,

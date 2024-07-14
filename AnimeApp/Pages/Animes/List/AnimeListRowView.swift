@@ -45,7 +45,7 @@ struct AnimeListRowView: View {
                     }
                 }
                 
-                Text((anime.description) ?? "No description")
+                TextUtility.cleanDescription(anime.description ?? "")
                     .lineLimit(4)
                     .font(.system(size: 10))
                     .padding(.vertical, 5)
@@ -56,11 +56,11 @@ struct AnimeListRowView: View {
     }
 }
 
-extension String {
-    func htmlToString() -> String {
-        return  try! NSAttributedString(data: self.data(using: .utf16)!,
-                                        options: [.documentType: NSAttributedString.DocumentType.html],
-                                        documentAttributes: nil).string
-    }
-}
 
+//extension String {
+//    func htmlToString() -> String {
+//        return  try! NSAttributedString(data: self.data(using: .utf8)!,
+//                                        options: [.documentType: NSAttributedString.DocumentType.html],
+//                                        documentAttributes: nil).string
+//    }
+//}
