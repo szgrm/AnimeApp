@@ -1,0 +1,22 @@
+query GetAnimes(
+  $page: Int
+) {
+  Page(page: $page, perPage: 20) {
+    pageInfo {
+      hasNextPage
+    }
+    media(isAdult: false, sort: POPULARITY_DESC, format: TV) {
+      id
+      coverImage {
+        large
+      }
+      title {
+        english
+        romaji
+      }
+      averageScore
+      genres
+      description
+    }
+  }
+}

@@ -3,22 +3,43 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		75752F952C413D30000F447E /* AnilistAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 75752F942C413D30000F447E /* AnilistAPI */; };
+		75752F972C413F21000F447E /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75752F962C413F21000F447E /* Network.swift */; };
+		75752F992C414E05000F447E /* AnimeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75752F982C414E05000F447E /* AnimeListViewModel.swift */; };
+		75752F9B2C4155FF000F447E /* AnimeListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75752F9A2C4155FF000F447E /* AnimeListRowView.swift */; };
 		75CF43C52C4109A9003D24F1 /* AnimeAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CF43C42C4109A9003D24F1 /* AnimeAppApp.swift */; };
-		75CF43C72C4109A9003D24F1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CF43C62C4109A9003D24F1 /* ContentView.swift */; };
 		75CF43C92C4109AB003D24F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75CF43C82C4109AB003D24F1 /* Assets.xcassets */; };
 		75CF43CC2C4109AB003D24F1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75CF43CB2C4109AB003D24F1 /* Preview Assets.xcassets */; };
+		75CF43EB2C41111B003D24F1 /* TabbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CF43EA2C41111B003D24F1 /* TabbarView.swift */; };
+		75CF43ED2C41113D003D24F1 /* AnimeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CF43EC2C41113D003D24F1 /* AnimeListView.swift */; };
+		75CF43EF2C411168003D24F1 /* AnimeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CF43EE2C411168003D24F1 /* AnimeDetailView.swift */; };
+		75CF43F12C41118B003D24F1 /* CharacterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CF43F02C41118B003D24F1 /* CharacterListView.swift */; };
+		75CF43F32C4111A4003D24F1 /* CharacterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CF43F22C4111A4003D24F1 /* CharacterDetailView.swift */; };
+		75CF43F52C4111BB003D24F1 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CF43F42C4111BB003D24F1 /* SearchView.swift */; };
+		75CF43F82C412DBA003D24F1 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 75CF43F72C412DBA003D24F1 /* Apollo */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		75752F912C413AC8000F447E /* apollo-codegen-config.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "apollo-codegen-config.json"; sourceTree = SOURCE_ROOT; };
+		75752F922C413B69000F447E /* schema.graphqls */ = {isa = PBXFileReference; lastKnownFileType = text; path = schema.graphqls; sourceTree = "<group>"; };
+		75752F962C413F21000F447E /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		75752F982C414E05000F447E /* AnimeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeListViewModel.swift; sourceTree = "<group>"; };
+		75752F9A2C4155FF000F447E /* AnimeListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeListRowView.swift; sourceTree = "<group>"; };
 		75CF43C12C4109A9003D24F1 /* AnimeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75CF43C42C4109A9003D24F1 /* AnimeAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeAppApp.swift; sourceTree = "<group>"; };
-		75CF43C62C4109A9003D24F1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		75CF43C82C4109AB003D24F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		75CF43CB2C4109AB003D24F1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		75CF43EA2C41111B003D24F1 /* TabbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarView.swift; sourceTree = "<group>"; };
+		75CF43EC2C41113D003D24F1 /* AnimeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeListView.swift; sourceTree = "<group>"; };
+		75CF43EE2C411168003D24F1 /* AnimeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeDetailView.swift; sourceTree = "<group>"; };
+		75CF43F02C41118B003D24F1 /* CharacterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CharacterListView.swift; path = AnimeApp/Pages/Animes/Detail/CharacterListView.swift; sourceTree = SOURCE_ROOT; };
+		75CF43F22C4111A4003D24F1 /* CharacterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CharacterDetailView.swift; path = AnimeApp/Pages/Animes/Detail/CharacterDetailView.swift; sourceTree = SOURCE_ROOT; };
+		75CF43F42C4111BB003D24F1 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		75CF44052C41386B003D24F1 /* Query.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Query.graphql; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +47,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75752F952C413D30000F447E /* AnilistAPI in Frameworks */,
+				75CF43F82C412DBA003D24F1 /* Apollo in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -35,6 +58,7 @@
 		75CF43B82C4109A9003D24F1 = {
 			isa = PBXGroup;
 			children = (
+				75752F912C413AC8000F447E /* apollo-codegen-config.json */,
 				75CF43C32C4109A9003D24F1 /* AnimeApp */,
 				75CF43C22C4109A9003D24F1 /* Products */,
 			);
@@ -52,7 +76,8 @@
 			isa = PBXGroup;
 			children = (
 				75CF43C42C4109A9003D24F1 /* AnimeAppApp.swift */,
-				75CF43C62C4109A9003D24F1 /* ContentView.swift */,
+				75CF43D32C410BF3003D24F1 /* Pages */,
+				75CF44032C412EED003D24F1 /* GraphQL */,
 				75CF43C82C4109AB003D24F1 /* Assets.xcassets */,
 				75CF43CA2C4109AB003D24F1 /* Preview Content */,
 			);
@@ -65,6 +90,95 @@
 				75CF43CB2C4109AB003D24F1 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		75CF43D32C410BF3003D24F1 /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				75CF43D42C410C09003D24F1 /* Tabbar */,
+				75CF43D52C410C2A003D24F1 /* Animes */,
+				75CF43D82C410C7F003D24F1 /* Characters */,
+				75CF43DD2C410D26003D24F1 /* Search */,
+			);
+			path = Pages;
+			sourceTree = "<group>";
+		};
+		75CF43D42C410C09003D24F1 /* Tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				75CF43EA2C41111B003D24F1 /* TabbarView.swift */,
+			);
+			path = Tabbar;
+			sourceTree = "<group>";
+		};
+		75CF43D52C410C2A003D24F1 /* Animes */ = {
+			isa = PBXGroup;
+			children = (
+				75CF43D62C410C57003D24F1 /* List */,
+				75CF43D72C410C5E003D24F1 /* Detail */,
+			);
+			path = Animes;
+			sourceTree = "<group>";
+		};
+		75CF43D62C410C57003D24F1 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				75CF43EC2C41113D003D24F1 /* AnimeListView.swift */,
+				75752F9A2C4155FF000F447E /* AnimeListRowView.swift */,
+				75752F982C414E05000F447E /* AnimeListViewModel.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		75CF43D72C410C5E003D24F1 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				75CF43EE2C411168003D24F1 /* AnimeDetailView.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		75CF43D82C410C7F003D24F1 /* Characters */ = {
+			isa = PBXGroup;
+			children = (
+				75CF43D92C410CB5003D24F1 /* List */,
+				75CF43DA2C410CBA003D24F1 /* Detail */,
+			);
+			path = Characters;
+			sourceTree = "<group>";
+		};
+		75CF43D92C410CB5003D24F1 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				75CF43F02C41118B003D24F1 /* CharacterListView.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		75CF43DA2C410CBA003D24F1 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				75CF43F22C4111A4003D24F1 /* CharacterDetailView.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		75CF43DD2C410D26003D24F1 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				75CF43F42C4111BB003D24F1 /* SearchView.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		75CF44032C412EED003D24F1 /* GraphQL */ = {
+			isa = PBXGroup;
+			children = (
+				75752F922C413B69000F447E /* schema.graphqls */,
+				75CF44052C41386B003D24F1 /* Query.graphql */,
+				75752F962C413F21000F447E /* Network.swift */,
+			);
+			path = GraphQL;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +197,10 @@
 			dependencies = (
 			);
 			name = AnimeApp;
+			packageProductDependencies = (
+				75CF43F72C412DBA003D24F1 /* Apollo */,
+				75752F942C413D30000F447E /* AnilistAPI */,
+			);
 			productName = AnimeApp;
 			productReference = 75CF43C12C4109A9003D24F1 /* AnimeApp.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +229,10 @@
 				Base,
 			);
 			mainGroup = 75CF43B82C4109A9003D24F1;
+			packageReferences = (
+				75CF43F62C412DBA003D24F1 /* XCRemoteSwiftPackageReference "apollo-ios" */,
+				75752F932C413D30000F447E /* XCLocalSwiftPackageReference "AnilistAPI" */,
+			);
 			productRefGroup = 75CF43C22C4109A9003D24F1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -137,8 +259,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75CF43C72C4109A9003D24F1 /* ContentView.swift in Sources */,
+				75CF43EF2C411168003D24F1 /* AnimeDetailView.swift in Sources */,
+				75CF43EB2C41111B003D24F1 /* TabbarView.swift in Sources */,
+				75752F972C413F21000F447E /* Network.swift in Sources */,
+				75CF43F12C41118B003D24F1 /* CharacterListView.swift in Sources */,
+				75CF43F52C4111BB003D24F1 /* SearchView.swift in Sources */,
+				75CF43F32C4111A4003D24F1 /* CharacterDetailView.swift in Sources */,
+				75752F9B2C4155FF000F447E /* AnimeListRowView.swift in Sources */,
 				75CF43C52C4109A9003D24F1 /* AnimeAppApp.swift in Sources */,
+				75752F992C414E05000F447E /* AnimeListViewModel.swift in Sources */,
+				75CF43ED2C41113D003D24F1 /* AnimeListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +474,36 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		75752F932C413D30000F447E /* XCLocalSwiftPackageReference "AnilistAPI" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = AnilistAPI;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		75CF43F62C412DBA003D24F1 /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apollographql/apollo-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.13.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		75752F942C413D30000F447E /* AnilistAPI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = AnilistAPI;
+		};
+		75CF43F72C412DBA003D24F1 /* Apollo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 75CF43F62C412DBA003D24F1 /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = Apollo;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 75CF43B92C4109A9003D24F1 /* Project object */;
 }
