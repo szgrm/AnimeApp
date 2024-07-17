@@ -34,4 +34,17 @@ class AnimeListViewModel: ObservableObject {
             }
         }
     }
+    
+    func refresh() {
+        Network.shared.apollo.fetch(query: GetAnimesQuery(page: .some(1))) { result in
+            switch result {
+            case .success(let graphQLResult):
+                let newAnimes = graphQLResult.data?.page?.media?.compactMap({$0})
+                self.animes = newAnimes
+                self.hasNextPage = graphQLResult.data?.page?.pageInfo?.hasNextPage ?? false
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 }

@@ -23,8 +23,8 @@ struct AnimeListView: View {
                 if vm.hasNextPage {
                     HStack {
                         Spacer()
-                            ProgressView()
-                            Text("Loading...")
+                        ProgressView()
+                        Text("Loading...")
                         Spacer()
                     }
                     .task {
@@ -36,8 +36,9 @@ struct AnimeListView: View {
             .listStyle(.plain)
             .scrollContentBackground(.hidden)
             .navigationTitle("Animes")
-            
-            
+            .refreshable {
+                vm.refresh()
+            }
         }
     }
 }
