@@ -7,14 +7,14 @@
 
 import SwiftUI
 import AnilistAPI
+import NukeUI
 
 struct AnimeListRowView: View {
     let anime: GetAnimesQuery.Data.Page.Medium
     
     var body: some View {
         HStack {
-            AsyncImage(url: URL(string: (anime.coverImage?.large)!)) { phase in
-                
+            LazyImage(url: URL(string: (anime.coverImage?.large)!)) { phase in
                 if let coverImage = phase.image {
                     coverImage
                         .resizable()
@@ -46,6 +46,7 @@ struct AnimeListRowView: View {
                 }
                 
                 TextUtility.cleanDescription(anime.description ?? "")
+                //Text(anime.description?.htmlToString() ?? "")
                     .lineLimit(4)
                     .font(.system(size: 10))
                     .padding(.vertical, 5)
@@ -55,7 +56,6 @@ struct AnimeListRowView: View {
         
     }
 }
-
 
 //extension String {
 //    func htmlToString() -> String {
