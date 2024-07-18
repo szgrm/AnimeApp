@@ -22,7 +22,6 @@ struct AnimeListRowView: View {
                         .cornerRadius(15)
                         .frame(width: 100, height: 125)
                 } else if phase.error != nil {
-                    let _ = print(phase.error!)
                     Image(systemName: "questionmark.diamond")
                         .imageScale(.large)
                         .frame(width: 100, height: 125)

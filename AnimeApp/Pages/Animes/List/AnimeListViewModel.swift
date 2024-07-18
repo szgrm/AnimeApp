@@ -7,10 +7,16 @@
 
 import Foundation
 import AnilistAPI
+import OSLog
 
 class AnimeListViewModel: ObservableObject {
     @Published public var animes: [GetAnimesQuery.Data.Page.Medium]? = []
     @Published public var hasNextPage: Bool = false
+    
+    private let logger = Logger(
+        subsystem: Bundle.main.bundleIdentifier!,
+        category: String(describing: AnimeListViewModel.self)
+    )
     
     var currentPage: Int = 1
     
@@ -30,7 +36,7 @@ class AnimeListViewModel: ObservableObject {
                 self.animes?.append(contentsOf: newAnimes ?? [])
                 self.hasNextPage = graphQLResult.data?.page?.pageInfo?.hasNextPage ?? false
             case .failure(let error):
-                print(error)
+                self.logger.debug("error: \(error.localizedDescription)")
             }
         }
     }
@@ -43,7 +49,7 @@ class AnimeListViewModel: ObservableObject {
                 self.animes = newAnimes
                 self.hasNextPage = graphQLResult.data?.page?.pageInfo?.hasNextPage ?? false
             case .failure(let error):
-                print(error)
+                self.logger.debug("error: \(error.localizedDescription)")
             }
         }
     }
