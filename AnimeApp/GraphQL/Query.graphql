@@ -34,7 +34,7 @@ query GetAnimeDetail($id: Int) {
     genres
     description
     episodes
-    characters(sort: FAVOURITES_DESC, perPage: 24) {
+    characters(sort: FAVOURITES_DESC, perPage: 25) {
       nodes {
         id
         name {

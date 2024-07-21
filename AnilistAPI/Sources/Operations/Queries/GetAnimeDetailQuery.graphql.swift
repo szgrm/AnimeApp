@@ -7,7 +7,7 @@ public class GetAnimeDetailQuery: GraphQLQuery {
   public static let operationName: String = "GetAnimeDetail"
   public static let operationDocument: ApolloAPI.OperationDocument = .init(
     definition: .init(
-      #"query GetAnimeDetail($id: Int) { Media(id: $id) { __typename id coverImage { __typename large } title { __typename english native } genres description episodes characters(sort: FAVOURITES_DESC, perPage: 24) { __typename nodes { __typename id name { __typename full } image { __typename medium } } } } }"#
+      #"query GetAnimeDetail($id: Int) { Media(id: $id) { __typename id coverImage { __typename large } title { __typename english native } genres description episodes characters(sort: FAVOURITES_DESC, perPage: 25) { __typename nodes { __typename id name { __typename full } image { __typename medium } } } } }"#
     ))
 
   public var id: GraphQLNullable<Int>
@@ -48,7 +48,7 @@ public class GetAnimeDetailQuery: GraphQLQuery {
         .field("episodes", Int?.self),
         .field("characters", Characters?.self, arguments: [
           "sort": "FAVOURITES_DESC",
-          "perPage": 24
+          "perPage": 25
         ]),
       ] }
 
