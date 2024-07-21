@@ -19,6 +19,8 @@
 		75752F972C413F21000F447E /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75752F962C413F21000F447E /* Network.swift */; };
 		75752F992C414E05000F447E /* AnimeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75752F982C414E05000F447E /* AnimeListViewModel.swift */; };
 		75752F9B2C4155FF000F447E /* AnimeListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75752F9A2C4155FF000F447E /* AnimeListRowView.swift */; };
+		757BA5532C4C58D2007C0F2D /* CharacterGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757BA5522C4C58D2007C0F2D /* CharacterGridView.swift */; };
+		759FDE032C48FE9E00C85976 /* AnimeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759FDE022C48FE9E00C85976 /* AnimeDetailViewModel.swift */; };
 		75CF43C52C4109A9003D24F1 /* AnimeAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CF43C42C4109A9003D24F1 /* AnimeAppApp.swift */; };
 		75CF43C92C4109AB003D24F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75CF43C82C4109AB003D24F1 /* Assets.xcassets */; };
 		75CF43CC2C4109AB003D24F1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75CF43CB2C4109AB003D24F1 /* Preview Assets.xcassets */; };
@@ -41,6 +43,8 @@
 		75752F962C413F21000F447E /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		75752F982C414E05000F447E /* AnimeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeListViewModel.swift; sourceTree = "<group>"; };
 		75752F9A2C4155FF000F447E /* AnimeListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeListRowView.swift; sourceTree = "<group>"; };
+		757BA5522C4C58D2007C0F2D /* CharacterGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterGridView.swift; sourceTree = "<group>"; };
+		759FDE022C48FE9E00C85976 /* AnimeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeDetailViewModel.swift; sourceTree = "<group>"; };
 		75CF43C12C4109A9003D24F1 /* AnimeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75CF43C42C4109A9003D24F1 /* AnimeAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeAppApp.swift; sourceTree = "<group>"; };
 		75CF43C82C4109AB003D24F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -159,6 +163,8 @@
 			isa = PBXGroup;
 			children = (
 				75CF43EE2C411168003D24F1 /* AnimeDetailView.swift */,
+				757BA5522C4C58D2007C0F2D /* CharacterGridView.swift */,
+				759FDE022C48FE9E00C85976 /* AnimeDetailViewModel.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -292,6 +298,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				757BA5532C4C58D2007C0F2D /* CharacterGridView.swift in Sources */,
+				759FDE032C48FE9E00C85976 /* AnimeDetailViewModel.swift in Sources */,
 				75CF43EF2C411168003D24F1 /* AnimeDetailView.swift in Sources */,
 				754913CF2C47E74C00D09227 /* RequestLoggingInterceptor.swift in Sources */,
 				754913D52C47F27900D09227 /* NetworkInterceptorProvider.swift in Sources */,

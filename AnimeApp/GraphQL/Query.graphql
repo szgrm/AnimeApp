@@ -20,3 +20,31 @@ query GetAnimes(
     }
   }
 }
+
+query GetAnimeDetail($id: Int) {
+  Media(id: $id) {
+    id
+    coverImage {
+      large
+    }
+    title {
+      english
+      native
+    }
+    genres
+    description
+    episodes
+    characters(sort: FAVOURITES_DESC, perPage: 24) {
+      nodes {
+        id
+        name {
+          full
+        }
+        image {
+          medium
+        }
+      }
+    }
+  }
+}
+

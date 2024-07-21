@@ -26,6 +26,10 @@ public enum SchemaMetadata: ApolloAPI.SchemaMetadata {
     case "Media": return AnilistAPI.Objects.Media
     case "MediaCoverImage": return AnilistAPI.Objects.MediaCoverImage
     case "MediaTitle": return AnilistAPI.Objects.MediaTitle
+    case "CharacterConnection": return AnilistAPI.Objects.CharacterConnection
+    case "Character": return AnilistAPI.Objects.Character
+    case "CharacterName": return AnilistAPI.Objects.CharacterName
+    case "CharacterImage": return AnilistAPI.Objects.CharacterImage
     default: return nil
     }
   }
