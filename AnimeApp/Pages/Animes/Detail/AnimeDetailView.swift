@@ -63,21 +63,12 @@ struct AnimeDetailView: View {
                         .foregroundStyle(.secondary)
                         .multilineTextAlignment(.center)
                     
-                    LazyImage(url: URL(string: (anime.coverImage?.large)!)) { phase in
-                        if let coverImage = phase.image {
-                            coverImage
-                                .resizable()
-                                .scaledToFit()
-                                .cornerRadius(15)
-                                .frame(width: 200)
-                        } else if phase.error != nil {
-                            Image(systemName: "questionmark.diamond")
-                                .imageScale(.large)
-                                .frame(width: 200, height: 300)
-                        } else {
-                            ProgressView()
-                        }
-                    }
+                    AniImageView(
+                        url: (anime.coverImage?.large)!,
+                        width: 200,
+                        height: 300,
+                        cornerRadius: 15
+                    )
                     
                     HStack {
                         ForEach(vm.animeDetail?.genres?.prefix(3) ?? [], id: \.self) { genre in

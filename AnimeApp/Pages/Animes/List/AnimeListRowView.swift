@@ -14,21 +14,12 @@ struct AnimeListRowView: View {
     
     var body: some View {
         HStack {
-            LazyImage(url: URL(string: (anime.coverImage?.large)!)) { phase in
-                if let coverImage = phase.image {
-                    coverImage
-                        .resizable()
-                        .scaledToFit()
-                        .cornerRadius(15)
-                        .frame(width: 100, height: 125)
-                } else if phase.error != nil {
-                    Image(systemName: "questionmark.diamond")
-                        .imageScale(.large)
-                        .frame(width: 100, height: 125)
-                } else {
-                    ProgressView()
-                }
-            }
+            AniImageView(
+                url: (anime.coverImage?.large)!,
+                width: 100,
+                height: 150,
+                cornerRadius: 15
+            )
             
             VStack(alignment: .leading) {
                 Text((anime.title?.english) ?? "No title")
