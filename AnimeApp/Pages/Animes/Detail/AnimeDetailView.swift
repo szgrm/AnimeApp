@@ -14,7 +14,7 @@ struct AnimeDetailView: View {
     @ObservedObject var vm: AnimeDetailViewModel
     var animeID: Int
     let columns = [
-        GridItem(.adaptive(minimum: 80))
+        GridItem(.adaptive(minimum: 75))
     ]
     
     init(anime: GetAnimesQuery.Data.Page.Medium ){
@@ -42,7 +42,6 @@ struct AnimeDetailView: View {
                 }
                 .padding(5)
             }
-            
         }
         .navigationTitle(anime.title?.english ?? "Anime Detail")
         .navigationBarTitleDisplayMode(.inline)
@@ -75,8 +74,9 @@ struct AnimeDetailView: View {
                             Text(genre!)
                                 .font(.system(size: 10))
                                 .padding(3)
-                                .background(.fill)
+                                .background(Color("AppColor").opacity(0.4))
                                 .clipShape(.capsule)
+                                
                         }
                     }
                     
@@ -85,11 +85,17 @@ struct AnimeDetailView: View {
                         .foregroundStyle(.secondary)
                 }
                 Spacer()
+                
             }
+            .listRowSeparator(.hidden)
+
             TextUtility.cleanDescription(anime.description ?? "")
                 .font(.system(size: 14))
                 .padding(.vertical, 5)
         }
+        
+        .ignoresSafeArea()
+
     }
 }
 

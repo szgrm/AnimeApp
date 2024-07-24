@@ -14,12 +14,15 @@ struct CharacterGridView: View {
     
     var body: some View {
         VStack {
-            AniImageView(url: (character.image?.medium)!, width: 75, height: 100, cornerRadius: 5)
+            AniImageView(url: (character.image?.medium)!, width: 70, height: 100, cornerRadius: 5)
             
             Text(character.name?.full ?? "unknown")
                 .font(.system(size: 13))
                 .lineLimit(1)
         }
+        .padding(.bottom, 5)
+        .background(.ultraThinMaterial)
+        .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
     }
 }
 

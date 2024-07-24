@@ -24,13 +24,14 @@ struct AnimeListRowView: View {
             VStack(alignment: .leading) {
                 Text((anime.title?.english) ?? "No title")
                     .font(.system(size: 20))
+                    .lineLimit(1)
                 
                 HStack {
                     ForEach(anime.genres?.prefix(3) ?? [], id: \.self) { genre in
                         Text(genre!)
                             .font(.system(size: 10))
                             .padding(3)
-                            .background(.fill)
+                            .background(Color("AppColor").opacity(0.4))
                             .clipShape(.capsule)
                     }
                 }
@@ -42,7 +43,10 @@ struct AnimeListRowView: View {
                     .padding(.vertical, 5)
             }
         }
-        .padding(.bottom, 5)
+        .padding(5)
+        
+        
+        
         
     }
 }

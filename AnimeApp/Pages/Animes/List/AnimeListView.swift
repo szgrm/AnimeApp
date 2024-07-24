@@ -15,11 +15,16 @@ struct AnimeListView: View {
         NavigationStack {
             List {
                 ForEach(vm.animes ?? [], id: \.id) { anime in
+                    
                     NavigationLink(destination: AnimeDetailView(anime: anime), label: {
                         AnimeListRowView(anime: anime)
                     })
+                    .padding(5)
+                    .background(.ultraThinMaterial)
+                    .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
+                    .listRowSeparator(.hidden)
+                    .listRowBackground(Color.clear)
                 }
-                
                 if vm.hasNextPage {
                     HStack {
                         Spacer()
@@ -31,11 +36,12 @@ struct AnimeListView: View {
                         vm.loadMore()
                     }
                 }
-                
             }
+            .background(Color("Background").edgesIgnoringSafeArea(.all))
             .listStyle(.plain)
             .scrollContentBackground(.hidden)
             .navigationTitle("Animes")
+            .toolbarBackground(.visible)
             .refreshable {
                 vm.refresh()
             }

@@ -23,6 +23,7 @@ struct TabbarView: View {
                     Label("Search", systemImage: "magnifyingglass")
                 }
         }
+        .tint(Color("AppColor"))
     }
 }
 
