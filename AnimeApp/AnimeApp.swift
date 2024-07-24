@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct AnimeAppApp: App {
+struct AnimeApp: App {
     var body: some Scene {
         WindowGroup {
             TabbarView()
