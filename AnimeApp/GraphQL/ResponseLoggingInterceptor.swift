@@ -5,24 +5,23 @@
 //  Created by Sezgi İrem İlgar on 17.07.2024.
 //
 
-import Foundation
 import Apollo
 import ApolloAPI
+import Foundation
 import OSLog
 
 class ResponseLoggingInterceptor: ApolloInterceptor {
-    
     private let logger = Logger(
         subsystem: Bundle.main.bundleIdentifier!,
         category: String(describing: ResponseLoggingInterceptor.self)
     )
-    
+
     enum ResponseLoggingError: Error {
         case notYetReceived
     }
-    
+
     public var id: String = UUID().uuidString
-    
+
     func interceptAsync<Operation: GraphQLOperation>(
         chain: RequestChain,
         request: HTTPRequest<Operation>,
@@ -38,7 +37,7 @@ class ResponseLoggingInterceptor: ApolloInterceptor {
                 completion: completion
             )
         }
-        
+
         guard let receivedResponse = response else {
             chain.handleErrorAsync(
                 ResponseLoggingError.notYetReceived,
@@ -48,9 +47,9 @@ class ResponseLoggingInterceptor: ApolloInterceptor {
             )
             return
         }
-        
+
         logger.debug("HTTP Response: \(receivedResponse.httpResponse)")
-        
+
         if let stringData = String(bytes: receivedResponse.rawData, encoding: .utf8) {
             logger.debug("Data: \(stringData)")
         } else {

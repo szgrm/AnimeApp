@@ -5,16 +5,15 @@
 //  Created by Sezgi İrem İlgar on 21.07.2024.
 //
 
-import SwiftUI
 import NukeUI
+import SwiftUI
 
 struct AniImageView: View {
     let url: String
     let width: CGFloat
     let height: CGFloat
     let cornerRadius: CGFloat
-    
-    
+
     var body: some View {
         LazyImage(url: URL(string: url)) { phase in
             if let image = phase.image {
@@ -34,4 +33,3 @@ struct AniImageView: View {
         }
     }
 }
-

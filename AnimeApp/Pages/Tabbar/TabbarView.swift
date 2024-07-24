@@ -14,10 +14,6 @@ struct TabbarView: View {
                 .tabItem {
                     Label("Animes", systemImage: "display")
                 }
-//            CharacterListView()
-//                .tabItem {
-//                    Label("Characters", systemImage: "person.2")
-//                }
             SearchView()
                 .tabItem {
                     Label("Search", systemImage: "magnifyingglass")
