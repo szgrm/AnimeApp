@@ -3,21 +3,21 @@
 
 @_exported import ApolloAPI
 
-public class GetAnimesQuery: GraphQLQuery {
-  public static let operationName: String = "GetAnimes"
+public class SearchAnimeQuery: GraphQLQuery {
+  public static let operationName: String = "SearchAnime"
   public static let operationDocument: ApolloAPI.OperationDocument = .init(
     definition: .init(
-      #"query GetAnimes($page: Int!) { Page(page: $page, perPage: 20) { __typename pageInfo { __typename hasNextPage } media(isAdult: false, sort: POPULARITY_DESC, format: TV) { __typename ...AnimeSmall } } }"#,
+      #"query SearchAnime($search: String!) { Page { __typename media(search: $search) { __typename ...AnimeSmall } } }"#,
       fragments: [AnimeSmall.self]
     ))
 
-  public var page: Int
+  public var search: String
 
-  public init(page: Int) {
-    self.page = page
+  public init(search: String) {
+    self.search = search
   }
 
-  public var __variables: Variables? { ["page": page] }
+  public var __variables: Variables? { ["search": search] }
 
   public struct Data: AnilistAPI.SelectionSet {
     public let __data: DataDict
@@ -25,10 +25,7 @@ public class GetAnimesQuery: GraphQLQuery {
 
     public static var __parentType: any ApolloAPI.ParentType { AnilistAPI.Objects.Query }
     public static var __selections: [ApolloAPI.Selection] { [
-      .field("Page", Page?.self, arguments: [
-        "page": .variable("page"),
-        "perPage": 20
-      ]),
+      .field("Page", Page?.self),
     ] }
 
     public var page: Page? { __data["Page"] }
@@ -43,34 +40,10 @@ public class GetAnimesQuery: GraphQLQuery {
       public static var __parentType: any ApolloAPI.ParentType { AnilistAPI.Objects.Page }
       public static var __selections: [ApolloAPI.Selection] { [
         .field("__typename", String.self),
-        .field("pageInfo", PageInfo?.self),
-        .field("media", [Medium?]?.self, arguments: [
-          "isAdult": false,
-          "sort": "POPULARITY_DESC",
-          "format": "TV"
-        ]),
+        .field("media", [Medium?]?.self, arguments: ["search": .variable("search")]),
       ] }
 
-      /// The pagination information
-      public var pageInfo: PageInfo? { __data["pageInfo"] }
       public var media: [Medium?]? { __data["media"] }
-
-      /// Page.PageInfo
-      ///
-      /// Parent Type: `PageInfo`
-      public struct PageInfo: AnilistAPI.SelectionSet {
-        public let __data: DataDict
-        public init(_dataDict: DataDict) { __data = _dataDict }
-
-        public static var __parentType: any ApolloAPI.ParentType { AnilistAPI.Objects.PageInfo }
-        public static var __selections: [ApolloAPI.Selection] { [
-          .field("__typename", String.self),
-          .field("hasNextPage", Bool?.self),
-        ] }
-
-        /// If there is another page
-        public var hasNextPage: Bool? { __data["hasNextPage"] }
-      }
 
       /// Page.Medium
       ///

@@ -10,7 +10,7 @@ import NukeUI
 import SwiftUI
 
 struct AnimeListRowView: View {
-    let anime: GetAnimesQuery.Data.Page.Medium
+    let anime: AnimeSmall
 
     var body: some View {
         HStack {

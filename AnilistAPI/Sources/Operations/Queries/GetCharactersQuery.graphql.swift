@@ -3,12 +3,12 @@
 
 @_exported import ApolloAPI
 
-public class GetAnimesQuery: GraphQLQuery {
-  public static let operationName: String = "GetAnimes"
+public class GetCharactersQuery: GraphQLQuery {
+  public static let operationName: String = "GetCharacters"
   public static let operationDocument: ApolloAPI.OperationDocument = .init(
     definition: .init(
-      #"query GetAnimes($page: Int!) { Page(page: $page, perPage: 20) { __typename pageInfo { __typename hasNextPage } media(isAdult: false, sort: POPULARITY_DESC, format: TV) { __typename ...AnimeSmall } } }"#,
-      fragments: [AnimeSmall.self]
+      #"query GetCharacters($page: Int!) { Page(page: $page, perPage: 20) { __typename pageInfo { __typename hasNextPage } characters(sort: FAVOURITES_DESC) { __typename ...CharacterSmall } } }"#,
+      fragments: [CharacterSmall.self]
     ))
 
   public var page: Int
@@ -44,16 +44,12 @@ public class GetAnimesQuery: GraphQLQuery {
       public static var __selections: [ApolloAPI.Selection] { [
         .field("__typename", String.self),
         .field("pageInfo", PageInfo?.self),
-        .field("media", [Medium?]?.self, arguments: [
-          "isAdult": false,
-          "sort": "POPULARITY_DESC",
-          "format": "TV"
-        ]),
+        .field("characters", [Character?]?.self, arguments: ["sort": "FAVOURITES_DESC"]),
       ] }
 
       /// The pagination information
       public var pageInfo: PageInfo? { __data["pageInfo"] }
-      public var media: [Medium?]? { __data["media"] }
+      public var characters: [Character?]? { __data["characters"] }
 
       /// Page.PageInfo
       ///
@@ -72,40 +68,36 @@ public class GetAnimesQuery: GraphQLQuery {
         public var hasNextPage: Bool? { __data["hasNextPage"] }
       }
 
-      /// Page.Medium
+      /// Page.Character
       ///
-      /// Parent Type: `Media`
-      public struct Medium: AnilistAPI.SelectionSet {
+      /// Parent Type: `Character`
+      public struct Character: AnilistAPI.SelectionSet {
         public let __data: DataDict
         public init(_dataDict: DataDict) { __data = _dataDict }
 
-        public static var __parentType: any ApolloAPI.ParentType { AnilistAPI.Objects.Media }
+        public static var __parentType: any ApolloAPI.ParentType { AnilistAPI.Objects.Character }
         public static var __selections: [ApolloAPI.Selection] { [
           .field("__typename", String.self),
-          .fragment(AnimeSmall.self),
+          .fragment(CharacterSmall.self),
         ] }
 
-        /// The id of the media
+        /// The id of the character
         public var id: Int { __data["id"] }
-        /// The cover images of the media
-        public var coverImage: CoverImage? { __data["coverImage"] }
-        /// The official titles of the media in various languages
-        public var title: Title? { __data["title"] }
-        /// The genres of the media
-        public var genres: [String?]? { __data["genres"] }
-        /// Short description of the media's story and characters
-        public var description: String? { __data["description"] }
+        /// The names of the character
+        public var name: Name? { __data["name"] }
+        /// Character images
+        public var image: Image? { __data["image"] }
 
         public struct Fragments: FragmentContainer {
           public let __data: DataDict
           public init(_dataDict: DataDict) { __data = _dataDict }
 
-          public var animeSmall: AnimeSmall { _toFragment() }
+          public var characterSmall: CharacterSmall { _toFragment() }
         }
 
-        public typealias CoverImage = AnimeSmall.CoverImage
+        public typealias Name = CharacterSmall.Name
 
-        public typealias Title = AnimeSmall.Title
+        public typealias Image = CharacterSmall.Image
       }
     }
   }

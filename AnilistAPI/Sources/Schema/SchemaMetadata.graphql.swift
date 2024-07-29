@@ -30,6 +30,9 @@ public enum SchemaMetadata: ApolloAPI.SchemaMetadata {
     case "Character": return AnilistAPI.Objects.Character
     case "CharacterName": return AnilistAPI.Objects.CharacterName
     case "CharacterImage": return AnilistAPI.Objects.CharacterImage
+    case "MediaTrailer": return AnilistAPI.Objects.MediaTrailer
+    case "MediaConnection": return AnilistAPI.Objects.MediaConnection
+    case "FuzzyDate": return AnilistAPI.Objects.FuzzyDate
     default: return nil
     }
   }

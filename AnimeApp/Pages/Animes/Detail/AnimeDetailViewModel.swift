@@ -10,7 +10,7 @@ import Foundation
 import OSLog
 
 class AnimeDetailViewModel: ObservableObject {
-    @Published public var animeDetail: GetAnimeDetailQuery.Data.Media?
+    @Published public var animeDetail: AnimeFull?
     var animeID: Int
 
     private let logger = Logger(
@@ -23,10 +23,10 @@ class AnimeDetailViewModel: ObservableObject {
     }
 
     func getAnimeDetail() {
-        Network.shared.apollo.fetch(query: GetAnimeDetailQuery(id: .some(animeID))) { result in
+        Network.shared.apollo.fetch(query: GetAnimeDetailQuery(id: animeID)) { result in
             switch result {
             case let .success(graphQLResult):
-                self.animeDetail = graphQLResult.data?.media // sor
+                self.animeDetail = graphQLResult.data?.media?.fragments.animeFull
 
             case let .failure(error):
                 self.logger.debug("error: \(error.localizedDescription)")

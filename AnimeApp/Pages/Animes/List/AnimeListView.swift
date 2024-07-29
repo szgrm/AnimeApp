@@ -14,8 +14,7 @@ struct AnimeListView: View {
     var body: some View {
         NavigationStack {
             List {
-                ForEach(vm.animes ?? [], id: \.id) { anime in
-
+                ForEach(vm.animes ?? []) { anime in
                     NavigationLink(destination: AnimeDetailView(anime: anime), label: {
                         AnimeListRowView(anime: anime)
                     })
@@ -37,7 +36,6 @@ struct AnimeListView: View {
                     }
                 }
             }
-            .background(Color("Background").edgesIgnoringSafeArea(.all))
             .listStyle(.plain)
             .scrollContentBackground(.hidden)
             .navigationTitle("Animes")

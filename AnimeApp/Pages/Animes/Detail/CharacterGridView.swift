@@ -10,7 +10,7 @@ import NukeUI
 import SwiftUI
 
 struct CharacterGridView: View {
-    let character: GetAnimeDetailQuery.Data.Media.Characters.Node
+    let character: CharacterSmall
 
     var body: some View {
         VStack {

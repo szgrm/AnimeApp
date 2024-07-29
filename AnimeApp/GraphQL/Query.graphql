@@ -1,50 +1,128 @@
-query GetAnimes(
-  $page: Int
-) {
+query GetAnimes($page: Int!) {
   Page(page: $page, perPage: 20) {
     pageInfo {
       hasNextPage
     }
     media(isAdult: false, sort: POPULARITY_DESC, format: TV) {
-      id
-      coverImage {
-        large
-      }
-      title {
-        english
-        romaji
-      }
-      averageScore
-      genres
-      description
+      ...AnimeSmall
     }
   }
 }
 
-query GetAnimeDetail($id: Int) {
+query GetAnimeDetail($id: Int!) {
   Media(id: $id) {
-    id
-    coverImage {
-      large
+    ...AnimeFull
+  }
+}
+
+query GetCharacters($page: Int!) {
+  Page(page: $page, perPage: 20) {
+    pageInfo {
+      hasNextPage
     }
-    title {
-      english
-      native
-    }
-    genres
-    description
-    episodes
-    characters(sort: FAVOURITES_DESC, perPage: 25) {
-      nodes {
-        id
-        name {
-          full
-        }
-        image {
-          medium
-        }
-      }
+    characters(sort: FAVOURITES_DESC) {
+      ...CharacterSmall
     }
   }
 }
 
+query GetCharacterDetail($id: Int!) {
+  Character(id: $id) {
+    ...CharacterFull
+  }
+}
+
+query SearchAnime($search: String!) {
+  Page {
+    media(search: $search) {
+      ...AnimeSmall
+    }
+  }
+}
+query SearchCharacter($search: String!) {
+  Page {
+    characters(search: $search) {
+      ...CharacterSmall
+    }
+  }
+}
+
+fragment AnimeSmall on Media {
+  id
+  coverImage {
+    large
+  }
+  title {
+    english
+    romaji
+  }
+  genres
+  description
+}
+
+fragment AnimeFull on Media {
+  id
+  coverImage {
+    large
+  }
+  title {
+    english
+    native
+  }
+  genres
+  averageScore
+  description
+  episodes
+  characters(sort: FAVOURITES_DESC) {
+    nodes {
+      ...CharacterSmall
+    }
+  }
+  seasonYear
+  status
+  trailer {
+    site
+    thumbnail
+    id
+  }
+}
+
+fragment CharacterSmall on Character {
+  id
+  name {
+    full
+  }
+  image {
+    medium
+  }
+}
+
+fragment CharacterFull on Character {
+  id
+  name {
+    full
+    alternative
+    alternativeSpoiler
+    first
+    last
+    middle
+    native
+    userPreferred
+  }
+  image {
+    medium
+  }
+  age
+  gender
+  description
+  media(sort: POPULARITY_DESC) {
+    nodes {
+      ...AnimeSmall
+    }
+  }
+  dateOfBirth {
+    day
+    month
+    year
+  }
+}

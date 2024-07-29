@@ -10,14 +10,14 @@ import NukeUI
 import SwiftUI
 
 struct AnimeDetailView: View {
-    let anime: GetAnimesQuery.Data.Page.Medium
+    let anime: AnimeSmall
     @ObservedObject var vm: AnimeDetailViewModel
     var animeID: Int
     let columns = [
         GridItem(.adaptive(minimum: 75)),
     ]
 
-    init(anime: GetAnimesQuery.Data.Page.Medium) {
+    init(anime: AnimeSmall) {
         self.anime = anime
         animeID = anime.id
         vm = AnimeDetailViewModel(animeID: animeID)
@@ -27,11 +27,11 @@ struct AnimeDetailView: View {
         List {
             infoSection
 
-            if let characters = vm.animeDetail?.characters?.nodes?.compactMap({ $0 }) {
+            if let characters = vm.animeDetail?.characters?.nodes?.compactMap({ $0?.fragments.characterSmall }) {
                 Section(header: Text("Characters")) {
                     ScrollView {
                         LazyVGrid(columns: columns) {
-                            ForEach(characters, id: \.id) { character in
+                            ForEach(characters) { character in
                                 CharacterGridView(character: character)
                             }
                         }

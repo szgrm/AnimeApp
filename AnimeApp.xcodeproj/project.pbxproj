@@ -30,6 +30,7 @@
 		75CF43EF2C411168003D24F1 /* AnimeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CF43EE2C411168003D24F1 /* AnimeDetailView.swift */; };
 		75CF43F52C4111BB003D24F1 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CF43F42C4111BB003D24F1 /* SearchView.swift */; };
 		75CF43F82C412DBA003D24F1 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 75CF43F72C412DBA003D24F1 /* Apollo */; };
+		75FB123E2C56EB740030554A /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FB123D2C56EB740030554A /* Types.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		75CF43EE2C411168003D24F1 /* AnimeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeDetailView.swift; sourceTree = "<group>"; };
 		75CF43F42C4111BB003D24F1 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		75CF44052C41386B003D24F1 /* Query.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Query.graphql; sourceTree = "<group>"; };
+		75FB123D2C56EB740030554A /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				7569EF632C44930B00E3DAF1 /* TextUtil.swift */,
+				75FB123D2C56EB740030554A /* Types.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -113,6 +116,7 @@
 				75CF43D32C410BF3003D24F1 /* Pages */,
 				7569EF622C4492D800E3DAF1 /* Util */,
 				757BA5542C4CFC07007C0F2D /* Shared */,
+				75FB123C2C56EA8D0030554A /* Services */,
 				75CF44032C412EED003D24F1 /* GraphQL */,
 				75CF43C82C4109AB003D24F1 /* Assets.xcassets */,
 				75CF43CA2C4109AB003D24F1 /* Preview Content */,
@@ -194,6 +198,13 @@
 				754913D42C47F27900D09227 /* NetworkInterceptorProvider.swift */,
 			);
 			path = GraphQL;
+			sourceTree = "<group>";
+		};
+		75FB123C2C56EA8D0030554A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,6 +301,7 @@
 				7569EF642C44930B00E3DAF1 /* TextUtil.swift in Sources */,
 				75CF43F52C4111BB003D24F1 /* SearchView.swift in Sources */,
 				754913D32C47ECE400D09227 /* ResponseLoggingInterceptor.swift in Sources */,
+				75FB123E2C56EB740030554A /* Types.swift in Sources */,
 				75752F9B2C4155FF000F447E /* AnimeListRowView.swift in Sources */,
 				75CF43C52C4109A9003D24F1 /* AnimeApp.swift in Sources */,
 				75752F992C414E05000F447E /* AnimeListViewModel.swift in Sources */,
@@ -430,11 +442,13 @@
 				DEVELOPMENT_TEAM = 8LC9944F6M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = AnimeApp;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -459,11 +473,13 @@
 				DEVELOPMENT_TEAM = 8LC9944F6M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = AnimeApp;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
