@@ -17,7 +17,9 @@ struct CharacterGridView: View {
             AniImageView(url: (character.image?.medium)!, width: 70, height: 100, cornerRadius: 5)
 
             Text(character.name?.full ?? "unknown")
-                .font(.system(size: 13))
+                .padding(.horizontal, 2)
+                .frame(width: 70)
+                .font(.system(size: 11))
                 .lineLimit(1)
         }
         .padding(.bottom, 5)

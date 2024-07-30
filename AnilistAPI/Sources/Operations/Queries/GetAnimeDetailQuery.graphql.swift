@@ -66,6 +66,10 @@ public class GetAnimeDetailQuery: GraphQLQuery {
       public var status: GraphQLEnum<AnilistAPI.MediaStatus>? { __data["status"] }
       /// Media trailer or advertisement
       public var trailer: Trailer? { __data["trailer"] }
+      /// The format the media was released in
+      public var format: GraphQLEnum<AnilistAPI.MediaFormat>? { __data["format"] }
+      /// The banner image of the media
+      public var bannerImage: String? { __data["bannerImage"] }
 
       public struct Fragments: FragmentContainer {
         public let __data: DataDict

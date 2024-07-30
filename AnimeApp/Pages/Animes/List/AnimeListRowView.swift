@@ -13,20 +13,33 @@ struct AnimeListRowView: View {
     let anime: AnimeSmall
 
     var body: some View {
-        HStack {
+        HStack(alignment: .top) {
             AniImageView(
                 url: (anime.coverImage?.large)!,
-                width: 100,
-                height: 150,
-                cornerRadius: 15
+                width: 120,
+                height: 100,
+                cornerRadius: 10
             )
 
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 5) {
                 Text((anime.title?.english) ?? "No title")
+                    .bold()
                     .font(.system(size: 20))
                     .lineLimit(1)
 
                 HStack {
+                    Text("\(String(anime.seasonYear ?? 0))")
+                        .foregroundStyle(.secondary)
+                        .font(.system(size: 12))
+                    Divider()
+                        .frame(height: 10)
+                    Text(anime.format?.rawValue ?? "-")
+                        .foregroundStyle(.secondary)
+                        .font(.system(size: 12))
+                }
+                .padding(.leading, 2)
+
+                HStack(spacing: 3) {
                     ForEach(anime.genres?.prefix(3) ?? [], id: \.self) { genre in
                         Text(genre!)
                             .font(.system(size: 10))
@@ -37,10 +50,10 @@ struct AnimeListRowView: View {
                 }
 
                 TextUtility.cleanDescription(anime.description ?? "")
-                    .lineLimit(4)
+                    .lineLimit(6)
                     .font(.system(size: 10))
-                    .padding(.vertical, 5)
             }
+            .padding(5)
         }
         .padding(5)
     }

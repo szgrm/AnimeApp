@@ -7,7 +7,7 @@ public class GetAnimesQuery: GraphQLQuery {
   public static let operationName: String = "GetAnimes"
   public static let operationDocument: ApolloAPI.OperationDocument = .init(
     definition: .init(
-      #"query GetAnimes($page: Int!) { Page(page: $page, perPage: 20) { __typename pageInfo { __typename hasNextPage } media(isAdult: false, sort: POPULARITY_DESC, format: TV) { __typename ...AnimeSmall } } }"#,
+      #"query GetAnimes($page: Int!) { Page(page: $page, perPage: 20) { __typename pageInfo { __typename hasNextPage } media(isAdult: false, sort: POPULARITY_DESC, format_in: [TV, MOVIE]) { __typename ...AnimeSmall } } }"#,
       fragments: [AnimeSmall.self]
     ))
 
@@ -47,7 +47,7 @@ public class GetAnimesQuery: GraphQLQuery {
         .field("media", [Medium?]?.self, arguments: [
           "isAdult": false,
           "sort": "POPULARITY_DESC",
-          "format": "TV"
+          "format_in": ["TV", "MOVIE"]
         ]),
       ] }
 
@@ -95,6 +95,10 @@ public class GetAnimesQuery: GraphQLQuery {
         public var genres: [String?]? { __data["genres"] }
         /// Short description of the media's story and characters
         public var description: String? { __data["description"] }
+        /// The format the media was released in
+        public var format: GraphQLEnum<AnilistAPI.MediaFormat>? { __data["format"] }
+        /// The season year the media was initially released in
+        public var seasonYear: Int? { __data["seasonYear"] }
 
         public struct Fragments: FragmentContainer {
           public let __data: DataDict

@@ -5,7 +5,7 @@
 
 public struct AnimeFull: AnilistAPI.SelectionSet, Fragment {
   public static var fragmentDefinition: StaticString {
-    #"fragment AnimeFull on Media { __typename id coverImage { __typename large } title { __typename english native } genres averageScore description episodes characters(sort: FAVOURITES_DESC) { __typename nodes { __typename ...CharacterSmall } } seasonYear status trailer { __typename site thumbnail id } }"#
+    #"fragment AnimeFull on Media { __typename id coverImage { __typename large } title { __typename english native } genres averageScore description episodes characters(sort: FAVOURITES_DESC) { __typename nodes { __typename ...CharacterSmall } } seasonYear status trailer { __typename site thumbnail id } format bannerImage }"#
   }
 
   public let __data: DataDict
@@ -25,6 +25,8 @@ public struct AnimeFull: AnilistAPI.SelectionSet, Fragment {
     .field("seasonYear", Int?.self),
     .field("status", GraphQLEnum<AnilistAPI.MediaStatus>?.self),
     .field("trailer", Trailer?.self),
+    .field("format", GraphQLEnum<AnilistAPI.MediaFormat>?.self),
+    .field("bannerImage", String?.self),
   ] }
 
   /// The id of the media
@@ -49,6 +51,10 @@ public struct AnimeFull: AnilistAPI.SelectionSet, Fragment {
   public var status: GraphQLEnum<AnilistAPI.MediaStatus>? { __data["status"] }
   /// Media trailer or advertisement
   public var trailer: Trailer? { __data["trailer"] }
+  /// The format the media was released in
+  public var format: GraphQLEnum<AnilistAPI.MediaFormat>? { __data["format"] }
+  /// The banner image of the media
+  public var bannerImage: String? { __data["bannerImage"] }
 
   /// CoverImage
   ///

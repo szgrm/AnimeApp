@@ -3,7 +3,7 @@ query GetAnimes($page: Int!) {
     pageInfo {
       hasNextPage
     }
-    media(isAdult: false, sort: POPULARITY_DESC, format: TV) {
+    media(isAdult: false, sort: POPULARITY_DESC, format_in: [TV, MOVIE]) {
       ...AnimeSmall
     }
   }
@@ -58,6 +58,8 @@ fragment AnimeSmall on Media {
   }
   genres
   description
+  format
+  seasonYear
 }
 
 fragment AnimeFull on Media {
@@ -85,6 +87,8 @@ fragment AnimeFull on Media {
     thumbnail
     id
   }
+  format
+  bannerImage
 }
 
 fragment CharacterSmall on Character {

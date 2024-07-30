@@ -5,7 +5,7 @@
 
 public struct AnimeSmall: AnilistAPI.SelectionSet, Fragment {
   public static var fragmentDefinition: StaticString {
-    #"fragment AnimeSmall on Media { __typename id coverImage { __typename large } title { __typename english romaji } genres description }"#
+    #"fragment AnimeSmall on Media { __typename id coverImage { __typename large } title { __typename english romaji } genres description format seasonYear }"#
   }
 
   public let __data: DataDict
@@ -19,6 +19,8 @@ public struct AnimeSmall: AnilistAPI.SelectionSet, Fragment {
     .field("title", Title?.self),
     .field("genres", [String?]?.self),
     .field("description", String?.self),
+    .field("format", GraphQLEnum<AnilistAPI.MediaFormat>?.self),
+    .field("seasonYear", Int?.self),
   ] }
 
   /// The id of the media
@@ -31,6 +33,10 @@ public struct AnimeSmall: AnilistAPI.SelectionSet, Fragment {
   public var genres: [String?]? { __data["genres"] }
   /// Short description of the media's story and characters
   public var description: String? { __data["description"] }
+  /// The format the media was released in
+  public var format: GraphQLEnum<AnilistAPI.MediaFormat>? { __data["format"] }
+  /// The season year the media was initially released in
+  public var seasonYear: Int? { __data["seasonYear"] }
 
   /// CoverImage
   ///
