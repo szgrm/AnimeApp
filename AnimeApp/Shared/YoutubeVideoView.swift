@@ -12,8 +12,6 @@ struct YoutubeVideoView: View {
     let ID: String
     var body: some View {
         Video(videoID: ID)
-            .frame(width: 350, height: 200)
-            .cornerRadius(10)
     }
 }
 
