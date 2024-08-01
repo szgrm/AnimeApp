@@ -20,8 +20,9 @@ struct AniImageView: View {
                 image
                     .resizable()
                     .scaledToFill()
+                    .frame(width: width, height: height)
+                    .clipped()
                     .cornerRadius(cornerRadius)
-                    .frame(width: width)
             } else if phase.error != nil {
                 Image(systemName: "questionmark.diamond")
                     .imageScale(.large)

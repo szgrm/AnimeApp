@@ -34,14 +34,14 @@ query GetCharacterDetail($id: Int!) {
 
 query SearchAnime($search: String!) {
   Page {
-    media(search: $search) {
+    media(search: $search, isAdult: false, sort: POPULARITY_DESC, format_in: [TV, MOVIE]) {
       ...AnimeSmall
     }
   }
 }
 query SearchCharacter($search: String!) {
   Page {
-    characters(search: $search) {
+    characters(search: $search, sort: FAVOURITES_DESC) {
       ...CharacterSmall
     }
   }
@@ -97,7 +97,14 @@ fragment CharacterSmall on Character {
     full
   }
   image {
-    medium
+    large
+  }
+  media {
+    nodes {
+      title {
+        english
+      }
+    }
   }
 }
 
@@ -114,7 +121,7 @@ fragment CharacterFull on Character {
     userPreferred
   }
   image {
-    medium
+    large
   }
   age
   gender

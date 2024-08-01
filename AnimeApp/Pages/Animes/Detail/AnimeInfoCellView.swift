@@ -20,9 +20,5 @@ struct AnimeInfoCellView: View {
                 .foregroundStyle(.primary)
                 .font(.system(size: 14))
         }
-
-        Divider()
-            .frame(height: 40)
-            .overlay(.secondary)
     }
 }

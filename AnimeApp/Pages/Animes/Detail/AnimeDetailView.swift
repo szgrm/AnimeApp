@@ -51,7 +51,7 @@ struct AnimeDetailView: View {
                                     }
                                 }
                             }
-                            .padding(.leading, 15)
+                            .contentMargins(.leading, 15, for: .scrollContent)
                         }
                     } else {
                         ProgressView()
@@ -85,11 +85,11 @@ struct AnimeDetailView: View {
                                 .offset(y: isScrolled ? -offsetY : 0)
 
                         } else {
-                            ProgressView()
+                            Spacer()
                                 .frame(width: screenWidth, height: 260)
                         }
                         Rectangle()
-                            
+
                             .foregroundColor(.clear)
                             .background(LinearGradient(gradient: Gradient(colors: [.clear, Color("Background")]), startPoint: .top, endPoint: .bottom))
                     }
@@ -102,13 +102,13 @@ struct AnimeDetailView: View {
         HStack(alignment: .bottom) {
             AniImageView(
                 url: (anime.coverImage?.large)!,
-                width: 150,
-                height: 0,
+                width: 160,
+                height: 220,
                 cornerRadius: 10
             )
 
             VStack {
-                Text(vm.animeDetail?.title?.english ?? "")
+                Text(((anime.title?.english) ?? (anime.title?.romaji)) ?? "")
                     .font(.title)
                     .bold()
                     .multilineTextAlignment(.center)
@@ -126,10 +126,11 @@ struct AnimeDetailView: View {
                     }
                 }
             }
-            .frame(width: 230)
-            .padding(.bottom, 5)
+            .frame(width: screenWidth - 195)
+            .padding(.bottom, 10)
         }
-        .frame(width: screenWidth - 30)
+        .frame(width: screenWidth)
+        .padding(.horizontal, 15)
     }
 
     private var infoCellSection: some View {
@@ -139,12 +140,24 @@ struct AnimeDetailView: View {
             ScrollView(.horizontal) {
                 HStack {
                     AnimeInfoCellView(cellTitle: "SEASON YEAR", cellVariable: "\(String(vm.animeDetail?.seasonYear ?? 0))")
+                    Divider()
+                        .frame(height: 40)
+                        .overlay(.secondary)
 
                     AnimeInfoCellView(cellTitle: "FORMAT", cellVariable: vm.animeDetail?.format?.rawValue ?? "-")
+                    Divider()
+                        .frame(height: 40)
+                        .overlay(.secondary)
 
                     AnimeInfoCellView(cellTitle: "EPISODES", cellVariable: "\(String(vm.animeDetail?.episodes ?? 0))")
+                    Divider()
+                        .frame(height: 40)
+                        .overlay(.secondary)
 
                     AnimeInfoCellView(cellTitle: "STATUS", cellVariable: vm.animeDetail?.status?.rawValue ?? "-")
+                    Divider()
+                        .frame(height: 40)
+                        .overlay(.secondary)
 
                     AnimeInfoCellView(cellTitle: "SCORE", cellVariable: "\(String(describing: vm.animeDetail?.averageScore ?? 0))% ")
                 }
@@ -174,10 +187,9 @@ struct AnimeDetailView: View {
         }
         .padding(.horizontal, 15)
     }
-    
+
     private var trailerSection: some View {
         VStack(alignment: .leading) {
-            
             if let ytID = vm.animeDetail?.trailer?.id {
                 Text("TRAILER")
                     .frame(width: screenWidth - 30, alignment: .leading)
@@ -188,7 +200,5 @@ struct AnimeDetailView: View {
                     .cornerRadius(10)
             }
         }
-        
-        
     }
 }

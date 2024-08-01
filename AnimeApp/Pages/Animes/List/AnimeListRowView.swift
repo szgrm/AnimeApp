@@ -17,12 +17,12 @@ struct AnimeListRowView: View {
             AniImageView(
                 url: (anime.coverImage?.large)!,
                 width: 120,
-                height: 100,
+                height: 180,
                 cornerRadius: 10
             )
 
             VStack(alignment: .leading, spacing: 5) {
-                Text((anime.title?.english) ?? "No title")
+                Text(((anime.title?.english) ?? (anime.title?.romaji)) ?? "No Title")
                     .bold()
                     .font(.system(size: 20))
                     .lineLimit(1)
