@@ -25,6 +25,7 @@ struct BannerImageView: View {
                     .frame(width: .infinity, height: height)
             } else {
                 ProgressView()
+                    .foregroundStyle(.secondary)
                     .frame(height: height)
             }
         }

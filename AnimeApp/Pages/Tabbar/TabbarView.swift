@@ -14,9 +14,9 @@ struct TabbarView: View {
                 .tabItem {
                     Label("Animes", systemImage: "display")
                 }
-            SearchView()
+            CharacterListView()
                 .tabItem {
-                    Label("Search", systemImage: "magnifyingglass")
+                    Label("Characters", systemImage: "person.crop.square.filled.and.at.rectangle")
                 }
         }
         .tint(Color("AppColor"))

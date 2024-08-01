@@ -7,7 +7,7 @@ public class GetCharactersQuery: GraphQLQuery {
   public static let operationName: String = "GetCharacters"
   public static let operationDocument: ApolloAPI.OperationDocument = .init(
     definition: .init(
-      #"query GetCharacters($page: Int!) { Page(page: $page, perPage: 20) { __typename pageInfo { __typename hasNextPage } characters(sort: FAVOURITES_DESC) { __typename ...CharacterSmall } } }"#,
+      #"query GetCharacters($page: Int!) { Page(page: $page, perPage: 24) { __typename pageInfo { __typename hasNextPage } characters(sort: FAVOURITES_DESC) { __typename ...CharacterSmall } } }"#,
       fragments: [CharacterSmall.self]
     ))
 
@@ -27,7 +27,7 @@ public class GetCharactersQuery: GraphQLQuery {
     public static var __selections: [ApolloAPI.Selection] { [
       .field("Page", Page?.self, arguments: [
         "page": .variable("page"),
-        "perPage": 20
+        "perPage": 24
       ]),
     ] }
 
@@ -87,6 +87,8 @@ public class GetCharactersQuery: GraphQLQuery {
         public var name: Name? { __data["name"] }
         /// Character images
         public var image: Image? { __data["image"] }
+        /// Media that includes the character
+        public var media: Media? { __data["media"] }
 
         public struct Fragments: FragmentContainer {
           public let __data: DataDict
@@ -98,6 +100,8 @@ public class GetCharactersQuery: GraphQLQuery {
         public typealias Name = CharacterSmall.Name
 
         public typealias Image = CharacterSmall.Image
+
+        public typealias Media = CharacterSmall.Media
       }
     }
   }

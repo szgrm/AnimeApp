@@ -29,6 +29,7 @@ struct AniImageView: View {
                     .frame(width: width, height: height)
             } else {
                 ProgressView()
+                    .foregroundStyle(.secondary)
                     .frame(width: width, height: height)
             }
         }

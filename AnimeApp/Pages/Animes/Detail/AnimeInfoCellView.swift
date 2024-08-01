@@ -17,7 +17,6 @@ struct AnimeInfoCellView: View {
                 .foregroundStyle(.secondary)
                 .font(.system(size: 14))
             Text(cellVariable)
-                .foregroundStyle(.primary)
                 .font(.system(size: 14))
         }
     }

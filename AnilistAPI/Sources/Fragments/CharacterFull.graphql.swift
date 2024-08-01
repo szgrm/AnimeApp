@@ -5,7 +5,7 @@
 
 public struct CharacterFull: AnilistAPI.SelectionSet, Fragment {
   public static var fragmentDefinition: StaticString {
-    #"fragment CharacterFull on Character { __typename id name { __typename full alternative alternativeSpoiler first last middle native userPreferred } image { __typename medium } age gender description media(sort: POPULARITY_DESC) { __typename nodes { __typename ...AnimeSmall } } dateOfBirth { __typename day month year } }"#
+    #"fragment CharacterFull on Character { __typename id name { __typename full alternative alternativeSpoiler first last middle native userPreferred } image { __typename large } age gender description media(sort: POPULARITY_DESC) { __typename nodes { __typename ...AnimeSmall } } dateOfBirth { __typename day month year } }"#
   }
 
   public let __data: DataDict
@@ -89,11 +89,11 @@ public struct CharacterFull: AnilistAPI.SelectionSet, Fragment {
     public static var __parentType: any ApolloAPI.ParentType { AnilistAPI.Objects.CharacterImage }
     public static var __selections: [ApolloAPI.Selection] { [
       .field("__typename", String.self),
-      .field("medium", String?.self),
+      .field("large", String?.self),
     ] }
 
-    /// The character's image of media at medium size
-    public var medium: String? { __data["medium"] }
+    /// The character's image of media at its largest size
+    public var large: String? { __data["large"] }
   }
 
   /// Media

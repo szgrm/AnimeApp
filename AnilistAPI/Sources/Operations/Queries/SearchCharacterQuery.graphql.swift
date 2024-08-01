@@ -7,7 +7,7 @@ public class SearchCharacterQuery: GraphQLQuery {
   public static let operationName: String = "SearchCharacter"
   public static let operationDocument: ApolloAPI.OperationDocument = .init(
     definition: .init(
-      #"query SearchCharacter($search: String!) { Page { __typename characters(search: $search) { __typename ...CharacterSmall } } }"#,
+      #"query SearchCharacter($search: String!) { Page { __typename characters(search: $search, sort: FAVOURITES_DESC) { __typename ...CharacterSmall } } }"#,
       fragments: [CharacterSmall.self]
     ))
 
@@ -40,7 +40,10 @@ public class SearchCharacterQuery: GraphQLQuery {
       public static var __parentType: any ApolloAPI.ParentType { AnilistAPI.Objects.Page }
       public static var __selections: [ApolloAPI.Selection] { [
         .field("__typename", String.self),
-        .field("characters", [Character?]?.self, arguments: ["search": .variable("search")]),
+        .field("characters", [Character?]?.self, arguments: [
+          "search": .variable("search"),
+          "sort": "FAVOURITES_DESC"
+        ]),
       ] }
 
       public var characters: [Character?]? { __data["characters"] }
@@ -64,6 +67,8 @@ public class SearchCharacterQuery: GraphQLQuery {
         public var name: Name? { __data["name"] }
         /// Character images
         public var image: Image? { __data["image"] }
+        /// Media that includes the character
+        public var media: Media? { __data["media"] }
 
         public struct Fragments: FragmentContainer {
           public let __data: DataDict
@@ -75,6 +80,8 @@ public class SearchCharacterQuery: GraphQLQuery {
         public typealias Name = CharacterSmall.Name
 
         public typealias Image = CharacterSmall.Image
+
+        public typealias Media = CharacterSmall.Media
       }
     }
   }

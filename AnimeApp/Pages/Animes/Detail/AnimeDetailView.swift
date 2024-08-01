@@ -55,6 +55,7 @@ struct AnimeDetailView: View {
                         }
                     } else {
                         ProgressView()
+                            .foregroundStyle(.secondary)
                             .frame(width: screenWidth, height: 200)
                     }
 
@@ -174,11 +175,11 @@ struct AnimeDetailView: View {
             Text("SUMMARY")
                 .foregroundStyle(.secondary)
                 .font(.system(size: 14))
+
             TextUtility.cleanDescription(anime.description ?? "")
-                .multilineTextAlignment(.leading)
+                .frame(maxWidth: screenWidth, alignment: .leading)
                 .font(.system(size: 14))
                 .padding(.vertical, 3)
-                .foregroundStyle(.primary)
                 .lineLimit(isViewed ? 50 : 5)
             Button(isViewed ? "Read Less" : "Read More") {
                 isViewed.toggle()

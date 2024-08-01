@@ -16,7 +16,7 @@ query GetAnimeDetail($id: Int!) {
 }
 
 query GetCharacters($page: Int!) {
-  Page(page: $page, perPage: 20) {
+  Page(page: $page, perPage: 24) {
     pageInfo {
       hasNextPage
     }
@@ -103,6 +103,7 @@ fragment CharacterSmall on Character {
     nodes {
       title {
         english
+        romaji
       }
     }
   }
