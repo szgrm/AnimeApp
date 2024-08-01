@@ -6,12 +6,33 @@
 //
 
 import AnilistAPI
+import Combine
 import Foundation
 import OSLog
 
 class AnimeListViewModel: ObservableObject {
     @Published public var animes: [AnimeSmall]? = []
     @Published public var hasNextPage: Bool = false
+    @Published public var searchTerm: String = "" {
+        willSet {
+            DispatchQueue.main.async {
+                self.searchSubject.send(newValue)
+            }
+        }
+        didSet {
+            guard !searchTerm.isEmpty else {
+                refresh()
+                return
+            }
+        }
+    }
+
+    private let searchSubject = PassthroughSubject<String, Never>()
+    private var searchCancellable: AnyCancellable? {
+        didSet {
+            oldValue?.cancel()
+        }
+    }
 
     private let logger = Logger(
         subsystem: Bundle.main.bundleIdentifier!,
@@ -22,6 +43,16 @@ class AnimeListViewModel: ObservableObject {
 
     init() {
         getAnimes()
+        searchCancellable = searchSubject.eraseToAnyPublisher()
+            .map {
+                $0
+            }
+            .debounce(for: .milliseconds(500), scheduler: DispatchQueue.main)
+            .removeDuplicates()
+            .filter { !$0.isEmpty }
+            .sink(receiveValue: { [weak self] searchText in
+                self?.searchAnime(search: searchText)
+            })
     }
 
     func loadMore() {
@@ -49,6 +80,19 @@ class AnimeListViewModel: ObservableObject {
                 let newAnimes = graphQLResult.data?.page?.media?.compactMap { $0?.fragments.animeSmall }
                 self.animes = newAnimes
                 self.hasNextPage = graphQLResult.data?.page?.pageInfo?.hasNextPage ?? false
+            case let .failure(error):
+                self.logger.debug("error: \(error.localizedDescription)")
+            }
+        }
+    }
+
+    func searchAnime(search: String) {
+        Network.shared.apollo.fetch(query: SearchAnimeQuery(search: search)) { result in
+            switch result {
+            case let .success(qraphQLResult):
+                let animeResults = qraphQLResult.data?.page?.media?.compactMap { $0?.fragments.animeSmall }
+                self.animes = animeResults
+                self.hasNextPage = false
             case let .failure(error):
                 self.logger.debug("error: \(error.localizedDescription)")
             }

@@ -10,7 +10,7 @@ import SwiftUI
 
 struct AnimeListView: View {
     @StateObject private var vm = AnimeListViewModel()
-    @State private var text: String = ""
+
     var body: some View {
         NavigationStack {
             ZStack {
@@ -28,11 +28,13 @@ struct AnimeListView: View {
                         }
                         if vm.hasNextPage {
                             HStack {
-                                Spacer()
                                 ProgressView()
                                 Text("Loading...")
+                                    .foregroundStyle(.secondary)
                                 Spacer()
                             }
+                            .padding(.leading, 10)
+                            .listRowSeparator(.hidden)
                             .listRowBackground(Color.clear)
                             .task {
                                 vm.loadMore()
@@ -40,26 +42,27 @@ struct AnimeListView: View {
                         }
                     }
                     .listStyle(.plain)
-                    .navigationTitle("Animes")
-                    .navigationBarTitleDisplayMode(.inline)
-                    .scrollContentBackground(.hidden)
-                    .toolbar {
-                        ToolbarItem(placement: .topBarLeading) {
-                            Image("Icon")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 65)
-                                .padding(.leading, 110)
-                                .padding(.bottom, 6)
-                        }
-                    }
-                    .searchable(text: $text)
-                    .toolbarBackground(.visible)
-                    .refreshable {
-                        vm.refresh()
+                }
+            }
+            .refreshable {
+                vm.refresh()
+            }
+            .navigationTitle("Animes")
+            .navigationBarTitleDisplayMode(.inline)
+            .scrollContentBackground(.hidden)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    HStack {
+                        Image("Icon")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 65)
+                        Text("Animes").font(.headline)
                     }
                 }
             }
+            .searchable(text: $vm.searchTerm, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search Anime")
+            .toolbarBackground(.visible)
         }
     }
 }
