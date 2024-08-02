@@ -37,7 +37,7 @@ struct AnimeDetailView: View {
                     summarySection
 
                     if let characters = vm.animeDetail?.characters?.nodes?.compactMap({ $0?.fragments.characterSmall }) {
-                        VStack(alignment: .leading) {
+                        VStack(alignment: .leading, spacing: 10) {
                             Text("CHARACTERS")
                                 .frame(alignment: .leading)
                                 .foregroundStyle(.secondary)
@@ -171,7 +171,7 @@ struct AnimeDetailView: View {
     }
 
     private var summarySection: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 10) {
             Text("SUMMARY")
                 .foregroundStyle(.secondary)
                 .font(.system(size: 14))
@@ -179,7 +179,6 @@ struct AnimeDetailView: View {
             TextUtility.cleanDescription(anime.description ?? "")
                 .frame(maxWidth: screenWidth, alignment: .leading)
                 .font(.system(size: 14))
-                .padding(.vertical, 3)
                 .lineLimit(isViewed ? 50 : 5)
             Button(isViewed ? "Read Less" : "Read More") {
                 isViewed.toggle()
@@ -190,7 +189,7 @@ struct AnimeDetailView: View {
     }
 
     private var trailerSection: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 10) {
             if let ytID = vm.animeDetail?.trailer?.id {
                 Text("TRAILER")
                     .frame(width: screenWidth - 30, alignment: .leading)

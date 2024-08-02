@@ -41,7 +41,7 @@ query SearchAnime($search: String!) {
 }
 query SearchCharacter($search: String!) {
   Page {
-    characters(search: $search, sort: FAVOURITES_DESC) {
+    characters(search: $search, sort: SEARCH_MATCH) {
       ...CharacterSmall
     }
   }

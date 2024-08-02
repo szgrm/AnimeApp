@@ -9,6 +9,7 @@ import AnilistAPI
 import SwiftUI
 
 struct AnimeListView: View {
+    let topID = 0
     @StateObject private var vm = AnimeListViewModel()
 
     var body: some View {
@@ -16,32 +17,48 @@ struct AnimeListView: View {
             ZStack {
                 Color("Background")
                     .ignoresSafeArea(edges: .all)
-                VStack {
-                    List {
-                        ForEach(vm.animes ?? []) { anime in
-                            NavigationLink(destination: AnimeDetailView(anime: anime), label: {
-                                AnimeListRowView(anime: anime)
-                            })
+                ScrollViewReader { proxy in
+                    ZStack(alignment: .bottomTrailing) {
+                        ScrollView {
 
-                            .listRowSeparator(.hidden)
-                            .listRowBackground(Color.clear)
+                                Color.clear
+                                    .frame(height: 0)
+                                    .id(topID)
+
+                                ForEach(vm.animes ?? []) { anime in
+                                    NavigationLink(destination: AnimeDetailView(anime: anime), label: {
+                                        AnimeListRowView(anime: anime)
+                                    })
+                                }
+                                if vm.hasNextPage {
+                                    HStack {
+                                        ProgressView()
+                                        Text("Loading...")
+                                            .foregroundStyle(.secondary)
+                                        Spacer()
+                                    }
+                                    .padding(.leading, 10)
+                                    .task {
+                                        vm.loadMore()
+                                    }
+                                }
+
                         }
-                        if vm.hasNextPage {
-                            HStack {
-                                ProgressView()
-                                Text("Loading...")
-                                    .foregroundStyle(.secondary)
-                                Spacer()
+                        .foregroundStyle(.primary)
+
+                        Button {
+                            withAnimation {
+                                proxy.scrollTo(topID)
                             }
-                            .padding(.leading, 10)
-                            .listRowSeparator(.hidden)
-                            .listRowBackground(Color.clear)
-                            .task {
-                                vm.loadMore()
-                            }
+                        } label: {
+                            Image(systemName: "arrow.up.circle.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .tint(Color("AppColor").opacity(0.4))
+                                .frame(width: 40)
+                                .padding(15)
                         }
                     }
-                    .listStyle(.plain)
                 }
             }
             .refreshable {
@@ -59,6 +76,7 @@ struct AnimeListView: View {
                             .frame(width: 65)
                         Text("Animes").font(.headline)
                     }
+                    .padding(.bottom, 10)
                 }
             }
             .searchable(text: $vm.searchTerm, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search Anime")

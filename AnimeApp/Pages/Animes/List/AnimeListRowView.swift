@@ -11,6 +11,7 @@ import SwiftUI
 
 struct AnimeListRowView: View {
     let anime: AnimeSmall
+    let screenWidth = UIScreen.main.bounds.size.width
 
     var body: some View {
         HStack(alignment: .top) {
@@ -20,6 +21,7 @@ struct AnimeListRowView: View {
                 height: 180,
                 cornerRadius: 10
             )
+            .id(anime.id)
 
             VStack(alignment: .leading, spacing: 5) {
                 Text(((anime.title?.english) ?? (anime.title?.romaji)) ?? "No Title")
@@ -50,9 +52,12 @@ struct AnimeListRowView: View {
                 }
 
                 TextUtility.cleanDescription(anime.description ?? "")
+                    .frame(width: screenWidth * 3 / 5, alignment: .leading)
                     .lineLimit(6)
                     .font(.system(size: 10))
+                    .multilineTextAlignment(.leading)
             }
+            .frame(width: screenWidth * 3 / 5)
             .padding(5)
         }
         .padding(5)
