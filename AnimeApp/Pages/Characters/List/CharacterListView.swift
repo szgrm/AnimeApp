@@ -10,10 +10,10 @@ import SwiftUI
 
 struct CharacterListView: View {
     @StateObject private var vm = CharacterListViewModel()
-    
+
     let screenWidth = UIScreen.main.bounds.size.width
     let topID = 0
-    
+
     var body: some View {
         NavigationStack {
             ZStack {
@@ -22,38 +22,36 @@ struct CharacterListView: View {
                 ScrollViewReader { proxy in
                     ZStack(alignment: .bottomTrailing) {
                         ScrollView {
-                                Color.clear
-                                    .frame(height: 0)
-                                    .id(topID)
-                                
-                                LazyVGrid(columns: [
-                                    .init(
-                                        .adaptive(minimum: 100)
-                                    ),
-                                ], spacing: 20) {
-                                    ForEach(vm.characters ?? []) { character in
-                                        NavigationLink(destination: CharacterDetailView(character: character), label: {
-                                            CharactersListCellView(character: character)
-                                        })
-                                        
+                            Color.clear
+                                .frame(height: 0)
+                                .id(topID)
+
+                            LazyVGrid(columns: [
+                                .init(
+                                    .adaptive(minimum: 100)
+                                ),
+                            ], spacing: 20) {
+                                ForEach(vm.characters ?? []) { character in
+                                    NavigationLink(destination: CharacterDetailView(character: character), label: {
+                                        CharactersListCellView(character: character)
+                                    })
+                                }
+                                if vm.hasNextPage {
+                                    HStack {
+                                        ProgressView()
+                                        Text("Loading...")
+                                            .foregroundStyle(.secondary)
+                                        Spacer()
                                     }
-                                    if vm.hasNextPage {
-                                        HStack {
-                                            ProgressView()
-                                            Text("Loading...")
-                                                .foregroundStyle(.secondary)
-                                            Spacer()
-                                        }
-                                        .padding(.leading, 10)
-                                        .task {
-                                            vm.loadMore()
-                                        }
+                                    .padding(.leading, 10)
+                                    .task {
+                                        vm.loadMore()
                                     }
                                 }
-                            
+                            }
                         }
                         .foregroundStyle(.primary)
-                        
+
                         Button {
                             withAnimation {
                                 proxy.scrollTo(topID)
@@ -66,7 +64,6 @@ struct CharacterListView: View {
                                 .frame(width: 40)
                                 .padding(15)
                         }
-                        
                     }
                 }
             }

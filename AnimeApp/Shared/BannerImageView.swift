@@ -11,6 +11,7 @@ import SwiftUI
 struct BannerImageView: View {
     let url: String
     let height: CGFloat
+    let hex: String
 
     var body: some View {
         LazyImage(url: URL(string: url)) { phase in
@@ -24,8 +25,8 @@ struct BannerImageView: View {
                     .imageScale(.large)
                     .frame(width: .infinity, height: height)
             } else {
-                ProgressView()
-                    .foregroundStyle(.secondary)
+                Rectangle()
+                    .foregroundStyle(Color(hex: hex))
                     .frame(height: height)
             }
         }

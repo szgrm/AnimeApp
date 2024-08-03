@@ -5,7 +5,7 @@
 
 public struct AnimeSmall: AnilistAPI.SelectionSet, Fragment {
   public static var fragmentDefinition: StaticString {
-    #"fragment AnimeSmall on Media { __typename id coverImage { __typename large } title { __typename english romaji } genres description format seasonYear }"#
+    #"fragment AnimeSmall on Media { __typename id coverImage { __typename large color } title { __typename english romaji } genres description format seasonYear }"#
   }
 
   public let __data: DataDict
@@ -49,10 +49,13 @@ public struct AnimeSmall: AnilistAPI.SelectionSet, Fragment {
     public static var __selections: [ApolloAPI.Selection] { [
       .field("__typename", String.self),
       .field("large", String?.self),
+      .field("color", String?.self),
     ] }
 
     /// The cover image url of the media at a large size
     public var large: String? { __data["large"] }
+    /// Average #hex color of cover image
+    public var color: String? { __data["color"] }
   }
 
   /// Title

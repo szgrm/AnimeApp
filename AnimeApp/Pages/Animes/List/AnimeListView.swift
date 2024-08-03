@@ -20,29 +20,27 @@ struct AnimeListView: View {
                 ScrollViewReader { proxy in
                     ZStack(alignment: .bottomTrailing) {
                         ScrollView {
+                            Color.clear
+                                .frame(height: 0)
+                                .id(topID)
 
-                                Color.clear
-                                    .frame(height: 0)
-                                    .id(topID)
-
-                                ForEach(vm.animes ?? []) { anime in
-                                    NavigationLink(destination: AnimeDetailView(anime: anime), label: {
-                                        AnimeListRowView(anime: anime)
-                                    })
+                            ForEach(vm.animes ?? []) { anime in
+                                NavigationLink(destination: AnimeDetailView(anime: anime), label: {
+                                    AnimeListRowView(anime: anime)
+                                })
+                            }
+                            if vm.hasNextPage {
+                                HStack {
+                                    ProgressView()
+                                    Text("Loading...")
+                                        .foregroundStyle(.secondary)
+                                    Spacer()
                                 }
-                                if vm.hasNextPage {
-                                    HStack {
-                                        ProgressView()
-                                        Text("Loading...")
-                                            .foregroundStyle(.secondary)
-                                        Spacer()
-                                    }
-                                    .padding(.leading, 10)
-                                    .task {
-                                        vm.loadMore()
-                                    }
+                                .padding(.leading, 10)
+                                .task {
+                                    vm.loadMore()
                                 }
-
+                            }
                         }
                         .foregroundStyle(.primary)
 

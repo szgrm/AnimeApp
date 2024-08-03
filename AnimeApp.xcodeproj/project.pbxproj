@@ -19,6 +19,7 @@
 		754913CF2C47E74C00D09227 /* RequestLoggingInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754913CE2C47E74C00D09227 /* RequestLoggingInterceptor.swift */; };
 		754913D32C47ECE400D09227 /* ResponseLoggingInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754913D22C47ECE400D09227 /* ResponseLoggingInterceptor.swift */; };
 		754913D52C47F27900D09227 /* NetworkInterceptorProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754913D42C47F27900D09227 /* NetworkInterceptorProvider.swift */; };
+		755FB84D2C5E3B3F00C1652C /* ColorUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755FB84C2C5E3B3F00C1652C /* ColorUtil.swift */; };
 		7569EF642C44930B00E3DAF1 /* TextUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7569EF632C44930B00E3DAF1 /* TextUtil.swift */; };
 		75752F952C413D30000F447E /* AnilistAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 75752F942C413D30000F447E /* AnilistAPI */; };
 		75752F972C413F21000F447E /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75752F962C413F21000F447E /* Network.swift */; };
@@ -49,6 +50,7 @@
 		754913D12C47EAEC00D09227 /* schema.graphqls */ = {isa = PBXFileReference; lastKnownFileType = text; path = schema.graphqls; sourceTree = "<group>"; };
 		754913D22C47ECE400D09227 /* ResponseLoggingInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseLoggingInterceptor.swift; sourceTree = "<group>"; };
 		754913D42C47F27900D09227 /* NetworkInterceptorProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkInterceptorProvider.swift; sourceTree = "<group>"; };
+		755FB84C2C5E3B3F00C1652C /* ColorUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorUtil.swift; sourceTree = "<group>"; };
 		7569EF632C44930B00E3DAF1 /* TextUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextUtil.swift; sourceTree = "<group>"; };
 		75752F912C413AC8000F447E /* apollo-codegen-config.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "apollo-codegen-config.json"; sourceTree = SOURCE_ROOT; };
 		75752F962C413F21000F447E /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 			children = (
 				7569EF632C44930B00E3DAF1 /* TextUtil.swift */,
 				75FB123D2C56EB740030554A /* Types.swift */,
+				755FB84C2C5E3B3F00C1652C /* ColorUtil.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				757BA5532C4C58D2007C0F2D /* CharacterGridView.swift in Sources */,
 				7513DBDE2C599191007953F4 /* CharacterListView.swift in Sources */,
 				759FDE032C48FE9E00C85976 /* AnimeDetailViewModel.swift in Sources */,
+				755FB84D2C5E3B3F00C1652C /* ColorUtil.swift in Sources */,
 				7513DBE22C599594007953F4 /* CharactersListCellView.swift in Sources */,
 				75891AB92C5840100014E33A /* BannerImageView.swift in Sources */,
 				75CF43EF2C411168003D24F1 /* AnimeDetailView.swift in Sources */,

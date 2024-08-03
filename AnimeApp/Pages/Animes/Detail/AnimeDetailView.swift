@@ -81,16 +81,19 @@ struct AnimeDetailView: View {
                 .background {
                     ZStack {
                         if let bannerUrl = vm.animeDetail?.bannerImage {
-                            BannerImageView(url: bannerUrl, height: 260)
+                            BannerImageView(url: bannerUrl,
+                                            height: 260,
+                                            hex: anime.coverImage?.color ?? "#A176AD")
                                 .scaledToFill()
                                 .offset(y: isScrolled ? -offsetY : 0)
 
                         } else {
-                            Spacer()
+                            Rectangle()
+                                .foregroundStyle(Color(hex: anime.coverImage?.color ?? "#A176AD"))
                                 .frame(width: screenWidth, height: 260)
                         }
-                        Rectangle()
 
+                        Rectangle()
                             .foregroundColor(.clear)
                             .background(LinearGradient(gradient: Gradient(colors: [.clear, Color("Background")]), startPoint: .top, endPoint: .bottom))
                     }
