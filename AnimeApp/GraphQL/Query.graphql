@@ -33,14 +33,14 @@ query GetCharacterDetail($id: Int!) {
 }
 
 query SearchAnime($search: String!) {
-  Page {
-    media(search: $search, isAdult: false, sort: POPULARITY_DESC, format_in: [TV, MOVIE]) {
+  Page(perPage: 20) {
+    media(search: $search, isAdult: false, sort: SEARCH_MATCH, format_in: [TV, MOVIE]) {
       ...AnimeSmall
     }
   }
 }
 query SearchCharacter($search: String!) {
-  Page {
+  Page(perPage: 20){
     characters(search: $search, sort: SEARCH_MATCH) {
       ...CharacterSmall
     }
@@ -100,14 +100,6 @@ fragment CharacterSmall on Character {
   image {
     large
   }
-  media {
-    nodes {
-      title {
-        english
-        romaji
-      }
-    }
-  }
 }
 
 fragment CharacterFull on Character {
@@ -115,12 +107,6 @@ fragment CharacterFull on Character {
   name {
     full
     alternative
-    alternativeSpoiler
-    first
-    last
-    middle
-    native
-    userPreferred
   }
   image {
     large
@@ -132,10 +118,5 @@ fragment CharacterFull on Character {
     nodes {
       ...AnimeSmall
     }
-  }
-  dateOfBirth {
-    day
-    month
-    year
   }
 }

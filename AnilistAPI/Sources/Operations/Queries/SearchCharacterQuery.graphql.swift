@@ -7,7 +7,7 @@ public class SearchCharacterQuery: GraphQLQuery {
   public static let operationName: String = "SearchCharacter"
   public static let operationDocument: ApolloAPI.OperationDocument = .init(
     definition: .init(
-      #"query SearchCharacter($search: String!) { Page { __typename characters(search: $search, sort: SEARCH_MATCH) { __typename ...CharacterSmall } } }"#,
+      #"query SearchCharacter($search: String!) { Page(perPage: 20) { __typename characters(search: $search, sort: SEARCH_MATCH) { __typename ...CharacterSmall } } }"#,
       fragments: [CharacterSmall.self]
     ))
 
@@ -25,7 +25,7 @@ public class SearchCharacterQuery: GraphQLQuery {
 
     public static var __parentType: any ApolloAPI.ParentType { AnilistAPI.Objects.Query }
     public static var __selections: [ApolloAPI.Selection] { [
-      .field("Page", Page?.self),
+      .field("Page", Page?.self, arguments: ["perPage": 20]),
     ] }
 
     public var page: Page? { __data["Page"] }
@@ -67,8 +67,6 @@ public class SearchCharacterQuery: GraphQLQuery {
         public var name: Name? { __data["name"] }
         /// Character images
         public var image: Image? { __data["image"] }
-        /// Media that includes the character
-        public var media: Media? { __data["media"] }
 
         public struct Fragments: FragmentContainer {
           public let __data: DataDict
@@ -80,8 +78,6 @@ public class SearchCharacterQuery: GraphQLQuery {
         public typealias Name = CharacterSmall.Name
 
         public typealias Image = CharacterSmall.Image
-
-        public typealias Media = CharacterSmall.Media
       }
     }
   }

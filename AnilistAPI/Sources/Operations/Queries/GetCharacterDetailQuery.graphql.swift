@@ -58,8 +58,6 @@ public class GetCharacterDetailQuery: GraphQLQuery {
       public var description: String? { __data["description"] }
       /// Media that includes the character
       public var media: Media? { __data["media"] }
-      /// The character's birth date
-      public var dateOfBirth: DateOfBirth? { __data["dateOfBirth"] }
 
       public struct Fragments: FragmentContainer {
         public let __data: DataDict
@@ -73,8 +71,6 @@ public class GetCharacterDetailQuery: GraphQLQuery {
       public typealias Image = CharacterFull.Image
 
       public typealias Media = CharacterFull.Media
-
-      public typealias DateOfBirth = CharacterFull.DateOfBirth
     }
   }
 }

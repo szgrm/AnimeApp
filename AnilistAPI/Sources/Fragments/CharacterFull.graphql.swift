@@ -5,7 +5,7 @@
 
 public struct CharacterFull: AnilistAPI.SelectionSet, Fragment {
   public static var fragmentDefinition: StaticString {
-    #"fragment CharacterFull on Character { __typename id name { __typename full alternative alternativeSpoiler first last middle native userPreferred } image { __typename large } age gender description media(sort: POPULARITY_DESC) { __typename nodes { __typename ...AnimeSmall } } dateOfBirth { __typename day month year } }"#
+    #"fragment CharacterFull on Character { __typename id name { __typename full alternative } image { __typename large } age gender description media(sort: POPULARITY_DESC) { __typename nodes { __typename ...AnimeSmall } } }"#
   }
 
   public let __data: DataDict
@@ -21,7 +21,6 @@ public struct CharacterFull: AnilistAPI.SelectionSet, Fragment {
     .field("gender", String?.self),
     .field("description", String?.self),
     .field("media", Media?.self, arguments: ["sort": "POPULARITY_DESC"]),
-    .field("dateOfBirth", DateOfBirth?.self),
   ] }
 
   /// The id of the character
@@ -38,8 +37,6 @@ public struct CharacterFull: AnilistAPI.SelectionSet, Fragment {
   public var description: String? { __data["description"] }
   /// Media that includes the character
   public var media: Media? { __data["media"] }
-  /// The character's birth date
-  public var dateOfBirth: DateOfBirth? { __data["dateOfBirth"] }
 
   /// Name
   ///
@@ -53,30 +50,12 @@ public struct CharacterFull: AnilistAPI.SelectionSet, Fragment {
       .field("__typename", String.self),
       .field("full", String?.self),
       .field("alternative", [String?]?.self),
-      .field("alternativeSpoiler", [String?]?.self),
-      .field("first", String?.self),
-      .field("last", String?.self),
-      .field("middle", String?.self),
-      .field("native", String?.self),
-      .field("userPreferred", String?.self),
     ] }
 
     /// The character's first and last name
     public var full: String? { __data["full"] }
     /// Other names the character might be referred to as
     public var alternative: [String?]? { __data["alternative"] }
-    /// Other names the character might be referred to as but are spoilers
-    public var alternativeSpoiler: [String?]? { __data["alternativeSpoiler"] }
-    /// The character's given name
-    public var first: String? { __data["first"] }
-    /// The character's surname
-    public var last: String? { __data["last"] }
-    /// The character's middle name
-    public var middle: String? { __data["middle"] }
-    /// The character's full name in their native language
-    public var native: String? { __data["native"] }
-    /// The currently authenticated users preferred name language. Default romaji for non-authenticated
-    public var userPreferred: String? { __data["userPreferred"] }
   }
 
   /// Image
@@ -150,28 +129,5 @@ public struct CharacterFull: AnilistAPI.SelectionSet, Fragment {
 
       public typealias Title = AnimeSmall.Title
     }
-  }
-
-  /// DateOfBirth
-  ///
-  /// Parent Type: `FuzzyDate`
-  public struct DateOfBirth: AnilistAPI.SelectionSet {
-    public let __data: DataDict
-    public init(_dataDict: DataDict) { __data = _dataDict }
-
-    public static var __parentType: any ApolloAPI.ParentType { AnilistAPI.Objects.FuzzyDate }
-    public static var __selections: [ApolloAPI.Selection] { [
-      .field("__typename", String.self),
-      .field("day", Int?.self),
-      .field("month", Int?.self),
-      .field("year", Int?.self),
-    ] }
-
-    /// Numeric Day (24)
-    public var day: Int? { __data["day"] }
-    /// Numeric Month (3)
-    public var month: Int? { __data["month"] }
-    /// Numeric Year (2017)
-    public var year: Int? { __data["year"] }
   }
 }

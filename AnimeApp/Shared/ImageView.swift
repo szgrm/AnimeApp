@@ -1,5 +1,5 @@
 //
-//  AniImageView.swift
+//  ImageView.swift
 //  AnimeApp
 //
 //  Created by Sezgi İrem İlgar on 21.07.2024.
@@ -8,7 +8,7 @@
 import NukeUI
 import SwiftUI
 
-struct AniImageView: View {
+struct ImageView: View {
     let url: String
     let width: CGFloat
     let height: CGFloat

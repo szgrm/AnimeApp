@@ -127,8 +127,6 @@ public struct AnimeFull: AnilistAPI.SelectionSet, Fragment {
       public var name: Name? { __data["name"] }
       /// Character images
       public var image: Image? { __data["image"] }
-      /// Media that includes the character
-      public var media: Media? { __data["media"] }
 
       public struct Fragments: FragmentContainer {
         public let __data: DataDict
@@ -140,8 +138,6 @@ public struct AnimeFull: AnilistAPI.SelectionSet, Fragment {
       public typealias Name = CharacterSmall.Name
 
       public typealias Image = CharacterSmall.Image
-
-      public typealias Media = CharacterSmall.Media
     }
   }
 

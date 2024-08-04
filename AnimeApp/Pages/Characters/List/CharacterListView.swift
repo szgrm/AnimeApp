@@ -12,7 +12,6 @@ struct CharacterListView: View {
     @StateObject private var vm = CharacterListViewModel()
 
     let screenWidth = UIScreen.main.bounds.size.width
-    let topID = 0
 
     var body: some View {
         NavigationStack {
@@ -22,39 +21,36 @@ struct CharacterListView: View {
                 ScrollViewReader { proxy in
                     ZStack(alignment: .bottomTrailing) {
                         ScrollView {
-                            Color.clear
-                                .frame(height: 0)
-                                .id(topID)
-
                             LazyVGrid(columns: [
-                                .init(
-                                    .adaptive(minimum: 100)
-                                ),
+                                .init(.flexible()),
+                                .init(.flexible()),
+                                .init(.flexible()),
                             ], spacing: 20) {
                                 ForEach(vm.characters ?? []) { character in
                                     NavigationLink(destination: CharacterDetailView(character: character), label: {
                                         CharactersListCellView(character: character)
                                     })
+                                    .id(character.id)
                                 }
                                 if vm.hasNextPage {
                                     HStack {
                                         ProgressView()
                                         Text("Loading...")
+
                                             .foregroundStyle(.secondary)
-                                        Spacer()
                                     }
-                                    .padding(.leading, 10)
                                     .task {
                                         vm.loadMore()
                                     }
                                 }
                             }
                         }
+                        .padding(.horizontal, 15)
                         .foregroundStyle(.primary)
 
                         Button {
                             withAnimation {
-                                proxy.scrollTo(topID)
+                                proxy.scrollTo(vm.characters?.first?.id)
                             }
                         } label: {
                             Image(systemName: "arrow.up.circle.fill")

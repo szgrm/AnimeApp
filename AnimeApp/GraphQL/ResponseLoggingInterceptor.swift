@@ -29,7 +29,6 @@ class ResponseLoggingInterceptor: ApolloInterceptor {
         completion: @escaping (Result<GraphQLResult<Operation.Data>, Error>) -> Void
     ) {
         defer {
-            // Even if we can't log, we still want to keep going.
             chain.proceedAsync(
                 request: request,
                 response: response,
