@@ -51,6 +51,7 @@ struct AnimeDetailView: View {
                                     }
                                 }
                             }
+                            .foregroundStyle(.primary)
                             .contentMargins(.leading, 15, for: .scrollContent)
                         }
                     } else {
@@ -122,15 +123,21 @@ struct AnimeDetailView: View {
                     .font(.title3)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
-                HStack {
-                    ForEach(vm.animeDetail?.genres?.prefix(3) ?? [], id: \.self) { genre in
-                        Text(genre!)
-                            .font(.system(size: 10))
-                            .padding(3)
-                            .background(Color("AppColor").opacity(0.4))
-                            .clipShape(.capsule)
+                ScrollView(.horizontal) {
+                    HStack {
+                        ForEach(vm.animeDetail?.genres ?? [], id: \.self) { genre in
+                            Text(genre!)
+                                .font(.system(size: 10))
+                                .padding(3)
+                                .background(Color("AppColor").opacity(0.4))
+                                .clipShape(.capsule)
+                        }
                     }
                 }
+                .padding(.leading, 15)
+                .scrollIndicators(.hidden)
+                .contentMargins(.leading, 15, for: .scrollContent)
+                
             }
             .frame(width: screenWidth - 195)
             .padding(.bottom, 10)

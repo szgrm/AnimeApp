@@ -24,8 +24,7 @@ struct CharacterAnimesRow: View {
 
             VStack(alignment: .leading, spacing: 5) {
                 Text(((anime.title?.english) ?? (anime.title?.romaji)) ?? "No Title")
-                    .bold()
-                    .font(.system(size: 20))
+                    .font(.system(size: 16))
                     .lineLimit(1)
 
                 HStack {
