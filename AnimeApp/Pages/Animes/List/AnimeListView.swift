@@ -9,7 +9,6 @@ import AnilistAPI
 import SwiftUI
 
 struct AnimeListView: View {
-    let topID = 0
     @StateObject private var vm = AnimeListViewModel()
 
     var body: some View {
@@ -20,33 +19,34 @@ struct AnimeListView: View {
                 ScrollViewReader { proxy in
                     ZStack(alignment: .bottomTrailing) {
                         ScrollView {
-                            Color.clear
-                                .frame(height: 0)
-                                .id(topID)
-
-                            ForEach(vm.animes ?? []) { anime in
-                                NavigationLink(destination: AnimeDetailView(anime: anime), label: {
-                                    AnimeListRowView(anime: anime)
-                                })
-                            }
-                            if vm.hasNextPage {
-                                HStack {
-                                    ProgressView()
-                                    Text("Loading...")
-                                        .foregroundStyle(.secondary)
-                                    Spacer()
+                            LazyVStack {
+                                ForEach(vm.animes ?? []) { anime in
+                                    NavigationLink(destination: AnimeDetailView(anime: anime), label: {
+                                        AnimeListRowView(anime: anime)
+                                    })
+                                    .id(anime.id)
                                 }
-                                .padding(.leading, 10)
-                                .task {
-                                    vm.loadMore()
+                                if vm.hasNextPage {
+                                    HStack {
+                                        ProgressView()
+                                        Text("Loading...")
+                                            .foregroundStyle(.secondary)
+                                        Spacer()
+                                    }
+                                    .padding(.leading, 15)
+                                    .task {
+                                        vm.loadMore()
+                                    }
                                 }
                             }
+                            .padding(15)
                         }
+
                         .foregroundStyle(.primary)
 
                         Button {
                             withAnimation {
-                                proxy.scrollTo(topID)
+                                proxy.scrollTo(vm.animes?.first?.id)
                             }
                         } label: {
                             Image(systemName: "arrow.up.circle.fill")

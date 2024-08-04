@@ -12,14 +12,12 @@ import SwiftUI
 struct AnimeDetailView: View {
     let anime: AnimeSmall
     @ObservedObject var vm: AnimeDetailViewModel
-    var animeID: Int
     @State var isViewed: Bool = false
     let screenWidth = UIScreen.main.bounds.size.width
 
     init(anime: AnimeSmall) {
         self.anime = anime
-        animeID = anime.id
-        vm = AnimeDetailViewModel(animeID: animeID)
+        vm = AnimeDetailViewModel(animeID: anime.id)
     }
 
     var body: some View {
@@ -47,7 +45,9 @@ struct AnimeDetailView: View {
                             ScrollView(.horizontal) {
                                 HStack(spacing: 10) {
                                     ForEach(characters) { character in
-                                        CharacterGridView(character: character)
+                                        NavigationLink(destination: CharacterDetailView(character: character), label: {
+                                            CharacterGridView(character: character)
+                                        })
                                     }
                                 }
                             }
@@ -91,6 +91,8 @@ struct AnimeDetailView: View {
                             Rectangle()
                                 .foregroundStyle(Color(hex: anime.coverImage?.color ?? "#A176AD"))
                                 .frame(width: screenWidth, height: 260)
+                                .scaledToFill()
+                                .offset(y: isScrolled ? -offsetY : 0)
                         }
 
                         Rectangle()
@@ -104,7 +106,7 @@ struct AnimeDetailView: View {
 
     private var titleSection: some View {
         HStack(alignment: .bottom) {
-            AniImageView(
+            ImageView(
                 url: (anime.coverImage?.large)!,
                 width: 160,
                 height: 220,

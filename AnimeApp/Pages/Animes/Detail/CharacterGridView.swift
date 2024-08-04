@@ -14,7 +14,7 @@ struct CharacterGridView: View {
 
     var body: some View {
         VStack {
-            AniImageView(url: (character.image?.large)!, width: 70, height: 100, cornerRadius: 5)
+            ImageView(url: (character.image?.large)!, width: 70, height: 100, cornerRadius: 5)
 
             Text(character.name?.full ?? "unknown")
                 .padding(.horizontal, 2)

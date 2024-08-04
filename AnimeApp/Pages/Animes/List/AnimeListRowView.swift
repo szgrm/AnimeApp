@@ -15,7 +15,7 @@ struct AnimeListRowView: View {
 
     var body: some View {
         HStack(alignment: .top) {
-            AniImageView(
+            ImageView(
                 url: (anime.coverImage?.large)!,
                 width: 120,
                 height: 180,
