@@ -90,10 +90,11 @@ struct AnimeDetailView: View {
 
                         } else {
                             Rectangle()
-                                .foregroundStyle(Color(hex: anime.coverImage?.color ?? "#A176AD"))
-                                .frame(width: screenWidth, height: 260)
                                 .scaledToFill()
                                 .offset(y: isScrolled ? -offsetY : 0)
+                                .foregroundStyle(Color(hex: anime.coverImage?.color ?? "#A176AD"))
+                                .frame(width: screenWidth)
+                                
                         }
 
                         Rectangle()

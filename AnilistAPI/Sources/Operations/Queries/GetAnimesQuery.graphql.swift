@@ -87,6 +87,8 @@ public class GetAnimesQuery: GraphQLQuery {
 
         /// The id of the media
         public var id: Int { __data["id"] }
+        /// If the media is intended only for 18+ adult audiences
+        public var isAdult: Bool? { __data["isAdult"] }
         /// The cover images of the media
         public var coverImage: CoverImage? { __data["coverImage"] }
         /// The official titles of the media in various languages

@@ -36,15 +36,18 @@ struct CharacterDetailView: View {
                     if let animes = vm.characterDetail?.media?.nodes?.compactMap({ $0?.fragments.animeSmall }) {
                         VStack(alignment: .leading, spacing: 10) {
                             Text("MEDIA")
-                                .frame(alignment: .leading)
+                                .frame(width: screenWidth - 30, alignment: .leading)
                                 .foregroundStyle(.secondary)
                                 .font(.system(size: 14))
 
                             ScrollView {
                                 ForEach(animes) { anime in
-                                    NavigationLink(destination: AnimeDetailView(anime: anime), label: {
-                                        CharacterAnimesRow(anime: anime)
-                                    })
+                                    if !(anime.isAdult ?? true) {
+                                        NavigationLink(destination: AnimeDetailView(anime: anime), label: {
+                                            CharacterAnimesRow(anime: anime)
+                                        })
+                                    }
+                                    
                                 }
                             }
                             .foregroundStyle(.primary)

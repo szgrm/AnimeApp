@@ -49,6 +49,7 @@ query SearchCharacter($search: String!) {
 
 fragment AnimeSmall on Media {
   id
+  isAdult
   coverImage {
     large
     color

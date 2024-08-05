@@ -5,7 +5,7 @@
 
 public struct AnimeSmall: AnilistAPI.SelectionSet, Fragment {
   public static var fragmentDefinition: StaticString {
-    #"fragment AnimeSmall on Media { __typename id coverImage { __typename large color } title { __typename english romaji } genres description format seasonYear }"#
+    #"fragment AnimeSmall on Media { __typename id isAdult coverImage { __typename large color } title { __typename english romaji } genres description format seasonYear }"#
   }
 
   public let __data: DataDict
@@ -15,6 +15,7 @@ public struct AnimeSmall: AnilistAPI.SelectionSet, Fragment {
   public static var __selections: [ApolloAPI.Selection] { [
     .field("__typename", String.self),
     .field("id", Int.self),
+    .field("isAdult", Bool?.self),
     .field("coverImage", CoverImage?.self),
     .field("title", Title?.self),
     .field("genres", [String?]?.self),
@@ -25,6 +26,8 @@ public struct AnimeSmall: AnilistAPI.SelectionSet, Fragment {
 
   /// The id of the media
   public var id: Int { __data["id"] }
+  /// If the media is intended only for 18+ adult audiences
+  public var isAdult: Bool? { __data["isAdult"] }
   /// The cover images of the media
   public var coverImage: CoverImage? { __data["coverImage"] }
   /// The official titles of the media in various languages

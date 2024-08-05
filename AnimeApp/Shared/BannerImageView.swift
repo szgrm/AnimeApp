@@ -27,7 +27,8 @@ struct BannerImageView: View {
             } else {
                 Rectangle()
                     .foregroundStyle(Color(hex: hex))
-                    .frame(height: height)
+                    .scaledToFill()
+                    
             }
         }
     }
