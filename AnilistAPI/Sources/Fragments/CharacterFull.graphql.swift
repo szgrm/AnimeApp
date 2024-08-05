@@ -5,7 +5,7 @@
 
 public struct CharacterFull: AnilistAPI.SelectionSet, Fragment {
   public static var fragmentDefinition: StaticString {
-    #"fragment CharacterFull on Character { __typename id name { __typename full alternative } image { __typename large } age gender description media(sort: POPULARITY_DESC) { __typename nodes { __typename ...AnimeSmall } } }"#
+    #"fragment CharacterFull on Character { __typename id name { __typename full alternative } image { __typename large } age gender description bloodType dateOfBirth { __typename day month year } media(sort: POPULARITY_DESC) { __typename nodes { __typename ...AnimeSmall } } }"#
   }
 
   public let __data: DataDict
@@ -20,6 +20,8 @@ public struct CharacterFull: AnilistAPI.SelectionSet, Fragment {
     .field("age", String?.self),
     .field("gender", String?.self),
     .field("description", String?.self),
+    .field("bloodType", String?.self),
+    .field("dateOfBirth", DateOfBirth?.self),
     .field("media", Media?.self, arguments: ["sort": "POPULARITY_DESC"]),
   ] }
 
@@ -35,6 +37,10 @@ public struct CharacterFull: AnilistAPI.SelectionSet, Fragment {
   public var gender: String? { __data["gender"] }
   /// A general description of the character
   public var description: String? { __data["description"] }
+  /// The characters blood type
+  public var bloodType: String? { __data["bloodType"] }
+  /// The character's birth date
+  public var dateOfBirth: DateOfBirth? { __data["dateOfBirth"] }
   /// Media that includes the character
   public var media: Media? { __data["media"] }
 
@@ -73,6 +79,29 @@ public struct CharacterFull: AnilistAPI.SelectionSet, Fragment {
 
     /// The character's image of media at its largest size
     public var large: String? { __data["large"] }
+  }
+
+  /// DateOfBirth
+  ///
+  /// Parent Type: `FuzzyDate`
+  public struct DateOfBirth: AnilistAPI.SelectionSet {
+    public let __data: DataDict
+    public init(_dataDict: DataDict) { __data = _dataDict }
+
+    public static var __parentType: any ApolloAPI.ParentType { AnilistAPI.Objects.FuzzyDate }
+    public static var __selections: [ApolloAPI.Selection] { [
+      .field("__typename", String.self),
+      .field("day", Int?.self),
+      .field("month", Int?.self),
+      .field("year", Int?.self),
+    ] }
+
+    /// Numeric Day (24)
+    public var day: Int? { __data["day"] }
+    /// Numeric Month (3)
+    public var month: Int? { __data["month"] }
+    /// Numeric Year (2017)
+    public var year: Int? { __data["year"] }
   }
 
   /// Media

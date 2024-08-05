@@ -115,9 +115,16 @@ fragment CharacterFull on Character {
   age
   gender
   description
+  bloodType
+  dateOfBirth {
+    day
+    month
+    year
+  }
   media(sort: POPULARITY_DESC) {
     nodes {
       ...AnimeSmall
     }
   }
 }
+

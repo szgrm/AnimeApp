@@ -47,7 +47,6 @@ struct CharacterDetailView: View {
                                             CharacterAnimesRow(anime: anime)
                                         })
                                     }
-                                    
                                 }
                             }
                             .foregroundStyle(.primary)
@@ -112,7 +111,13 @@ struct CharacterDetailView: View {
                         .frame(height: 40)
                         .overlay(.secondary)
 
-                    CharacterInfoCellView(cellTitle: "HEIGHT", cellVariable: vm.parseHeight(from: vm.characterDetail?.description ?? ""))
+                    CharacterInfoCellView(cellTitle: "BIRTHDAY", cellVariable: vm.formatDate(date: vm.characterDetail?.dateOfBirth))
+                        .padding(.horizontal, 30)
+                    Divider()
+                        .frame(height: 40)
+                        .overlay(.secondary)
+
+                    CharacterInfoCellView(cellTitle: "BLOOD TYPE", cellVariable: vm.parseHeight(from: vm.characterDetail?.bloodType ?? "-"))
                         .padding(.horizontal, 30)
                 }
             }
@@ -129,7 +134,7 @@ struct CharacterDetailView: View {
                 .foregroundStyle(.secondary)
                 .font(.system(size: 14))
 
-            TextUtility.cleanDescription(vm.characterDetail?.description ?? "")
+            Text(.init(vm.characterDetail?.description ?? ""))
                 .frame(maxWidth: screenWidth, alignment: .leading)
                 .font(.system(size: 14))
                 .lineLimit(isViewed ? 60 : 5)

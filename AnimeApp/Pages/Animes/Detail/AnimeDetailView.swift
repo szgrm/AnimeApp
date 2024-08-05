@@ -94,7 +94,6 @@ struct AnimeDetailView: View {
                                 .offset(y: isScrolled ? -offsetY : 0)
                                 .foregroundStyle(Color(hex: anime.coverImage?.color ?? "#A176AD"))
                                 .frame(width: screenWidth)
-                                
                         }
 
                         Rectangle()
@@ -108,20 +107,15 @@ struct AnimeDetailView: View {
 
     private var titleSection: some View {
         HStack(alignment: .bottom) {
-            
             NavigationLink(destination: CoverImageView(coverImageUrl: (vm.animeDetail?.coverImage?.extraLarge ?? anime.coverImage?.large)!),
                            label: {
-                ImageView(
-                    url: (anime.coverImage?.large)!,
-                    width: 160,
-                    height: 220,
-                    cornerRadius: 10
-                )
-            })
-            
-            
-            
-            
+                               ImageView(
+                                   url: (anime.coverImage?.large)!,
+                                   width: 160,
+                                   height: 220,
+                                   cornerRadius: 10
+                               )
+                           })
 
             VStack {
                 Text(((anime.title?.english) ?? (anime.title?.romaji)) ?? "")
@@ -146,7 +140,6 @@ struct AnimeDetailView: View {
                 .padding(.leading, 15)
                 .scrollIndicators(.hidden)
                 .contentMargins(.leading, 15, for: .scrollContent)
-                
             }
             .frame(width: screenWidth - 195)
             .padding(.bottom, 10)

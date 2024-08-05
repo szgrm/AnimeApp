@@ -56,6 +56,10 @@ public class GetCharacterDetailQuery: GraphQLQuery {
       public var gender: String? { __data["gender"] }
       /// A general description of the character
       public var description: String? { __data["description"] }
+      /// The characters blood type
+      public var bloodType: String? { __data["bloodType"] }
+      /// The character's birth date
+      public var dateOfBirth: DateOfBirth? { __data["dateOfBirth"] }
       /// Media that includes the character
       public var media: Media? { __data["media"] }
 
@@ -69,6 +73,8 @@ public class GetCharacterDetailQuery: GraphQLQuery {
       public typealias Name = CharacterFull.Name
 
       public typealias Image = CharacterFull.Image
+
+      public typealias DateOfBirth = CharacterFull.DateOfBirth
 
       public typealias Media = CharacterFull.Media
     }

@@ -28,7 +28,6 @@ struct BannerImageView: View {
                 Rectangle()
                     .foregroundStyle(Color(hex: hex))
                     .scaledToFill()
-                    
             }
         }
     }
