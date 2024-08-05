@@ -5,7 +5,7 @@
 
 public struct AnimeFull: AnilistAPI.SelectionSet, Fragment {
   public static var fragmentDefinition: StaticString {
-    #"fragment AnimeFull on Media { __typename id coverImage { __typename large } title { __typename english native } genres averageScore description episodes characters(sort: FAVOURITES_DESC) { __typename nodes { __typename ...CharacterSmall } } seasonYear status trailer { __typename site thumbnail id } format bannerImage }"#
+    #"fragment AnimeFull on Media { __typename id coverImage { __typename extraLarge } title { __typename english native } genres averageScore description episodes characters(sort: FAVOURITES_DESC) { __typename nodes { __typename ...CharacterSmall } } seasonYear status trailer { __typename site thumbnail id } format bannerImage }"#
   }
 
   public let __data: DataDict
@@ -66,11 +66,11 @@ public struct AnimeFull: AnilistAPI.SelectionSet, Fragment {
     public static var __parentType: any ApolloAPI.ParentType { AnilistAPI.Objects.MediaCoverImage }
     public static var __selections: [ApolloAPI.Selection] { [
       .field("__typename", String.self),
-      .field("large", String?.self),
+      .field("extraLarge", String?.self),
     ] }
 
-    /// The cover image url of the media at a large size
-    public var large: String? { __data["large"] }
+    /// The cover image url of the media at its largest size. If this size isn't available, large will be provided instead.
+    public var extraLarge: String? { __data["extraLarge"] }
   }
 
   /// Title

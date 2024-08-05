@@ -67,7 +67,7 @@ fragment AnimeSmall on Media {
 fragment AnimeFull on Media {
   id
   coverImage {
-    large
+    extraLarge
   }
   title {
     english
