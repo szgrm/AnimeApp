@@ -13,6 +13,9 @@
 		7513DBE02C59920C007953F4 /* CharacterListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7513DBDF2C59920C007953F4 /* CharacterListViewModel.swift */; };
 		7513DBE22C599594007953F4 /* CharactersListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7513DBE12C599594007953F4 /* CharactersListCellView.swift */; };
 		7513DBE42C5998E6007953F4 /* CharacterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7513DBE32C5998E6007953F4 /* CharacterDetailView.swift */; };
+		75272B682C62093D00BA6699 /* AnimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75272B672C62093D00BA6699 /* AnimeService.swift */; };
+		75272B6A2C62CD5A00BA6699 /* CharacterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75272B692C62CD5A00BA6699 /* CharacterService.swift */; };
+		75272B6C2C62D71900BA6699 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75272B6B2C62D71900BA6699 /* DateUtil.swift */; };
 		754913C72C47DB0300D09227 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 754913C62C47DB0300D09227 /* Nuke */; };
 		754913C92C47DB0300D09227 /* NukeExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 754913C82C47DB0300D09227 /* NukeExtensions */; };
 		754913CB2C47DB0300D09227 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = 754913CA2C47DB0300D09227 /* NukeUI */; };
@@ -51,6 +54,9 @@
 		7513DBDF2C59920C007953F4 /* CharacterListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewModel.swift; sourceTree = "<group>"; };
 		7513DBE12C599594007953F4 /* CharactersListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListCellView.swift; sourceTree = "<group>"; };
 		7513DBE32C5998E6007953F4 /* CharacterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailView.swift; sourceTree = "<group>"; };
+		75272B672C62093D00BA6699 /* AnimeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeService.swift; sourceTree = "<group>"; };
+		75272B692C62CD5A00BA6699 /* CharacterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterService.swift; sourceTree = "<group>"; };
+		75272B6B2C62D71900BA6699 /* DateUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
 		754913CE2C47E74C00D09227 /* RequestLoggingInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLoggingInterceptor.swift; sourceTree = "<group>"; };
 		754913D12C47EAEC00D09227 /* schema.graphqls */ = {isa = PBXFileReference; lastKnownFileType = text; path = schema.graphqls; sourceTree = "<group>"; };
 		754913D22C47ECE400D09227 /* ResponseLoggingInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseLoggingInterceptor.swift; sourceTree = "<group>"; };
@@ -133,6 +139,7 @@
 				7569EF632C44930B00E3DAF1 /* TextUtil.swift */,
 				75FB123D2C56EB740030554A /* Types.swift */,
 				755FB84C2C5E3B3F00C1652C /* ColorUtil.swift */,
+				75272B6B2C62D71900BA6699 /* DateUtil.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -252,6 +259,8 @@
 		75FB123C2C56EA8D0030554A /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				75272B672C62093D00BA6699 /* AnimeService.swift */,
+				75272B692C62CD5A00BA6699 /* CharacterService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -341,6 +350,7 @@
 			files = (
 				75F819F92C58FB7D00E82EED /* AnimeInfoCellView.swift in Sources */,
 				757BA5532C4C58D2007C0F2D /* CharacterGridView.swift in Sources */,
+				75272B6A2C62CD5A00BA6699 /* CharacterService.swift in Sources */,
 				7513DBDE2C599191007953F4 /* CharacterListView.swift in Sources */,
 				759FDE032C48FE9E00C85976 /* AnimeDetailViewModel.swift in Sources */,
 				750EE8F32C60BFC900761D4D /* CoverImageView.swift in Sources */,
@@ -355,9 +365,11 @@
 				7513DBE02C59920C007953F4 /* CharacterListViewModel.swift in Sources */,
 				7513DBE42C5998E6007953F4 /* CharacterDetailView.swift in Sources */,
 				750BD5582C59371500873CC2 /* YoutubeVideoView.swift in Sources */,
+				75272B682C62093D00BA6699 /* AnimeService.swift in Sources */,
 				75752F972C413F21000F447E /* Network.swift in Sources */,
 				7569EF642C44930B00E3DAF1 /* TextUtil.swift in Sources */,
 				754913D32C47ECE400D09227 /* ResponseLoggingInterceptor.swift in Sources */,
+				75272B6C2C62D71900BA6699 /* DateUtil.swift in Sources */,
 				75FB123E2C56EB740030554A /* Types.swift in Sources */,
 				75752F9B2C4155FF000F447E /* AnimeListRowView.swift in Sources */,
 				75CF43C52C4109A9003D24F1 /* AnimeApp.swift in Sources */,

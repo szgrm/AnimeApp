@@ -7,30 +7,19 @@
 
 import AnilistAPI
 import Foundation
-import OSLog
 
 class AnimeDetailViewModel: ObservableObject {
+    private let animeService: AnimeService
     @Published public var animeDetail: AnimeFull?
     var animeID: Int
 
-    private let logger = Logger(
-        subsystem: Bundle.main.bundleIdentifier!,
-        category: String(describing: AnimeListViewModel.self)
-    )
-
-    init(animeID: Int) {
+    init(animeID: Int, animeService: AnimeService) {
         self.animeID = animeID
+        self.animeService = animeService
     }
 
-    func getAnimeDetail() {
-        Network.shared.apollo.fetch(query: GetAnimeDetailQuery(id: animeID)) { result in
-            switch result {
-            case let .success(graphQLResult):
-                self.animeDetail = graphQLResult.data?.media?.fragments.animeFull
-
-            case let .failure(error):
-                self.logger.debug("error: \(error.localizedDescription)")
-            }
-        }
+    @MainActor
+    func getAnimeDetail() async {
+        animeDetail = await animeService.getAnimeDetail(id: animeID)
     }
 }

@@ -17,7 +17,7 @@ struct CharacterDetailView: View {
 
     init(character: CharacterSmall) {
         self.character = character
-        vm = CharacterDetailViewModel(characterID: character.id)
+        vm = CharacterDetailViewModel(characterID: character.id, characterService: CharacterService())
     }
 
     var body: some View {
@@ -64,7 +64,7 @@ struct CharacterDetailView: View {
             }
 
         }.task {
-            vm.getCharacterDetail()
+            await vm.getCharacterDetail()
         }
     }
 
@@ -111,13 +111,13 @@ struct CharacterDetailView: View {
                         .frame(height: 40)
                         .overlay(.secondary)
 
-                    CharacterInfoCellView(cellTitle: "BIRTHDAY", cellVariable: vm.formatDate(date: vm.characterDetail?.dateOfBirth))
+                    CharacterInfoCellView(cellTitle: "BIRTHDAY", cellVariable: DateUtil.formatDate(date: vm.characterDetail?.dateOfBirth))
                         .padding(.horizontal, 30)
                     Divider()
                         .frame(height: 40)
                         .overlay(.secondary)
 
-                    CharacterInfoCellView(cellTitle: "BLOOD TYPE", cellVariable: vm.parseHeight(from: vm.characterDetail?.bloodType ?? "-"))
+                    CharacterInfoCellView(cellTitle: "BLOOD TYPE", cellVariable: vm.characterDetail?.bloodType ?? "-")
                         .padding(.horizontal, 30)
                 }
             }

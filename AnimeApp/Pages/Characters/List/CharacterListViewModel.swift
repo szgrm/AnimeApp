@@ -8,9 +8,10 @@
 import AnilistAPI
 import Combine
 import Foundation
-import OSLog
 
+@MainActor
 class CharacterListViewModel: ObservableObject {
+    private let characterService: CharacterService
     @Published public var characters: [CharacterSmall]? = []
     @Published public var hasNextPage: Bool = false
     @Published public var searchTerm: String = "" {
@@ -21,7 +22,7 @@ class CharacterListViewModel: ObservableObject {
         }
         didSet {
             guard !searchTerm.isEmpty else {
-                refresh()
+                Task { await refresh() }
                 return
             }
         }
@@ -34,68 +35,39 @@ class CharacterListViewModel: ObservableObject {
         }
     }
 
-    private let logger = Logger(
-        subsystem: Bundle.main.bundleIdentifier!,
-        category: String(describing: AnimeListViewModel.self)
-    )
-
     var currentPage: Int = 1
 
-    init() {
-        getCharacters()
+    init(characterService: CharacterService) {
+        self.characterService = characterService
+        Task { await getCharacters() }
         searchCancellable = searchSubject.eraseToAnyPublisher()
-            .map {
-                $0
-            }
+            .map { $0 }
             .debounce(for: .milliseconds(500), scheduler: DispatchQueue.main)
             .removeDuplicates()
             .filter { !$0.isEmpty }
             .sink(receiveValue: { [weak self] searchText in
-                self?.searchCharacter(search: searchText)
+                Task { await self?.searchCharacter(search: searchText) }
             })
     }
 
-    func loadMore() {
+    func loadMore() async {
         currentPage += 1
-        getCharacters()
+        await getCharacters()
     }
 
-    func getCharacters() {
-        Network.shared.apollo.fetch(query: GetCharactersQuery(page: currentPage)) { result in
-            switch result {
-            case let .success(graphQLResult):
-                let newCharacters = graphQLResult.data?.page?.characters?.compactMap { $0?.fragments.characterSmall }
-                self.characters?.append(contentsOf: newCharacters ?? [])
-                self.hasNextPage = graphQLResult.data?.page?.pageInfo?.hasNextPage ?? false
-            case let .failure(error):
-                self.logger.debug("error: \(error.localizedDescription)")
-            }
-        }
+    func getCharacters() async {
+        let newCharacters = await characterService.getCharacters(page: currentPage)
+        characters?.append(contentsOf: newCharacters ?? [])
+        hasNextPage = true
     }
 
-    func refresh() {
-        Network.shared.apollo.fetch(query: GetCharactersQuery(page: 1)) { result in
-            switch result {
-            case let .success(graphQLResult):
-                let newCharacters = graphQLResult.data?.page?.characters?.compactMap { $0?.fragments.characterSmall }
-                self.characters = newCharacters
-                self.hasNextPage = graphQLResult.data?.page?.pageInfo?.hasNextPage ?? false
-            case let .failure(error):
-                self.logger.debug("error: \(error.localizedDescription)")
-            }
-        }
+    func refresh() async {
+        characters = await characterService.getCharacters(page: 1)
+        hasNextPage = true
     }
 
-    func searchCharacter(search: String) {
-        Network.shared.apollo.fetch(query: SearchCharacterQuery(search: search)) { result in
-            switch result {
-            case let .success(graphQLResult):
-                let characterResult = graphQLResult.data?.page?.characters?.compactMap { $0?.fragments.characterSmall }
-                self.characters = characterResult
-                self.hasNextPage = false
-            case let .failure(error):
-                self.logger.debug("error: \(error.localizedDescription)")
-            }
-        }
+    func searchCharacter(search: String) async {
+        characters = await characterService.searchCharacter(search: search)
+        hasNextPage = false
     }
 }

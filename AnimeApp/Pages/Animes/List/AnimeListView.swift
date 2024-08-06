@@ -9,7 +9,7 @@ import AnilistAPI
 import SwiftUI
 
 struct AnimeListView: View {
-    @StateObject private var vm = AnimeListViewModel()
+    @StateObject private var vm = AnimeListViewModel(animeService: AnimeService())
 
     var body: some View {
         NavigationStack {
@@ -35,13 +35,12 @@ struct AnimeListView: View {
                                     }
                                     .padding(.leading, 15)
                                     .task {
-                                        vm.loadMore()
+                                        await vm.loadMore()
                                     }
                                 }
                             }
                             .padding(15)
                         }
-
                         .foregroundStyle(.primary)
 
                         Button {
@@ -60,7 +59,7 @@ struct AnimeListView: View {
                 }
             }
             .refreshable {
-                vm.refresh()
+                await vm.refresh()
             }
             .navigationTitle("Animes")
             .navigationBarTitleDisplayMode(.inline)

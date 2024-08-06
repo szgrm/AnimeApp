@@ -17,7 +17,7 @@ struct AnimeDetailView: View {
 
     init(anime: AnimeSmall) {
         self.anime = anime
-        vm = AnimeDetailViewModel(animeID: anime.id)
+        vm = AnimeDetailViewModel(animeID: anime.id, animeService: AnimeService())
     }
 
     var body: some View {
@@ -67,7 +67,7 @@ struct AnimeDetailView: View {
             }
         }
         .task {
-            vm.getAnimeDetail()
+            await vm.getAnimeDetail()
         }
         .ignoresSafeArea()
     }

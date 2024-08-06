@@ -20,7 +20,7 @@ struct CoverImageView: View {
             ImageView(
                 url: coverImageUrl,
                 width: screenWidth - 30,
-                height: screenHeight * 2 / 3 ,
+                height: screenHeight * 2 / 3,
                 cornerRadius: 10
             )
         }

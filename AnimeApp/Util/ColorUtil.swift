@@ -5,7 +5,6 @@
 //  Created by Sezgi İrem İlgar on 3.08.2024.
 //
 
-import Foundation
 import SwiftUI
 
 extension Color {

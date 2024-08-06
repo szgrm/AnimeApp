@@ -6,7 +6,6 @@
 //
 
 import AnilistAPI
-import Foundation
 
 extension AnimeSmall: Identifiable {}
 extension CharacterSmall: Identifiable {}

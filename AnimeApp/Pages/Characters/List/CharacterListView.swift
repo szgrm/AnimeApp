@@ -9,7 +9,7 @@ import AnilistAPI
 import SwiftUI
 
 struct CharacterListView: View {
-    @StateObject private var vm = CharacterListViewModel()
+    @StateObject private var vm = CharacterListViewModel(characterService: CharacterService())
 
     let screenWidth = UIScreen.main.bounds.size.width
 
@@ -40,7 +40,7 @@ struct CharacterListView: View {
                                             .foregroundStyle(.secondary)
                                     }
                                     .task {
-                                        vm.loadMore()
+                                        await vm.loadMore()
                                     }
                                 }
                             }
@@ -64,7 +64,7 @@ struct CharacterListView: View {
                 }
             }
             .refreshable {
-                vm.refresh()
+                await vm.refresh()
             }
             .navigationTitle("Characters")
             .navigationBarTitleDisplayMode(.inline)

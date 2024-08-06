@@ -5,7 +5,6 @@
 //  Created by Sezgi İrem İlgar on 15.07.2024.
 //
 
-import Foundation
 import SwiftUI
 
 class TextUtility {
