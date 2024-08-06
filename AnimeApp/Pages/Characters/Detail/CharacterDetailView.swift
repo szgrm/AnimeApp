@@ -33,37 +33,13 @@ struct CharacterDetailView: View {
 
                     descriptionSection
 
-                    if let animes = vm.characterDetail?.media?.nodes?.compactMap({ $0?.fragments.animeSmall }) {
-                        VStack(alignment: .leading, spacing: 10) {
-                            Text("MEDIA")
-                                .frame(width: screenWidth - 30, alignment: .leading)
-                                .foregroundStyle(.secondary)
-                                .font(.system(size: 14))
-
-                            ScrollView {
-                                ForEach(animes) { anime in
-                                    if !(anime.isAdult ?? true) {
-                                        NavigationLink(destination: AnimeDetailView(anime: anime), label: {
-                                            CharacterAnimesRow(anime: anime)
-                                        })
-                                    }
-                                }
-                            }
-                            .foregroundStyle(.primary)
-                        }
-                        .padding(.horizontal, 15)
-
-                    } else {
-                        ProgressView()
-                            .foregroundStyle(.secondary)
-                            .frame(width: screenWidth, height: 200)
-                    }
+                    mediaSection
                 }
                 .frame(width: screenWidth)
                 .padding(.top, 50)
             }
-
-        }.task {
+        }
+        .task {
             await vm.getCharacterDetail()
         }
     }
@@ -144,5 +120,34 @@ struct CharacterDetailView: View {
             .font(.system(size: 14, weight: .semibold))
         }
         .padding(.horizontal, 15)
+    }
+
+    @ViewBuilder
+    private var mediaSection: some View {
+        if let animes = vm.characterDetail?.media?.nodes?.compactMap({ $0?.fragments.animeSmall }) {
+            VStack(alignment: .leading, spacing: 10) {
+                Text("MEDIA")
+                    .frame(width: screenWidth - 30, alignment: .leading)
+                    .foregroundStyle(.secondary)
+                    .font(.system(size: 14))
+
+                ScrollView {
+                    ForEach(animes) { anime in
+                        if !(anime.isAdult ?? true) {
+                            NavigationLink(destination: AnimeDetailView(anime: anime), label: {
+                                CharacterAnimesRow(anime: anime)
+                            })
+                        }
+                    }
+                }
+                .foregroundStyle(.primary)
+            }
+            .padding(.horizontal, 15)
+
+        } else {
+            ProgressView()
+                .foregroundStyle(.secondary)
+                .frame(width: screenWidth, height: 200)
+        }
     }
 }

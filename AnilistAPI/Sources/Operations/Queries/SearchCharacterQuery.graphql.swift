@@ -7,7 +7,7 @@ public class SearchCharacterQuery: GraphQLQuery {
   public static let operationName: String = "SearchCharacter"
   public static let operationDocument: ApolloAPI.OperationDocument = .init(
     definition: .init(
-      #"query SearchCharacter($search: String!) { Page(perPage: 20) { __typename characters(search: $search, sort: SEARCH_MATCH) { __typename ...CharacterSmall } } }"#,
+      #"query SearchCharacter($search: String!) { Page(perPage: 20) { __typename characters(search: $search, sort: FAVOURITES_DESC) { __typename ...CharacterSmall } } }"#,
       fragments: [CharacterSmall.self]
     ))
 
@@ -42,7 +42,7 @@ public class SearchCharacterQuery: GraphQLQuery {
         .field("__typename", String.self),
         .field("characters", [Character?]?.self, arguments: [
           "search": .variable("search"),
-          "sort": "SEARCH_MATCH"
+          "sort": "FAVOURITES_DESC"
         ]),
       ] }
 

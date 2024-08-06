@@ -34,14 +34,14 @@ query GetCharacterDetail($id: Int!) {
 
 query SearchAnime($search: String!) {
   Page(perPage: 20) {
-    media(search: $search, isAdult: false, sort: SEARCH_MATCH, format_in: [TV, MOVIE]) {
+    media(search: $search, isAdult: false, sort: POPULARITY_DESC, format_in: [TV, MOVIE]) {
       ...AnimeSmall
     }
   }
 }
 query SearchCharacter($search: String!) {
   Page(perPage: 20){
-    characters(search: $search, sort: SEARCH_MATCH) {
+    characters(search: $search, sort: FAVOURITES_DESC) {
       ...CharacterSmall
     }
   }

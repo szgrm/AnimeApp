@@ -34,31 +34,7 @@ struct AnimeDetailView: View {
 
                     summarySection
 
-                    if let characters = vm.animeDetail?.characters?.nodes?.compactMap({ $0?.fragments.characterSmall }) {
-                        VStack(alignment: .leading, spacing: 10) {
-                            Text("CHARACTERS")
-                                .frame(alignment: .leading)
-                                .foregroundStyle(.secondary)
-                                .font(.system(size: 14))
-                                .padding(.leading, 15)
-
-                            ScrollView(.horizontal) {
-                                HStack(spacing: 10) {
-                                    ForEach(characters) { character in
-                                        NavigationLink(destination: CharacterDetailView(character: character), label: {
-                                            CharacterGridView(character: character)
-                                        })
-                                    }
-                                }
-                            }
-                            .foregroundStyle(.primary)
-                            .contentMargins(.leading, 15, for: .scrollContent)
-                        }
-                    } else {
-                        ProgressView()
-                            .foregroundStyle(.secondary)
-                            .frame(width: screenWidth, height: 200)
-                    }
+                    characterSection
 
                     trailerSection
                 }
@@ -200,6 +176,35 @@ struct AnimeDetailView: View {
             .font(.system(size: 14, weight: .semibold))
         }
         .padding(.horizontal, 15)
+    }
+
+    @ViewBuilder
+    private var characterSection: some View {
+        if let characters = vm.animeDetail?.characters?.nodes?.compactMap({ $0?.fragments.characterSmall }) {
+            VStack(alignment: .leading, spacing: 10) {
+                Text("CHARACTERS")
+                    .frame(alignment: .leading)
+                    .foregroundStyle(.secondary)
+                    .font(.system(size: 14))
+                    .padding(.leading, 15)
+
+                ScrollView(.horizontal) {
+                    HStack(spacing: 10) {
+                        ForEach(characters) { character in
+                            NavigationLink(destination: CharacterDetailView(character: character), label: {
+                                CharacterGridView(character: character)
+                            })
+                        }
+                    }
+                }
+                .foregroundStyle(.primary)
+                .contentMargins(.leading, 15, for: .scrollContent)
+            }
+        } else {
+            ProgressView()
+                .foregroundStyle(.secondary)
+                .frame(width: screenWidth, height: 200)
+        }
     }
 
     private var trailerSection: some View {
