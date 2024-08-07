@@ -171,7 +171,9 @@ struct AnimeDetailView: View {
                 .font(.system(size: 14))
                 .lineLimit(isViewed ? 50 : 5)
             Button(isViewed ? "Read Less" : "Read More") {
-                isViewed.toggle()
+                withAnimation {
+                    isViewed.toggle()
+                }
             }
             .font(.system(size: 14, weight: .semibold))
         }
