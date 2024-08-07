@@ -50,35 +50,28 @@ struct AnimeDetailView: View {
 
     private var bannerSection: some View {
         GeometryReader { geometry in
-            let offsetY = geometry.frame(in: .global).minY
-            let isScrolled = offsetY > 0
+                let offsetY = geometry.frame(in: .global).minY
+                let isScrolled = offsetY > 0
 
-            Spacer()
-                .frame(height: isScrolled ? 250 + offsetY : 250)
-                .background {
-                    ZStack {
-                        if let bannerUrl = vm.animeDetail?.bannerImage {
-                            BannerImageView(url: bannerUrl,
-                                            height: 260,
-                                            hex: anime.coverImage?.color ?? "#A176AD")
-                                .scaledToFill()
-                                .offset(y: isScrolled ? -offsetY : 0)
-
-                        } else {
-                            Rectangle()
-                                .scaledToFill()
-                                .offset(y: isScrolled ? -offsetY : 0)
-                                .foregroundStyle(Color(hex: anime.coverImage?.color ?? "#A176AD"))
-                                .frame(width: screenWidth)
-                        }
-
+                ZStack {
+                    if let bannerUrl = vm.animeDetail?.bannerImage {
+                        BannerImageView(url: bannerUrl,
+                                        height: isScrolled ? 250 + offsetY : 250,
+                                        hex: anime.coverImage?.color ?? "#A176AD")
+                            .offset(y: isScrolled ? -offsetY : 0)
+                    } else {
                         Rectangle()
-                            .foregroundColor(.clear)
-                            .background(LinearGradient(gradient: Gradient(colors: [.clear, Color("Background")]), startPoint: .top, endPoint: .bottom))
+                            .foregroundStyle(Color(hex: anime.coverImage?.color ?? "#A176AD"))
+                            .frame(width: geometry.size.width, height: isScrolled ? 250 + offsetY : 250)
+                            .offset(y: isScrolled ? -offsetY : 0)
                     }
+
+                    Rectangle()
+                        .foregroundColor(.clear)
+                        .background(LinearGradient(gradient: Gradient(colors: [.clear, Color("Background")]), startPoint: .top, endPoint: .bottom))
                 }
-        }
-        .frame(height: 260)
+            }
+            .frame(height: 260)
     }
 
     private var titleSection: some View {
