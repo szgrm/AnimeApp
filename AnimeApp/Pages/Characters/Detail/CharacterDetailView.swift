@@ -54,11 +54,11 @@ struct CharacterDetailView: View {
             )
             VStack {
                 Text(vm.characterDetail?.name?.full ?? "")
-                    .font(.title)
+                    .font(Font.custom("OpenSans", size: 28))
                     .bold()
                     .multilineTextAlignment(.center)
                 Text(vm.alternativeNamesFormatted ?? "")
-                    .font(.system(size: 11))
+                    .font(Font.custom("OpenSans", size: 11))
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
             }
@@ -108,18 +108,19 @@ struct CharacterDetailView: View {
         VStack(alignment: .leading, spacing: 10) {
             Text("DESCRIPTION")
                 .foregroundStyle(.secondary)
-                .font(.system(size: 14))
+                .font(Font.custom("OpenSans", size: 14))
 
             Text(.init(vm.characterDetail?.description ?? ""))
                 .frame(maxWidth: screenWidth, alignment: .leading)
-                .font(.system(size: 14))
+                .font(Font.custom("OpenSans", size: 14))
                 .lineLimit(isViewed ? 60 : 5)
             Button(isViewed ? "Read Less" : "Read More") {
                 withAnimation {
                     isViewed.toggle()
                 }
             }
-            .font(.system(size: 14, weight: .semibold))
+            .font(Font.custom("OpenSans", size: 14))
+            .fontWeight(.semibold)
         }
         .padding(.horizontal, 15)
     }
@@ -131,7 +132,7 @@ struct CharacterDetailView: View {
                 Text("MEDIA")
                     .frame(width: screenWidth - 30, alignment: .leading)
                     .foregroundStyle(.secondary)
-                    .font(.system(size: 14))
+                    .font(Font.custom("OpenSans", size: 14))
 
                 ScrollView {
                     ForEach(animes) { anime in

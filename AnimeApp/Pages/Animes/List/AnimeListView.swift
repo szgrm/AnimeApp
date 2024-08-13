@@ -71,7 +71,8 @@ struct AnimeListView: View {
                             .resizable()
                             .scaledToFit()
                             .frame(width: 65)
-                        Text("Animes").font(.headline)
+                        Text("Animes").font(Font.custom("OpenSans", size: 17))
+                            .fontWeight(.semibold)
                     }
                     .padding(.bottom, 10)
                 }

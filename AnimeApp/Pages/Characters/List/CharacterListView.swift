@@ -76,7 +76,8 @@ struct CharacterListView: View {
                             .resizable()
                             .scaledToFit()
                             .frame(width: 65)
-                        Text("Characters").font(.headline)
+                        Text("Characters").font(Font.custom("OpenSans", size: 17))
+                            .fontWeight(.semibold)
                     }
                     .padding(.bottom, 10)
                 }

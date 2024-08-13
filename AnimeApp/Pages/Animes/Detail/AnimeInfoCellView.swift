@@ -15,9 +15,9 @@ struct AnimeInfoCellView: View {
         VStack {
             Text(cellTitle)
                 .foregroundStyle(.secondary)
-                .font(.system(size: 14))
+                .font(Font.custom("OpenSans", size: 14))
             Text(cellVariable)
-                .font(.system(size: 14))
+                .font(Font.custom("OpenSans", size: 14))
         }
     }
 }

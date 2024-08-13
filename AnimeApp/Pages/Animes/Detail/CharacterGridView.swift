@@ -19,7 +19,7 @@ struct CharacterGridView: View {
             Text(character.name?.full ?? "unknown")
                 .padding(.horizontal, 2)
                 .frame(width: 70)
-                .font(.system(size: 11))
+                .font(Font.custom("OpenSans", size: 11))
                 .lineLimit(1)
         }
         .padding(.bottom, 5)

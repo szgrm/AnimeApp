@@ -24,7 +24,7 @@ struct CharactersListCellView: View {
                 .bold()
                 .padding(.bottom, 5)
                 .frame(height: 40)
-                .font(.system(size: 14))
+                .font(Font.custom("OpenSans", size: 14))
                 .lineLimit(2)
         }
         .frame(width: 110, height: 215)

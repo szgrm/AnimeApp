@@ -42,6 +42,7 @@
 		75CF43F82C412DBA003D24F1 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 75CF43F72C412DBA003D24F1 /* Apollo */; };
 		75D1CF4E2C5EA83B0038095B /* CharacterDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D1CF4D2C5EA83A0038095B /* CharacterDetailViewModel.swift */; };
 		75D1CF502C5EC9810038095B /* CharacterInfoCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D1CF4F2C5EC9810038095B /* CharacterInfoCellView.swift */; };
+		75D5A9132C6649660059C5B0 /* OpenSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 75D5A9122C6649660059C5B0 /* OpenSans.ttf */; };
 		75F3112D2C5FFB4F00B1CB2A /* CharacterAnimesRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F3112C2C5FFB4F00B1CB2A /* CharacterAnimesRow.swift */; };
 		75F819F92C58FB7D00E82EED /* AnimeInfoCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F819F82C58FB7D00E82EED /* AnimeInfoCellView.swift */; };
 		75FB123E2C56EB740030554A /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FB123D2C56EB740030554A /* Types.swift */; };
@@ -81,6 +82,8 @@
 		75CF44052C41386B003D24F1 /* Query.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Query.graphql; sourceTree = "<group>"; };
 		75D1CF4D2C5EA83A0038095B /* CharacterDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewModel.swift; sourceTree = "<group>"; };
 		75D1CF4F2C5EC9810038095B /* CharacterInfoCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterInfoCellView.swift; sourceTree = "<group>"; };
+		75D5A90D2C65F4240059C5B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		75D5A9122C6649660059C5B0 /* OpenSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = OpenSans.ttf; path = ../../../Downloads/Open_Sans/OpenSans.ttf; sourceTree = "<group>"; };
 		75F3112C2C5FFB4F00B1CB2A /* CharacterAnimesRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterAnimesRow.swift; sourceTree = "<group>"; };
 		75F819F82C58FB7D00E82EED /* AnimeInfoCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeInfoCellView.swift; sourceTree = "<group>"; };
 		75FB123D2C56EB740030554A /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
@@ -174,6 +177,7 @@
 		75CF43C32C4109A9003D24F1 /* AnimeApp */ = {
 			isa = PBXGroup;
 			children = (
+				75D5A90D2C65F4240059C5B0 /* Info.plist */,
 				75CF43C42C4109A9003D24F1 /* AnimeApp.swift */,
 				75CF43D32C410BF3003D24F1 /* Pages */,
 				7569EF622C4492D800E3DAF1 /* Util */,
@@ -181,6 +185,7 @@
 				75FB123C2C56EA8D0030554A /* Services */,
 				75CF44032C412EED003D24F1 /* GraphQL */,
 				75CF43C82C4109AB003D24F1 /* Assets.xcassets */,
+				75D5A9122C6649660059C5B0 /* OpenSans.ttf */,
 				75CF43CA2C4109AB003D24F1 /* Preview Content */,
 			);
 			path = AnimeApp;
@@ -336,6 +341,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75D5A9132C6649660059C5B0 /* OpenSans.ttf in Resources */,
 				75CF43CC2C4109AB003D24F1 /* Preview Assets.xcassets in Resources */,
 				75CF43C92C4109AB003D24F1 /* Assets.xcassets in Resources */,
 			);
@@ -514,6 +520,7 @@
 				DEVELOPMENT_TEAM = 8LC9944F6M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AnimeApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = AnimeApp;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -545,6 +552,7 @@
 				DEVELOPMENT_TEAM = 8LC9944F6M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AnimeApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = AnimeApp;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

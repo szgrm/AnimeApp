@@ -50,28 +50,28 @@ struct AnimeDetailView: View {
 
     private var bannerSection: some View {
         GeometryReader { geometry in
-                let offsetY = geometry.frame(in: .global).minY
-                let isScrolled = offsetY > 0
+            let offsetY = geometry.frame(in: .global).minY
+            let isScrolled = offsetY > 0
 
-                ZStack {
-                    if let bannerUrl = vm.animeDetail?.bannerImage {
-                        BannerImageView(url: bannerUrl,
-                                        height: isScrolled ? 250 + offsetY : 250,
-                                        hex: anime.coverImage?.color ?? "#A176AD")
-                            .offset(y: isScrolled ? -offsetY : 0)
-                    } else {
-                        Rectangle()
-                            .foregroundStyle(Color(hex: anime.coverImage?.color ?? "#A176AD"))
-                            .frame(width: geometry.size.width, height: isScrolled ? 250 + offsetY : 250)
-                            .offset(y: isScrolled ? -offsetY : 0)
-                    }
-
+            ZStack {
+                if let bannerUrl = vm.animeDetail?.bannerImage {
+                    BannerImageView(url: bannerUrl,
+                                    height: isScrolled ? 250 + offsetY : 250,
+                                    hex: anime.coverImage?.color ?? "#A176AD")
+                        .offset(y: isScrolled ? -offsetY : 0)
+                } else {
                     Rectangle()
-                        .foregroundColor(.clear)
-                        .background(LinearGradient(gradient: Gradient(colors: [.clear, Color("Background")]), startPoint: .top, endPoint: .bottom))
+                        .foregroundStyle(Color(hex: anime.coverImage?.color ?? "#A176AD"))
+                        .frame(width: geometry.size.width, height: isScrolled ? 250 + offsetY : 250)
+                        .offset(y: isScrolled ? -offsetY : 0)
                 }
+
+                Rectangle()
+                    .foregroundColor(.clear)
+                    .background(LinearGradient(gradient: Gradient(colors: [.clear, Color("Background")]), startPoint: .top, endPoint: .bottom))
             }
-            .frame(height: 260)
+        }
+        .frame(height: 260)
     }
 
     private var titleSection: some View {
@@ -88,18 +88,18 @@ struct AnimeDetailView: View {
 
             VStack {
                 Text(((anime.title?.english) ?? (anime.title?.romaji)) ?? "")
-                    .font(.title)
+                    .font(Font.custom("OpenSans", size: 28))
                     .bold()
                     .multilineTextAlignment(.center)
                 Text(vm.animeDetail?.title?.native ?? "")
-                    .font(.title3)
+                    .font(Font.custom("OpenSans", size: 20))
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
                 ScrollView(.horizontal) {
                     HStack {
                         ForEach(vm.animeDetail?.genres ?? [], id: \.self) { genre in
                             Text(genre!)
-                                .font(.system(size: 10))
+                                .font(Font.custom("OpenSans", size: 10))
                                 .padding(3)
                                 .background(Color("AppColor").opacity(0.4))
                                 .clipShape(.capsule)
@@ -157,18 +157,19 @@ struct AnimeDetailView: View {
         VStack(alignment: .leading, spacing: 10) {
             Text("SUMMARY")
                 .foregroundStyle(.secondary)
-                .font(.system(size: 14))
+                .font(Font.custom("OpenSans", size: 14))
 
             TextUtility.cleanDescription(anime.description ?? "")
                 .frame(maxWidth: screenWidth, alignment: .leading)
-                .font(.system(size: 14))
+                .font(Font.custom("OpenSans", size: 14))
                 .lineLimit(isViewed ? 50 : 5)
             Button(isViewed ? "Read Less" : "Read More") {
                 withAnimation {
                     isViewed.toggle()
                 }
             }
-            .font(.system(size: 14, weight: .semibold))
+            .font(Font.custom("OpenSans", size: 14))
+            .fontWeight(.semibold)
         }
         .padding(.horizontal, 15)
     }
@@ -180,7 +181,7 @@ struct AnimeDetailView: View {
                 Text("CHARACTERS")
                     .frame(alignment: .leading)
                     .foregroundStyle(.secondary)
-                    .font(.system(size: 14))
+                    .font(Font.custom("OpenSans", size: 14))
                     .padding(.leading, 15)
 
                 ScrollView(.horizontal) {
@@ -208,7 +209,7 @@ struct AnimeDetailView: View {
                 Text("TRAILER")
                     .frame(width: screenWidth - 30, alignment: .leading)
                     .foregroundStyle(.secondary)
-                    .font(.system(size: 14))
+                    .font(Font.custom("OpenSans", size: 14))
                 YoutubeVideoView(ID: ytID)
                     .frame(width: screenWidth - 30, height: 250)
                     .cornerRadius(10)
