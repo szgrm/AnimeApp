@@ -9,7 +9,7 @@ import AnilistAPI
 import SwiftUI
 
 struct AnimeInfoCellView: View {
-    var cellTitle: String
+    var cellTitle: LocalizedStringKey
     var cellVariable: String
     var body: some View {
         VStack {

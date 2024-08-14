@@ -114,7 +114,7 @@ struct CharacterDetailView: View {
                 .frame(maxWidth: screenWidth, alignment: .leading)
                 .font(Font.custom("OpenSans", size: 14))
                 .lineLimit(isViewed ? 60 : 5)
-            Button(isViewed ? "Read Less" : "Read More") {
+            Button(isViewed ? "Show Less" : "Show More") {
                 withAnimation {
                     isViewed.toggle()
                 }

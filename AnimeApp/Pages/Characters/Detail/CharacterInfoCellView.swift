@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CharacterInfoCellView: View {
-    var cellTitle: String
+    var cellTitle: LocalizedStringKey
     var cellVariable: String
     var body: some View {
         VStack {
