@@ -34,6 +34,7 @@
 		757BA5562C4CFC86007C0F2D /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757BA5552C4CFC86007C0F2D /* ImageView.swift */; };
 		75891AB92C5840100014E33A /* BannerImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75891AB82C5840100014E33A /* BannerImageView.swift */; };
 		759FDE032C48FE9E00C85976 /* AnimeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759FDE022C48FE9E00C85976 /* AnimeDetailViewModel.swift */; };
+		75C45F332C6DF8BD001A7C65 /* netfox in Frameworks */ = {isa = PBXBuildFile; productRef = 75C45F322C6DF8BD001A7C65 /* netfox */; };
 		75CF43C52C4109A9003D24F1 /* AnimeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CF43C42C4109A9003D24F1 /* AnimeApp.swift */; };
 		75CF43C92C4109AB003D24F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75CF43C82C4109AB003D24F1 /* Assets.xcassets */; };
 		75CF43CC2C4109AB003D24F1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75CF43CB2C4109AB003D24F1 /* Preview Assets.xcassets */; };
@@ -100,6 +101,7 @@
 				754913CD2C47DB0300D09227 /* NukeVideo in Frameworks */,
 				754913C72C47DB0300D09227 /* Nuke in Frameworks */,
 				754913C92C47DB0300D09227 /* NukeExtensions in Frameworks */,
+				75C45F332C6DF8BD001A7C65 /* netfox in Frameworks */,
 				75752F952C413D30000F447E /* AnilistAPI in Frameworks */,
 				75CF43F82C412DBA003D24F1 /* Apollo in Frameworks */,
 			);
@@ -296,6 +298,7 @@
 				754913C82C47DB0300D09227 /* NukeExtensions */,
 				754913CA2C47DB0300D09227 /* NukeUI */,
 				754913CC2C47DB0300D09227 /* NukeVideo */,
+				75C45F322C6DF8BD001A7C65 /* netfox */,
 			);
 			productName = AnimeApp;
 			productReference = 75CF43C12C4109A9003D24F1 /* AnimeApp.app */;
@@ -331,6 +334,7 @@
 				75CF43F62C412DBA003D24F1 /* XCRemoteSwiftPackageReference "apollo-ios" */,
 				75752F932C413D30000F447E /* XCLocalSwiftPackageReference "AnilistAPI" */,
 				754913C52C47DB0300D09227 /* XCRemoteSwiftPackageReference "Nuke" */,
+				75C45F312C6DF8BD001A7C65 /* XCRemoteSwiftPackageReference "netfox" */,
 			);
 			productRefGroup = 75CF43C22C4109A9003D24F1 /* Products */;
 			projectDirPath = "";
@@ -618,6 +622,14 @@
 				minimumVersion = 12.8.0;
 			};
 		};
+		75C45F312C6DF8BD001A7C65 /* XCRemoteSwiftPackageReference "netfox" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kasketis/netfox";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.21.0;
+			};
+		};
 		75CF43F62C412DBA003D24F1 /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apollographql/apollo-ios.git";
@@ -652,6 +664,11 @@
 		75752F942C413D30000F447E /* AnilistAPI */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AnilistAPI;
+		};
+		75C45F322C6DF8BD001A7C65 /* netfox */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 75C45F312C6DF8BD001A7C65 /* XCRemoteSwiftPackageReference "netfox" */;
+			productName = netfox;
 		};
 		75CF43F72C412DBA003D24F1 /* Apollo */ = {
 			isa = XCSwiftPackageProductDependency;
