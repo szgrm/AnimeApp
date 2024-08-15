@@ -12,7 +12,6 @@ struct AnimeApp: App {
     var body: some Scene {
         WindowGroup {
             TabbarView()
-                .preferredColorScheme(.dark)
         }
     }
 }
