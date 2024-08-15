@@ -6,6 +6,7 @@
 //
 
 import AnilistAPI
+import NukeUI
 import SwiftUI
 
 struct CoverImageView: View {
@@ -15,8 +16,14 @@ struct CoverImageView: View {
 
     var body: some View {
         ZStack {
-            Color("Background")
-                .ignoresSafeArea(.all)
+            ImageView(
+                url: coverImageUrl,
+                width: screenWidth,
+                height: screenHeight,
+                cornerRadius: 0
+            )
+            .blur(radius: 30)
+
             ImageView(
                 url: coverImageUrl,
                 width: screenWidth - 30,
@@ -24,5 +31,6 @@ struct CoverImageView: View {
                 cornerRadius: 10
             )
         }
+        .edgesIgnoringSafeArea(.all)
     }
 }

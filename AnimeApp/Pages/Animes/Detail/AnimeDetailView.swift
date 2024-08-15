@@ -13,6 +13,7 @@ struct AnimeDetailView: View {
     let anime: AnimeSmall
     @ObservedObject var vm: AnimeDetailViewModel
     @State var isViewed: Bool = false
+    @State private var showDetail = false
     let screenWidth = UIScreen.main.bounds.size.width
 
     init(anime: AnimeSmall) {
@@ -41,6 +42,9 @@ struct AnimeDetailView: View {
                 .frame(width: screenWidth)
                 .offset(y: -100)
             }
+        }
+        .sheet(isPresented: $showDetail) {
+            CoverImageView(coverImageUrl: (vm.animeDetail?.coverImage?.extraLarge ?? anime.coverImage?.large)!)
         }
         .task {
             await vm.getAnimeDetail()
@@ -71,20 +75,28 @@ struct AnimeDetailView: View {
                     .background(LinearGradient(gradient: Gradient(colors: [.clear, Color("Background")]), startPoint: .top, endPoint: .bottom))
             }
         }
-        .frame(height: 260)
+        .frame(height: 250)
     }
 
     private var titleSection: some View {
         HStack(alignment: .bottom) {
-            NavigationLink(destination: CoverImageView(coverImageUrl: (vm.animeDetail?.coverImage?.extraLarge ?? anime.coverImage?.large)!),
-                           label: {
-                               ImageView(
-                                   url: (anime.coverImage?.large)!,
-                                   width: 160,
-                                   height: 220,
-                                   cornerRadius: 10
-                               )
-                           })
+            Button(action: { showDetail.toggle() }, label: {
+                ImageView(
+                    url: (anime.coverImage?.large)!,
+                    width: 160,
+                    height: 220,
+                    cornerRadius: 10
+                )
+            })
+//            NavigationLink(destination: CoverImageView(coverImageUrl: (vm.animeDetail?.coverImage?.extraLarge ?? anime.coverImage?.large)!),
+//                           label: {
+//                               ImageView(
+//                                   url: (anime.coverImage?.large)!,
+//                                   width: 160,
+//                                   height: 220,
+//                                   cornerRadius: 10
+//                               )
+//                           })
 
             VStack {
                 Text(((anime.title?.english) ?? (anime.title?.romaji)) ?? "")
