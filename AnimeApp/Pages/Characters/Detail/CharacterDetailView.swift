@@ -76,25 +76,25 @@ struct CharacterDetailView: View {
             ScrollView(.horizontal) {
                 HStack {
                     CharacterInfoCellView(cellTitle: "AGE", cellVariable: vm.characterDetail?.age ?? "-")
-                        .padding(.horizontal, 30)
+                        .padding(.horizontal, 15)
                     Divider()
                         .frame(height: 40)
                         .overlay(.secondary)
 
                     CharacterInfoCellView(cellTitle: "GENDER", cellVariable: vm.characterDetail?.gender ?? "-")
-                        .padding(.horizontal, 30)
+                        .padding(.horizontal, 15)
                     Divider()
                         .frame(height: 40)
                         .overlay(.secondary)
 
                     CharacterInfoCellView(cellTitle: "BIRTHDAY", cellVariable: DateUtil.formatDate(date: vm.characterDetail?.dateOfBirth))
-                        .padding(.horizontal, 30)
+                        .padding(.horizontal, 15)
                     Divider()
                         .frame(height: 40)
                         .overlay(.secondary)
 
                     CharacterInfoCellView(cellTitle: "BLOOD TYPE", cellVariable: vm.characterDetail?.bloodType ?? "-")
-                        .padding(.horizontal, 30)
+                        .padding(.horizontal, 15)
                 }
             }
             .scrollIndicators(.hidden)
