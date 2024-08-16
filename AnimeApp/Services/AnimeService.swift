@@ -46,7 +46,7 @@ class AnimeService {
 
     func getAnimeDetail(id: Int) async -> AnimeFull? {
         await withCheckedContinuation { continuation in
-            Network.shared.apollo.fetch(query: GetAnimeDetailQuery(id: id)) { result in
+            Network.shared.apollo.fetch(query: GetAnimeDetailQuery(id: id), cachePolicy: .fetchIgnoringCacheData) { result in
                 switch result {
                 case let .success(graphQLResult):
                     let animeDetail = graphQLResult.data?.media?.fragments.animeFull

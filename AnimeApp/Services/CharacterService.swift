@@ -48,7 +48,7 @@ class CharacterService {
 
     func getCharacterDetail(id: Int) async -> CharacterFull? {
         await withCheckedContinuation { continuation in
-            Network.shared.apollo.fetch(query: GetCharacterDetailQuery(id: id)) { result in
+            Network.shared.apollo.fetch(query: GetCharacterDetailQuery(id: id), cachePolicy: .fetchIgnoringCacheData) { result in
                 switch result {
                 case let .success(graphQLResult):
                     let characterDetail = graphQLResult.data?.character?.fragments.characterFull
