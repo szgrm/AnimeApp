@@ -33,15 +33,7 @@ struct CharacterListView: View {
                                     .id(character.id)
                                 }
                                 if vm.hasNextPage {
-                                    HStack {
-                                        ProgressView()
-                                        Text("Loading...")
-
-                                            .foregroundStyle(.secondary)
-                                    }
-                                    .task {
-                                        await vm.loadMore()
-                                    }
+                                    LoadMoreView(loader: vm.loadMore)
                                 }
                             }
                         }

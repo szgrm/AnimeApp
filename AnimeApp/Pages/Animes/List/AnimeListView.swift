@@ -27,19 +27,9 @@ struct AnimeListView: View {
                                     .id(anime.id)
                                 }
                                 if vm.hasNextPage {
-                                    HStack {
-                                        ProgressView()
-                                        Text("Loading...")
-                                            .foregroundStyle(.secondary)
-                                        Spacer()
-                                    }
-                                    .padding(.leading, 15)
-                                    .task {
-                                        await vm.loadMore()
-                                    }
+                                    LoadMoreView(loader: vm.loadMore)
                                 }
                             }
-                            .padding(15)
                         }
                         .foregroundStyle(.primary)
 
