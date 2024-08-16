@@ -11,8 +11,7 @@ struct LoadMoreView: View {
     var loader: () async -> Void
     var body: some View {
         HStack {
-            KikiLoadingView()
-                .frame(width: 100, height: 50)
+            KikiLoadingView(height: 50, size: 12)
         }
         .task {
             await loader()

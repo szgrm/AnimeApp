@@ -9,14 +9,18 @@ import Lottie
 import SwiftUI
 
 struct KikiLoadingView: View {
+    let height: CGFloat
+    let size: CGFloat
     var body: some View {
-        LottieView(animation: .named("kiki"))
-            .looping()
-            .frame(height: 200)
-            .scaleEffect(x: -1, y: 1)
+        VStack {
+            LottieView(animation: .named("kiki"))
+                .looping()
+                .scaleEffect(x: -1, y: 1)
+                .frame(height: height)
+            Text("Loading...")
+                .fontWeight(.bold)
+                .foregroundColor(.secondary)
+                .font(.custom("OpenSans", size: size))
+        }
     }
-}
-
-#Preview {
-    KikiLoadingView()
 }
