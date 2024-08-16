@@ -15,9 +15,8 @@ struct NoResultView: View {
                 .looping()
                 .frame(height: 100)
             Text("No Result.")
-                .fontWeight(.bold)
+                .customFont(.bold, 16)
                 .foregroundColor(.secondary)
-                .font(.custom("OpenSans", size: 16))
         }
     }
 }

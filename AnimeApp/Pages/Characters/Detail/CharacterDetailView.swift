@@ -54,11 +54,10 @@ struct CharacterDetailView: View {
             )
             VStack {
                 Text(vm.characterDetail?.name?.full ?? "")
-                    .font(Font.custom("OpenSans", size: 28))
-                    .bold()
+                    .customFont(.bold, 28)
                     .multilineTextAlignment(.center)
                 Text(vm.alternativeNamesFormatted ?? "")
-                    .font(Font.custom("OpenSans", size: 11))
+                    .customFont(.regular, 12)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
             }
@@ -76,25 +75,25 @@ struct CharacterDetailView: View {
             ScrollView(.horizontal) {
                 HStack {
                     CharacterInfoCellView(cellTitle: "AGE", cellVariable: vm.characterDetail?.age ?? "-")
-                        .padding(.horizontal, 15)
+                        .padding(.trailing, 10)
                     Divider()
                         .frame(height: 40)
                         .overlay(.secondary)
 
                     CharacterInfoCellView(cellTitle: "GENDER", cellVariable: vm.characterDetail?.gender ?? "-")
-                        .padding(.horizontal, 15)
+                        .padding(.horizontal, 10)
                     Divider()
                         .frame(height: 40)
                         .overlay(.secondary)
 
                     CharacterInfoCellView(cellTitle: "BIRTHDAY", cellVariable: DateUtil.formatDate(date: vm.characterDetail?.dateOfBirth))
-                        .padding(.horizontal, 15)
+                        .padding(.horizontal, 10)
                     Divider()
                         .frame(height: 40)
                         .overlay(.secondary)
 
                     CharacterInfoCellView(cellTitle: "BLOOD TYPE", cellVariable: vm.characterDetail?.bloodType ?? "-")
-                        .padding(.horizontal, 15)
+                        .padding(.horizontal, 10)
                 }
             }
             .scrollIndicators(.hidden)
@@ -107,20 +106,21 @@ struct CharacterDetailView: View {
     private var descriptionSection: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text("DESCRIPTION")
+                .customFont(.regular, 16)
                 .foregroundStyle(.secondary)
-                .font(Font.custom("OpenSans", size: 14))
 
             Text(.init(vm.characterDetail?.description ?? ""))
+                .customFont(.regular, 14)
                 .frame(maxWidth: screenWidth, alignment: .leading)
-                .font(Font.custom("OpenSans", size: 14))
                 .lineLimit(isViewed ? 60 : 5)
-            Button(isViewed ? "Show Less" : "Show More") {
+            Button(action: {
                 withAnimation {
                     isViewed.toggle()
                 }
-            }
-            .font(Font.custom("OpenSans", size: 14))
-            .fontWeight(.semibold)
+            }, label: {
+                Text(isViewed ? "Show Less" : "Show More")
+                    .customFont(.semiBold, 14)
+            })
         }
         .padding(.horizontal, 15)
     }
@@ -130,9 +130,9 @@ struct CharacterDetailView: View {
         if let animes = vm.characterDetail?.media?.nodes?.compactMap({ $0?.fragments.animeSmall }) {
             VStack(alignment: .leading, spacing: 10) {
                 Text("MEDIA")
+                    .customFont(.regular, 16)
                     .frame(width: screenWidth - 30, alignment: .leading)
                     .foregroundStyle(.secondary)
-                    .font(Font.custom("OpenSans", size: 14))
 
                 ScrollView {
                     ForEach(animes) { anime in

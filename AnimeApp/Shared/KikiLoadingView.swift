@@ -18,9 +18,8 @@ struct KikiLoadingView: View {
                 .scaleEffect(x: -1, y: 1)
                 .frame(height: height)
             Text("Loading...")
-                .fontWeight(.bold)
+                .customFont(.bold, size)
                 .foregroundColor(.secondary)
-                .font(.custom("OpenSans", size: size))
         }
     }
 }

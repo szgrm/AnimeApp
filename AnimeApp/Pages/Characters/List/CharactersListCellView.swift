@@ -21,10 +21,9 @@ struct CharactersListCellView: View {
             )
 
             Text(character.name?.full ?? "unknown")
-                .bold()
+                .customFont(.bold, 14)
                 .padding(.bottom, 5)
                 .frame(height: 40)
-                .font(Font.custom("OpenSans", size: 14))
                 .lineLimit(2)
         }
         .frame(width: 110, height: 215)

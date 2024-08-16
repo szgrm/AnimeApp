@@ -88,30 +88,20 @@ struct AnimeDetailView: View {
                     cornerRadius: 10
                 )
             })
-//            NavigationLink(destination: CoverImageView(coverImageUrl: (vm.animeDetail?.coverImage?.extraLarge ?? anime.coverImage?.large)!),
-//                           label: {
-//                               ImageView(
-//                                   url: (anime.coverImage?.large)!,
-//                                   width: 160,
-//                                   height: 220,
-//                                   cornerRadius: 10
-//                               )
-//                           })
 
             VStack {
                 Text(((anime.title?.english) ?? (anime.title?.romaji)) ?? "")
-                    .font(Font.custom("OpenSans", size: 28))
-                    .bold()
+                    .customFont(.bold, 28)
                     .multilineTextAlignment(.center)
                 Text(vm.animeDetail?.title?.native ?? "")
-                    .font(Font.custom("OpenSans", size: 20))
+                    .customFont(.regular, 20)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
                 ScrollView(.horizontal) {
                     HStack {
                         ForEach(vm.animeDetail?.genres ?? [], id: \.self) { genre in
                             Text(genre!)
-                                .font(Font.custom("OpenSans", size: 10))
+                                .customFont(.regular, 10)
                                 .padding(3)
                                 .background(Color("AppColor").opacity(0.4))
                                 .clipShape(.capsule)
@@ -168,20 +158,22 @@ struct AnimeDetailView: View {
     private var summarySection: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text("SUMMARY")
+                .customFont(.regular, 16)
                 .foregroundStyle(.secondary)
-                .font(Font.custom("OpenSans", size: 14))
 
             TextUtility.cleanDescription(anime.description ?? "")
+                .customFont(.regular, 14)
                 .frame(maxWidth: screenWidth, alignment: .leading)
-                .font(Font.custom("OpenSans", size: 14))
                 .lineLimit(isViewed ? 50 : 5)
-            Button(isViewed ? "Show Less" : "Show More") {
+            
+            Button(action: {
                 withAnimation {
                     isViewed.toggle()
                 }
-            }
-            .font(Font.custom("OpenSans", size: 14))
-            .fontWeight(.semibold)
+            }, label: {
+                Text(isViewed ? "Show Less" : "Show More")
+                    .customFont(.semiBold,14)
+            })
         }
         .padding(.horizontal, 15)
     }
@@ -191,9 +183,9 @@ struct AnimeDetailView: View {
         if let characters = vm.animeDetail?.characters?.nodes?.compactMap({ $0?.fragments.characterSmall }) {
             VStack(alignment: .leading, spacing: 10) {
                 Text("CHARACTERS")
+                    .customFont(.regular, 16)
                     .frame(alignment: .leading)
                     .foregroundStyle(.secondary)
-                    .font(Font.custom("OpenSans", size: 14))
                     .padding(.leading, 15)
 
                 ScrollView(.horizontal) {
@@ -219,9 +211,9 @@ struct AnimeDetailView: View {
         VStack(alignment: .leading, spacing: 10) {
             if let ytID = vm.animeDetail?.trailer?.id {
                 Text("TRAILER")
+                    .customFont(.regular, 16)
                     .frame(width: screenWidth - 30, alignment: .leading)
                     .foregroundStyle(.secondary)
-                    .font(Font.custom("OpenSans", size: 14))
                 YoutubeVideoView(ID: ytID)
                     .frame(width: screenWidth - 30, height: 250)
                     .cornerRadius(10)

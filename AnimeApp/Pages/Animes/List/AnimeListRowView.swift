@@ -25,26 +25,25 @@ struct AnimeListRowView: View {
 
             VStack(alignment: .leading, spacing: 5) {
                 Text(((anime.title?.english) ?? (anime.title?.romaji)) ?? "No Title")
-                    .bold()
-                    .font(Font.custom("OpenSans", size: 20))
+                    .customFont(.bold, 20)
                     .lineLimit(1)
 
                 HStack {
                     Text("\(String(anime.seasonYear ?? 0))")
                         .foregroundStyle(.secondary)
-                        .font(Font.custom("OpenSans", size: 12))
+                        .customFont(.regular, 12)
                     Divider()
                         .frame(height: 10)
                     Text(anime.format?.rawValue ?? "-")
                         .foregroundStyle(.secondary)
-                        .font(Font.custom("OpenSans", size: 12))
+                        .customFont(.regular, 12)
                 }
                 .padding(.leading, 2)
 
                 HStack(spacing: 3) {
                     ForEach(anime.genres?.prefix(3) ?? [], id: \.self) { genre in
                         Text(genre!)
-                            .font(Font.custom("OpenSans", size: 10))
+                            .customFont(.regular, 10)
                             .padding(3)
                             .background(Color("AppColor").opacity(0.4))
                             .clipShape(.capsule)
@@ -52,9 +51,9 @@ struct AnimeListRowView: View {
                 }
 
                 TextUtility.cleanDescription(anime.description ?? "")
+                    .customFont(.regular, 10)
                     .frame(width: screenWidth * 3 / 5, alignment: .leading)
                     .lineLimit(6)
-                    .font(Font.custom("OpenSans", size: 10))
                     .multilineTextAlignment(.leading)
             }
             .frame(width: screenWidth * 3 / 5)

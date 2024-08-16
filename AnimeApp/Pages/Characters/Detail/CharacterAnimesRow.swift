@@ -24,25 +24,25 @@ struct CharacterAnimesRow: View {
 
             VStack(alignment: .leading, spacing: 5) {
                 Text(((anime.title?.english) ?? (anime.title?.romaji)) ?? "No Title")
-                    .font(Font.custom("OpenSans", size: 16))
+                    .customFont(.regular,16)
                     .lineLimit(1)
 
                 HStack {
                     Text("\(String(anime.seasonYear ?? 0))")
+                        .customFont(.regular, 12)
                         .foregroundStyle(.secondary)
-                        .font(Font.custom("OpenSans", size: 12))
                     Divider()
                         .frame(height: 10)
                     Text(anime.format?.rawValue ?? "-")
+                        .customFont(.regular, 12)
                         .foregroundStyle(.secondary)
-                        .font(Font.custom("OpenSans", size: 12))
                 }
                 .padding(.leading, 2)
 
                 HStack(spacing: 3) {
                     ForEach(anime.genres?.prefix(3) ?? [], id: \.self) { genre in
                         Text(genre!)
-                            .font(Font.custom("OpenSans", size: 10))
+                            .customFont(.regular, 10)
                             .padding(3)
                             .background(Color("AppColor").opacity(0.4))
                             .clipShape(.capsule)

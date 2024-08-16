@@ -68,8 +68,8 @@ struct CharacterListView: View {
                             .resizable()
                             .scaledToFit()
                             .frame(width: 65)
-                        Text("Characters").font(Font.custom("OpenSans", size: 17))
-                            .fontWeight(.semibold)
+                        Text("Characters")
+                            .customFont(.semiBold, 18)
                     }
                     .padding(.bottom, 10)
                 }

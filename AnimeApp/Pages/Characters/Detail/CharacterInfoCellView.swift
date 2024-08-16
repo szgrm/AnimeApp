@@ -13,10 +13,10 @@ struct CharacterInfoCellView: View {
     var body: some View {
         VStack {
             Text(cellTitle)
+                .customFont(.regular, 16)
                 .foregroundStyle(.secondary)
-                .font(Font.custom("OpenSans", size: 14))
             Text(cellVariable)
-                .font(Font.custom("OpenSans", size: 14))
+                .customFont(.regular, 14)
         }
     }
 }

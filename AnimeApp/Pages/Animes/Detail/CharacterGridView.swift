@@ -17,9 +17,9 @@ struct CharacterGridView: View {
             ImageView(url: (character.image?.large)!, width: 70, height: 100, cornerRadius: 5)
 
             Text(character.name?.full ?? "unknown")
+                .customFont(.regular, 10)
                 .padding(.horizontal, 2)
                 .frame(width: 70)
-                .font(Font.custom("OpenSans", size: 11))
                 .lineLimit(1)
         }
         .padding(.bottom, 5)

@@ -137,6 +137,9 @@
         }
       }
     },
+    "Error" : {
+
+    },
     "FORMAT" : {
       "localizations" : {
         "ja" : {
@@ -169,6 +172,22 @@
         }
       }
     },
+    "Loading..." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "読み込み中..."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yükleniyor..."
+          }
+        }
+      }
+    },
     "MEDIA" : {
       "localizations" : {
         "ja" : {
@@ -181,6 +200,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "MEDYA"
+          }
+        }
+      }
+    },
+    "No Result." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "結果がありません"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sonuç Yok."
           }
         }
       }
