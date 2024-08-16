@@ -17,6 +17,9 @@
 		75272B682C62093D00BA6699 /* AnimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75272B672C62093D00BA6699 /* AnimeService.swift */; };
 		75272B6A2C62CD5A00BA6699 /* CharacterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75272B692C62CD5A00BA6699 /* CharacterService.swift */; };
 		75272B6C2C62D71900BA6699 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75272B6B2C62D71900BA6699 /* DateUtil.swift */; };
+		7548C1EC2C6E23AA0034F82A /* KikiLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7548C1EB2C6E23AA0034F82A /* KikiLoadingView.swift */; };
+		7548C1EF2C6E35410034F82A /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 7548C1EE2C6E35410034F82A /* Lottie */; };
+		7548C1F32C6F36E70034F82A /* LoadMoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7548C1F22C6F36E70034F82A /* LoadMoreView.swift */; };
 		754913C72C47DB0300D09227 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 754913C62C47DB0300D09227 /* Nuke */; };
 		754913C92C47DB0300D09227 /* NukeExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 754913C82C47DB0300D09227 /* NukeExtensions */; };
 		754913CB2C47DB0300D09227 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = 754913CA2C47DB0300D09227 /* NukeUI */; };
@@ -61,6 +64,8 @@
 		75272B672C62093D00BA6699 /* AnimeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeService.swift; sourceTree = "<group>"; };
 		75272B692C62CD5A00BA6699 /* CharacterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterService.swift; sourceTree = "<group>"; };
 		75272B6B2C62D71900BA6699 /* DateUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
+		7548C1EB2C6E23AA0034F82A /* KikiLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikiLoadingView.swift; sourceTree = "<group>"; };
+		7548C1F22C6F36E70034F82A /* LoadMoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadMoreView.swift; sourceTree = "<group>"; };
 		754913CE2C47E74C00D09227 /* RequestLoggingInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLoggingInterceptor.swift; sourceTree = "<group>"; };
 		754913D12C47EAEC00D09227 /* schema.graphqls */ = {isa = PBXFileReference; lastKnownFileType = text; path = schema.graphqls; sourceTree = "<group>"; };
 		754913D22C47ECE400D09227 /* ResponseLoggingInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseLoggingInterceptor.swift; sourceTree = "<group>"; };
@@ -104,6 +109,7 @@
 				75C45F332C6DF8BD001A7C65 /* netfox in Frameworks */,
 				75752F952C413D30000F447E /* AnilistAPI in Frameworks */,
 				75CF43F82C412DBA003D24F1 /* Apollo in Frameworks */,
+				7548C1EF2C6E35410034F82A /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,6 +163,8 @@
 				757BA5552C4CFC86007C0F2D /* ImageView.swift */,
 				75891AB82C5840100014E33A /* BannerImageView.swift */,
 				750BD5572C59371500873CC2 /* YoutubeVideoView.swift */,
+				7548C1EB2C6E23AA0034F82A /* KikiLoadingView.swift */,
+				7548C1F22C6F36E70034F82A /* LoadMoreView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -299,6 +307,7 @@
 				754913CA2C47DB0300D09227 /* NukeUI */,
 				754913CC2C47DB0300D09227 /* NukeVideo */,
 				75C45F322C6DF8BD001A7C65 /* netfox */,
+				7548C1EE2C6E35410034F82A /* Lottie */,
 			);
 			productName = AnimeApp;
 			productReference = 75CF43C12C4109A9003D24F1 /* AnimeApp.app */;
@@ -335,6 +344,7 @@
 				75752F932C413D30000F447E /* XCLocalSwiftPackageReference "AnilistAPI" */,
 				754913C52C47DB0300D09227 /* XCRemoteSwiftPackageReference "Nuke" */,
 				75C45F312C6DF8BD001A7C65 /* XCRemoteSwiftPackageReference "netfox" */,
+				7548C1ED2C6E35410034F82A /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 75CF43C22C4109A9003D24F1 /* Products */;
 			projectDirPath = "";
@@ -364,6 +374,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7548C1EC2C6E23AA0034F82A /* KikiLoadingView.swift in Sources */,
 				75F819F92C58FB7D00E82EED /* AnimeInfoCellView.swift in Sources */,
 				757BA5532C4C58D2007C0F2D /* CharacterGridView.swift in Sources */,
 				75272B6A2C62CD5A00BA6699 /* CharacterService.swift in Sources */,
@@ -390,6 +401,7 @@
 				75752F9B2C4155FF000F447E /* AnimeListRowView.swift in Sources */,
 				75CF43C52C4109A9003D24F1 /* AnimeApp.swift in Sources */,
 				75D1CF502C5EC9810038095B /* CharacterInfoCellView.swift in Sources */,
+				7548C1F32C6F36E70034F82A /* LoadMoreView.swift in Sources */,
 				75D1CF4E2C5EA83B0038095B /* CharacterDetailViewModel.swift in Sources */,
 				75752F992C414E05000F447E /* AnimeListViewModel.swift in Sources */,
 				75CF43ED2C41113D003D24F1 /* AnimeListView.swift in Sources */,
@@ -614,6 +626,14 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		7548C1ED2C6E35410034F82A /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.0;
+			};
+		};
 		754913C52C47DB0300D09227 /* XCRemoteSwiftPackageReference "Nuke" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kean/Nuke.git";
@@ -641,6 +661,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		7548C1EE2C6E35410034F82A /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7548C1ED2C6E35410034F82A /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
 		754913C62C47DB0300D09227 /* Nuke */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 754913C52C47DB0300D09227 /* XCRemoteSwiftPackageReference "Nuke" */;
