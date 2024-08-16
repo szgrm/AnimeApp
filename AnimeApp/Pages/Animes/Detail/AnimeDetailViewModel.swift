@@ -9,6 +9,7 @@ import AnilistAPI
 import Foundation
 
 class AnimeDetailViewModel: ObservableObject {
+    @Published public var loadingState: LoadingState = .loading
     private let animeService: AnimeService
     @Published public var animeDetail: AnimeFull?
     var animeID: Int
@@ -21,5 +22,6 @@ class AnimeDetailViewModel: ObservableObject {
     @MainActor
     func getAnimeDetail() async {
         animeDetail = await animeService.getAnimeDetail(id: animeID)
+        loadingState = animeDetail != nil ? .loaded : .error
     }
 }

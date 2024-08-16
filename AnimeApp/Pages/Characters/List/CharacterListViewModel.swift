@@ -14,9 +14,11 @@ class CharacterListViewModel: ObservableObject {
     private let characterService: CharacterService
     @Published public var characters: [CharacterSmall]? = []
     @Published public var hasNextPage: Bool = false
+    @Published public var loadingState: LoadingState = .loading
     @Published public var searchTerm: String = "" {
         willSet {
             DispatchQueue.main.async {
+                self.loadingState = .loading
                 self.searchSubject.send(newValue)
             }
         }
@@ -59,15 +61,18 @@ class CharacterListViewModel: ObservableObject {
         let newCharacters = await characterService.getCharacters(page: currentPage)
         characters?.append(contentsOf: newCharacters ?? [])
         hasNextPage = true
+        loadingState = .loaded
     }
 
     func refresh() async {
         characters = await characterService.getCharacters(page: 1)
         hasNextPage = true
+        loadingState = .loaded
     }
 
     func searchCharacter(search: String) async {
         characters = await characterService.searchCharacter(search: search)
         hasNextPage = false
+        loadingState = characters?.isEmpty == false ? .loaded : .noResult
     }
 }

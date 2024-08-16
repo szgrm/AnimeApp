@@ -18,41 +18,16 @@ struct CharacterListView: View {
             ZStack {
                 Color("Background")
                     .ignoresSafeArea(edges: .all)
-                ScrollViewReader { proxy in
-                    ZStack(alignment: .bottomTrailing) {
-                        ScrollView {
-                            LazyVGrid(columns: [
-                                .init(.flexible()),
-                                .init(.flexible()),
-                                .init(.flexible()),
-                            ], spacing: 20) {
-                                ForEach(vm.characters ?? []) { character in
-                                    NavigationLink(destination: CharacterDetailView(character: character), label: {
-                                        CharactersListCellView(character: character)
-                                    })
-                                    .id(character.id)
-                                }
-                                if vm.hasNextPage {
-                                    LoadMoreView(loader: vm.loadMore)
-                                }
-                            }
-                        }
-                        .padding(.horizontal, 15)
-                        .foregroundStyle(.primary)
 
-                        Button {
-                            withAnimation {
-                                proxy.scrollTo(vm.characters?.first?.id)
-                            }
-                        } label: {
-                            Image(systemName: "arrow.up.circle.fill")
-                                .resizable()
-                                .scaledToFit()
-                                .tint(Color("AppColor").opacity(0.4))
-                                .frame(width: 40)
-                                .padding(15)
-                        }
-                    }
+                switch vm.loadingState {
+                case .loading:
+                    KikiLoadingView(height: 100, size: 16)
+                case .loaded: content
+                case .error:
+                    Text("Error")
+                        .foregroundStyle(.secondary)
+                case .noResult:
+                    NoResultView()
                 }
             }
             .refreshable {
@@ -76,6 +51,45 @@ struct CharacterListView: View {
             }
             .searchable(text: $vm.searchTerm, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search Character")
             .toolbarBackground(.visible)
+        }
+    }
+
+    private var content: some View {
+        ScrollViewReader { proxy in
+            ZStack(alignment: .bottomTrailing) {
+                ScrollView {
+                    LazyVGrid(columns: [
+                        .init(.flexible()),
+                        .init(.flexible()),
+                        .init(.flexible()),
+                    ], spacing: 20) {
+                        ForEach(vm.characters ?? []) { character in
+                            NavigationLink(destination: CharacterDetailView(character: character), label: {
+                                CharactersListCellView(character: character)
+                            })
+                            .id(character.id)
+                        }
+                        if vm.hasNextPage {
+                            LoadMoreView(loader: vm.loadMore)
+                        }
+                    }
+                }
+                .padding(.horizontal, 15)
+                .foregroundStyle(.primary)
+
+                Button {
+                    withAnimation {
+                        proxy.scrollTo(vm.characters?.first?.id)
+                    }
+                } label: {
+                    Image(systemName: "arrow.up.circle.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .tint(Color("AppColor").opacity(0.4))
+                        .frame(width: 40)
+                        .padding(15)
+                }
+            }
         }
     }
 }

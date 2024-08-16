@@ -14,9 +14,11 @@ class AnimeListViewModel: ObservableObject {
     private let animeService: AnimeService
     @Published public var animes: [AnimeSmall]? = []
     @Published public var hasNextPage: Bool = false
+    @Published public var loadingState: LoadingState = .loading
     @Published public var searchTerm: String = "" {
         willSet {
             DispatchQueue.main.async {
+                self.loadingState = .loading
                 self.searchSubject.send(newValue)
             }
         }
@@ -59,15 +61,18 @@ class AnimeListViewModel: ObservableObject {
         let newAnimes = await animeService.getAnimes(page: currentPage)
         animes?.append(contentsOf: newAnimes ?? [])
         hasNextPage = true
+        loadingState = .loaded
     }
 
     func refresh() async {
         animes = await animeService.getAnimes(page: 1)
         hasNextPage = true
+        loadingState = .loaded
     }
 
     func searchAnime(search: String) async {
         animes = await animeService.searchAnimes(search: search)
         hasNextPage = false
+        loadingState = animes?.isEmpty == false ? .loaded : .noResult
     }
 }

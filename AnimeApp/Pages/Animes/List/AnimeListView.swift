@@ -16,36 +16,16 @@ struct AnimeListView: View {
             ZStack {
                 Color("Background")
                     .ignoresSafeArea(edges: .all)
-                ScrollViewReader { proxy in
-                    ZStack(alignment: .bottomTrailing) {
-                        ScrollView {
-                            LazyVStack {
-                                ForEach(vm.animes ?? []) { anime in
-                                    NavigationLink(destination: AnimeDetailView(anime: anime), label: {
-                                        AnimeListRowView(anime: anime)
-                                    })
-                                    .id(anime.id)
-                                }
-                                if vm.hasNextPage {
-                                    LoadMoreView(loader: vm.loadMore)
-                                }
-                            }
-                        }
-                        .foregroundStyle(.primary)
 
-                        Button {
-                            withAnimation {
-                                proxy.scrollTo(vm.animes?.first?.id)
-                            }
-                        } label: {
-                            Image(systemName: "arrow.up.circle.fill")
-                                .resizable()
-                                .scaledToFit()
-                                .tint(Color("AppColor").opacity(0.4))
-                                .frame(width: 40)
-                                .padding(15)
-                        }
-                    }
+                switch vm.loadingState {
+                case .loading:
+                    KikiLoadingView(height: 100, size: 16)
+                case .loaded: content
+                case .error:
+                    Text("Error")
+                        .foregroundStyle(.secondary)
+                case .noResult:
+                    NoResultView()
                 }
             }
             .refreshable {
@@ -69,6 +49,40 @@ struct AnimeListView: View {
             }
             .searchable(text: $vm.searchTerm, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search Anime")
             .toolbarBackground(.visible)
+        }
+    }
+
+    private var content: some View {
+        ScrollViewReader { proxy in
+            ZStack(alignment: .bottomTrailing) {
+                ScrollView {
+                    LazyVStack {
+                        ForEach(vm.animes ?? []) { anime in
+                            NavigationLink(destination: AnimeDetailView(anime: anime), label: {
+                                AnimeListRowView(anime: anime)
+                            })
+                            .id(anime.id)
+                        }
+                        if vm.hasNextPage {
+                            LoadMoreView(loader: vm.loadMore)
+                        }
+                    }
+                }
+                .foregroundStyle(.primary)
+
+                Button {
+                    withAnimation {
+                        proxy.scrollTo(vm.animes?.first?.id)
+                    }
+                } label: {
+                    Image(systemName: "arrow.up.circle.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .tint(Color("AppColor").opacity(0.4))
+                        .frame(width: 40)
+                        .padding(15)
+                }
+            }
         }
     }
 }

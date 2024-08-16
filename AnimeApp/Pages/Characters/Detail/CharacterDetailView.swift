@@ -25,22 +25,34 @@ struct CharacterDetailView: View {
             LinearGradient(colors: [Color("AppColor"), Color("Background"), Color("Background"), Color("Background")], startPoint: .top, endPoint: .bottom)
                 .ignoresSafeArea()
 
-            ScrollView {
-                VStack(spacing: 15) {
-                    titleSection
-
-                    infoCellSection
-
-                    descriptionSection
-
-                    mediaSection
-                }
-                .frame(width: screenWidth)
-                .padding(.top, 50)
+            switch vm.loadingState {
+            case .loading:
+                KikiLoadingView(height: 100, size: 16)
+                    .task { await vm.getCharacterDetail() }
+            case .loaded:
+                content
+            case .error:
+                Text("Error")
+                    .foregroundStyle(.secondary)
+            case .noResult:
+                NoResultView()
             }
         }
-        .task {
-            await vm.getCharacterDetail()
+    }
+
+    private var content: some View {
+        ScrollView {
+            VStack(spacing: 15) {
+                titleSection
+
+                infoCellSection
+
+                descriptionSection
+
+                mediaSection
+            }
+            .frame(width: screenWidth)
+            .padding(.top, 50)
         }
     }
 

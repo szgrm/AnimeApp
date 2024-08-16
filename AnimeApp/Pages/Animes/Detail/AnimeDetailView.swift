@@ -25,31 +25,44 @@ struct AnimeDetailView: View {
         ZStack {
             Color("Background")
 
-            ScrollView {
-                bannerSection
-
-                VStack(spacing: 15) {
-                    titleSection
-
-                    infoCellSection
-
-                    summarySection
-
-                    characterSection
-
-                    trailerSection
-                }
-                .frame(width: screenWidth)
-                .offset(y: -100)
+            switch vm.loadingState {
+            case .loading:
+                KikiLoadingView(height: 100, size: 16)
+                    .task { await vm.getAnimeDetail() }
+            case .loaded:
+                content
+            case .error:
+                Text("Error")
+                    .foregroundStyle(.secondary)
+            case .noResult:
+                NoResultView()
             }
         }
         .sheet(isPresented: $showDetail) {
             CoverImageView(coverImageUrl: (vm.animeDetail?.coverImage?.extraLarge ?? anime.coverImage?.large)!)
         }
-        .task {
-            await vm.getAnimeDetail()
-        }
+
         .ignoresSafeArea()
+    }
+
+    private var content: some View {
+        ScrollView {
+            bannerSection
+
+            VStack(spacing: 15) {
+                titleSection
+
+                infoCellSection
+
+                summarySection
+
+                characterSection
+
+                trailerSection
+            }
+            .frame(width: screenWidth)
+            .offset(y: -100)
+        }
     }
 
     private var bannerSection: some View {
@@ -165,14 +178,14 @@ struct AnimeDetailView: View {
                 .customFont(.regular, 14)
                 .frame(maxWidth: screenWidth, alignment: .leading)
                 .lineLimit(isViewed ? 50 : 5)
-            
+
             Button(action: {
                 withAnimation {
                     isViewed.toggle()
                 }
             }, label: {
                 Text(isViewed ? "Show Less" : "Show More")
-                    .customFont(.semiBold,14)
+                    .customFont(.semiBold, 14)
             })
         }
         .padding(.horizontal, 15)

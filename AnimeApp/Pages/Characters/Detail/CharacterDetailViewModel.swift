@@ -11,6 +11,7 @@ import Foundation
 class CharacterDetailViewModel: ObservableObject {
     private let characterService: CharacterService
     @Published public var characterDetail: CharacterFull?
+    @Published public var loadingState: LoadingState = .loading
     var characterID: Int
 
     init(characterID: Int, characterService: CharacterService) {
@@ -21,6 +22,7 @@ class CharacterDetailViewModel: ObservableObject {
     @MainActor
     func getCharacterDetail() async {
         characterDetail = await characterService.getCharacterDetail(id: characterID)
+        loadingState = characterDetail != nil ? .loaded : .error
     }
 
     var alternativeNamesFormatted: String? {
