@@ -3,7 +3,7 @@ query GetAnimes($page: Int!) {
     pageInfo {
       hasNextPage
     }
-    media(isAdult: false, sort: POPULARITY_DESC, format_in: [TV, MOVIE]) {
+    media(isAdult: false, sort: POPULARITY_DESC, format_in: [TV, MOVIE], genre_not_in: "Ecchi") {
       ...AnimeSmall
     }
   }
@@ -34,7 +34,7 @@ query GetCharacterDetail($id: Int!) {
 
 query SearchAnime($search: String!) {
   Page(perPage: 20) {
-    media(search: $search, isAdult: false, sort: POPULARITY_DESC, format_in: [TV, MOVIE]) {
+    media(search: $search, isAdult: false, sort: POPULARITY_DESC, format_in: [TV, MOVIE], genre_not_in: "Ecchi") {
       ...AnimeSmall
     }
   }

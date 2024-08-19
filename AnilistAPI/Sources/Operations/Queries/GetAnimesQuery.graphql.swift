@@ -7,7 +7,7 @@ public class GetAnimesQuery: GraphQLQuery {
   public static let operationName: String = "GetAnimes"
   public static let operationDocument: ApolloAPI.OperationDocument = .init(
     definition: .init(
-      #"query GetAnimes($page: Int!) { Page(page: $page, perPage: 20) { __typename pageInfo { __typename hasNextPage } media(isAdult: false, sort: POPULARITY_DESC, format_in: [TV, MOVIE]) { __typename ...AnimeSmall } } }"#,
+      #"query GetAnimes($page: Int!) { Page(page: $page, perPage: 20) { __typename pageInfo { __typename hasNextPage } media( isAdult: false sort: POPULARITY_DESC format_in: [TV, MOVIE] genre_not_in: "Ecchi" ) { __typename ...AnimeSmall } } }"#,
       fragments: [AnimeSmall.self]
     ))
 
@@ -47,7 +47,8 @@ public class GetAnimesQuery: GraphQLQuery {
         .field("media", [Medium?]?.self, arguments: [
           "isAdult": false,
           "sort": "POPULARITY_DESC",
-          "format_in": ["TV", "MOVIE"]
+          "format_in": ["TV", "MOVIE"],
+          "genre_not_in": "Ecchi"
         ]),
       ] }
 

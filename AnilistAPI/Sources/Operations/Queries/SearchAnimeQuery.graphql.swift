@@ -7,7 +7,7 @@ public class SearchAnimeQuery: GraphQLQuery {
   public static let operationName: String = "SearchAnime"
   public static let operationDocument: ApolloAPI.OperationDocument = .init(
     definition: .init(
-      #"query SearchAnime($search: String!) { Page(perPage: 20) { __typename media( search: $search isAdult: false sort: POPULARITY_DESC format_in: [TV, MOVIE] ) { __typename ...AnimeSmall } } }"#,
+      #"query SearchAnime($search: String!) { Page(perPage: 20) { __typename media( search: $search isAdult: false sort: POPULARITY_DESC format_in: [TV, MOVIE] genre_not_in: "Ecchi" ) { __typename ...AnimeSmall } } }"#,
       fragments: [AnimeSmall.self]
     ))
 
@@ -44,7 +44,8 @@ public class SearchAnimeQuery: GraphQLQuery {
           "search": .variable("search"),
           "isAdult": false,
           "sort": "POPULARITY_DESC",
-          "format_in": ["TV", "MOVIE"]
+          "format_in": ["TV", "MOVIE"],
+          "genre_not_in": "Ecchi"
         ]),
       ] }
 
