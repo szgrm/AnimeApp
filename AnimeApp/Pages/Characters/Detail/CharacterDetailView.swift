@@ -11,13 +11,13 @@ import SwiftUI
 
 struct CharacterDetailView: View {
     @ObservedObject var vm: CharacterDetailViewModel
-    let character: CharacterSmall
+    let characterID: Int
     let screenWidth = UIScreen.main.bounds.size.width
     @State var isViewed: Bool = false
 
-    init(character: CharacterSmall) {
-        self.character = character
-        vm = CharacterDetailViewModel(characterID: character.id, characterService: CharacterService())
+    init(characterID: Int) {
+        self.characterID = characterID
+        vm = CharacterDetailViewModel(characterID: characterID, characterService: CharacterService())
     }
 
     var body: some View {
@@ -59,7 +59,7 @@ struct CharacterDetailView: View {
     private var titleSection: some View {
         HStack(alignment: .bottom) {
             ImageView(
-                url: (character.image?.large)!,
+                url: (vm.characterDetail?.image?.large)!,
                 width: 160,
                 height: 220,
                 cornerRadius: 10
@@ -149,7 +149,7 @@ struct CharacterDetailView: View {
                 ScrollView {
                     ForEach(animes) { anime in
                         if !(anime.isAdult ?? true) {
-                            NavigationLink(destination: AnimeDetailView(anime: anime), label: {
+                            NavigationLink(destination: AnimeDetailView(animeID: anime.id), label: {
                                 CharacterAnimesRow(anime: anime)
                             })
                         }
@@ -165,4 +165,8 @@ struct CharacterDetailView: View {
                 .frame(width: screenWidth, height: 200)
         }
     }
+}
+
+#Preview {
+    CharacterDetailView(characterID: 1)
 }

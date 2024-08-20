@@ -58,7 +58,7 @@ struct AnimeListView: View {
                 ScrollView {
                     LazyVStack {
                         ForEach(vm.animes ?? []) { anime in
-                            NavigationLink(destination: AnimeDetailView(anime: anime), label: {
+                            NavigationLink(destination: AnimeDetailView(animeID: anime.id), label: {
                                 AnimeListRowView(anime: anime)
                             })
                             .id(anime.id)

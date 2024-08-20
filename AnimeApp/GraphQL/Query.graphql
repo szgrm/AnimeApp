@@ -52,7 +52,6 @@ fragment AnimeSmall on Media {
   isAdult
   coverImage {
     large
-    color
   }
   title {
     english
@@ -68,10 +67,12 @@ fragment AnimeFull on Media {
   id
   coverImage {
     extraLarge
+    color
   }
   title {
     english
     native
+    romaji
   }
   genres
   averageScore

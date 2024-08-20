@@ -5,7 +5,7 @@
 
 public struct AnimeFull: AnilistAPI.SelectionSet, Fragment {
   public static var fragmentDefinition: StaticString {
-    #"fragment AnimeFull on Media { __typename id coverImage { __typename extraLarge } title { __typename english native } genres averageScore description episodes characters(sort: FAVOURITES_DESC) { __typename nodes { __typename ...CharacterSmall } } seasonYear status trailer { __typename site thumbnail id } format bannerImage }"#
+    #"fragment AnimeFull on Media { __typename id coverImage { __typename extraLarge color } title { __typename english native romaji } genres averageScore description episodes characters(sort: FAVOURITES_DESC) { __typename nodes { __typename ...CharacterSmall } } seasonYear status trailer { __typename site thumbnail id } format bannerImage }"#
   }
 
   public let __data: DataDict
@@ -67,10 +67,13 @@ public struct AnimeFull: AnilistAPI.SelectionSet, Fragment {
     public static var __selections: [ApolloAPI.Selection] { [
       .field("__typename", String.self),
       .field("extraLarge", String?.self),
+      .field("color", String?.self),
     ] }
 
     /// The cover image url of the media at its largest size. If this size isn't available, large will be provided instead.
     public var extraLarge: String? { __data["extraLarge"] }
+    /// Average #hex color of cover image
+    public var color: String? { __data["color"] }
   }
 
   /// Title
@@ -85,12 +88,15 @@ public struct AnimeFull: AnilistAPI.SelectionSet, Fragment {
       .field("__typename", String.self),
       .field("english", String?.self),
       .field("native", String?.self),
+      .field("romaji", String?.self),
     ] }
 
     /// The official english title
     public var english: String? { __data["english"] }
     /// Official title in it's native language
     public var native: String? { __data["native"] }
+    /// The romanization of the native language title
+    public var romaji: String? { __data["romaji"] }
   }
 
   /// Characters

@@ -10,15 +10,15 @@ import NukeUI
 import SwiftUI
 
 struct AnimeDetailView: View {
-    let anime: AnimeSmall
+    let animeID: Int
     @ObservedObject var vm: AnimeDetailViewModel
     @State var isViewed: Bool = false
     @State private var showDetail = false
     let screenWidth = UIScreen.main.bounds.size.width
 
-    init(anime: AnimeSmall) {
-        self.anime = anime
-        vm = AnimeDetailViewModel(animeID: anime.id, animeService: AnimeService())
+    init(animeID: Int) {
+        self.animeID = animeID
+        vm = AnimeDetailViewModel(animeID: animeID, animeService: AnimeService())
     }
 
     var body: some View {
@@ -39,7 +39,7 @@ struct AnimeDetailView: View {
             }
         }
         .sheet(isPresented: $showDetail) {
-            CoverImageView(coverImageUrl: (vm.animeDetail?.coverImage?.extraLarge ?? anime.coverImage?.large)!)
+            CoverImageView(coverImageUrl: (vm.animeDetail?.coverImage?.extraLarge)!)
         }
 
         .ignoresSafeArea()
@@ -74,11 +74,11 @@ struct AnimeDetailView: View {
                 if let bannerUrl = vm.animeDetail?.bannerImage {
                     BannerImageView(url: bannerUrl,
                                     height: isScrolled ? 250 + offsetY : 250,
-                                    hex: anime.coverImage?.color ?? "#A176AD")
+                                    hex: vm.animeDetail?.coverImage?.color ?? "#A176AD")
                         .offset(y: isScrolled ? -offsetY : 0)
                 } else {
                     Rectangle()
-                        .foregroundStyle(Color(hex: anime.coverImage?.color ?? "#A176AD"))
+                        .foregroundStyle(Color(hex: vm.animeDetail?.coverImage?.color ?? "#A176AD"))
                         .frame(width: geometry.size.width, height: isScrolled ? 250 + offsetY : 250)
                         .offset(y: isScrolled ? -offsetY : 0)
                 }
@@ -95,7 +95,7 @@ struct AnimeDetailView: View {
         HStack(alignment: .bottom) {
             Button(action: { showDetail.toggle() }, label: {
                 ImageView(
-                    url: (anime.coverImage?.large)!,
+                    url: (vm.animeDetail?.coverImage?.extraLarge)!,
                     width: 160,
                     height: 220,
                     cornerRadius: 10
@@ -103,7 +103,7 @@ struct AnimeDetailView: View {
             })
 
             VStack {
-                Text(((anime.title?.english) ?? (anime.title?.romaji)) ?? "")
+                Text(((vm.animeDetail?.title?.english) ?? (vm.animeDetail?.title?.romaji)) ?? "")
                     .customFont(.bold, 28)
                     .multilineTextAlignment(.center)
                 Text(vm.animeDetail?.title?.native ?? "")
@@ -174,7 +174,7 @@ struct AnimeDetailView: View {
                 .customFont(.regular, 16)
                 .foregroundStyle(.secondary)
 
-            TextUtility.cleanDescription(anime.description ?? "")
+            TextUtility.cleanDescription(vm.animeDetail?.description ?? "")
                 .customFont(.regular, 14)
                 .frame(maxWidth: screenWidth, alignment: .leading)
                 .lineLimit(isViewed ? 50 : 5)
@@ -204,7 +204,7 @@ struct AnimeDetailView: View {
                 ScrollView(.horizontal) {
                     HStack(spacing: 10) {
                         ForEach(characters) { character in
-                            NavigationLink(destination: CharacterDetailView(character: character), label: {
+                            NavigationLink(destination: CharacterDetailView(characterID: character.id), label: {
                                 CharacterGridView(character: character)
                             })
                         }
@@ -233,4 +233,8 @@ struct AnimeDetailView: View {
             }
         }
     }
+}
+
+#Preview {
+    AnimeDetailView(animeID: 6)
 }

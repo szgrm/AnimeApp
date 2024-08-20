@@ -64,7 +64,7 @@ struct CharacterListView: View {
                         .init(.flexible()),
                     ], spacing: 20) {
                         ForEach(vm.characters ?? []) { character in
-                            NavigationLink(destination: CharacterDetailView(character: character), label: {
+                            NavigationLink(destination: CharacterDetailView(characterID: character.id), label: {
                                 CharactersListCellView(character: character)
                             })
                             .id(character.id)
