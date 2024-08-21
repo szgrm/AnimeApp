@@ -12,7 +12,7 @@ import Foundation
 @MainActor
 class CharacterListViewModel: ObservableObject {
     private let characterService: CharacterService
-    @Published public var characters: [CharacterSmall]? = []
+    @Published public var characters: [Characters]? = []
     @Published public var hasNextPage: Bool = false
     @Published public var loadingState: LoadingState = .loading
     @Published public var searchTerm: String = "" {

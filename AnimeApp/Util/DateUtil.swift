@@ -9,7 +9,7 @@ import AnilistAPI
 import Foundation
 
 class DateUtil {
-    static func formatDate(date: CharacterFull.DateOfBirth?) -> String {
+    static func formatDate(date: DateOfBirth?) -> String {
         var dateComponents = DateComponents()
         dateComponents.day = date?.day
         dateComponents.month = date?.month

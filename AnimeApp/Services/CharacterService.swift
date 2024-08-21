@@ -14,12 +14,12 @@ class CharacterService {
         category: String(describing: AnimeService.self)
     )
 
-    func getCharacters(page: Int) async -> [CharacterSmall]? {
+    func getCharacters(page: Int) async -> [Characters]? {
         await withCheckedContinuation { continuation in
             Network.shared.apollo.fetch(query: GetCharactersQuery(page: page)) { result in
                 switch result {
                 case let .success(graphQLResult):
-                    let characters = graphQLResult.data?.page?.characters?.compactMap { $0?.fragments.characterSmall }
+                    let characters = graphQLResult.data?.page?.characters?.compactMap { Characters(from: ($0?.fragments.characterSmall)!) }
                     continuation.resume(returning: characters)
 
                 case let .failure(error):
@@ -30,12 +30,14 @@ class CharacterService {
         }
     }
 
-    func searchCharacter(search: String) async -> [CharacterSmall]? {
+    func searchCharacter(search: String) async -> [Characters]? {
         await withCheckedContinuation { continuation in
             Network.shared.apollo.fetch(query: SearchCharacterQuery(search: search)) { result in
                 switch result {
                 case let .success(graphQLResult):
-                    let characters = graphQLResult.data?.page?.characters?.compactMap { $0?.fragments.characterSmall }
+                    let characters = graphQLResult.data?.page?.characters?.compactMap {
+                        Characters(from: ($0?.fragments.characterSmall)!)
+                    }
                     continuation.resume(returning: characters)
 
                 case let .failure(error):
@@ -46,12 +48,12 @@ class CharacterService {
         }
     }
 
-    func getCharacterDetail(id: Int) async -> CharacterFull? {
+    func getCharacterDetail(id: Int) async -> CharacterDetail? {
         await withCheckedContinuation { continuation in
             Network.shared.apollo.fetch(query: GetCharacterDetailQuery(id: id), cachePolicy: .fetchIgnoringCacheData) { result in
                 switch result {
                 case let .success(graphQLResult):
-                    let characterDetail = graphQLResult.data?.character?.fragments.characterFull
+                    let characterDetail = CharacterDetail(from: (graphQLResult.data?.character?.fragments.characterFull)!)
                     continuation.resume(returning: characterDetail)
 
                 case let .failure(error):

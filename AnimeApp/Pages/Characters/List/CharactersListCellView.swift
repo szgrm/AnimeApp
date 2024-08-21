@@ -10,17 +10,17 @@ import NukeUI
 import SwiftUI
 
 struct CharactersListCellView: View {
-    let character: CharacterSmall
+    let character: Characters
     var body: some View {
         VStack {
             ImageView(
-                url: (character.image?.large)!,
+                url: character.image.large,
                 width: 110,
                 height: 165,
                 cornerRadius: 10
             )
 
-            Text(character.name?.full ?? "unknown")
+            Text(character.name.full)
                 .customFont(.bold, 14)
                 .padding(.bottom, 5)
                 .frame(height: 40)

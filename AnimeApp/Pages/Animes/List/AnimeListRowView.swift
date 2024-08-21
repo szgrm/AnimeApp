@@ -10,13 +10,13 @@ import NukeUI
 import SwiftUI
 
 struct AnimeListRowView: View {
-    let anime: AnimeSmall
+    let anime: Anime
     let screenWidth = UIScreen.main.bounds.size.width
 
     var body: some View {
         HStack(alignment: .top) {
             ImageView(
-                url: (anime.coverImage?.large)!,
+                url: anime.coverImage.large,
                 width: 120,
                 height: 180,
                 cornerRadius: 10
@@ -24,25 +24,25 @@ struct AnimeListRowView: View {
             .id(anime.id)
 
             VStack(alignment: .leading, spacing: 5) {
-                Text(((anime.title?.english) ?? (anime.title?.romaji)) ?? "No Title")
+                Text(((anime.title.english) ?? (anime.title.romaji)) ?? "No Title")
                     .customFont(.bold, 20)
                     .lineLimit(1)
 
                 HStack {
-                    Text("\(String(anime.seasonYear ?? 0))")
+                    Text(anime.seasonYear)
                         .foregroundStyle(.secondary)
                         .customFont(.regular, 12)
                     Divider()
                         .frame(height: 10)
-                    Text(anime.format?.rawValue ?? "-")
+                    Text(anime.format.rawValue)
                         .foregroundStyle(.secondary)
                         .customFont(.regular, 12)
                 }
                 .padding(.leading, 2)
 
                 HStack(spacing: 3) {
-                    ForEach(anime.genres?.prefix(3) ?? [], id: \.self) { genre in
-                        Text(genre!)
+                    ForEach(anime.genres.prefix(3), id: \.self) { genre in
+                        Text(genre)
                             .customFont(.regular, 10)
                             .padding(3)
                             .background(Color("AppColor").opacity(0.4))
@@ -50,7 +50,7 @@ struct AnimeListRowView: View {
                     }
                 }
 
-                TextUtility.cleanDescription(anime.description ?? "")
+                TextUtility.cleanDescription(anime.description)
                     .customFont(.regular, 10)
                     .frame(width: screenWidth * 3 / 5, alignment: .leading)
                     .lineLimit(6)

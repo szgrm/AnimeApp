@@ -10,11 +10,9 @@ import SwiftUI
 struct LoadMoreView: View {
     var loader: () async -> Void
     var body: some View {
-        HStack {
-            KikiLoadingView(height: 50, size: 12)
-        }
-        .task {
-            await loader()
-        }
+        KikiLoadingView(height: 50, size: 12)
+            .task {
+                await loader()
+            }
     }
 }

@@ -9,13 +9,13 @@ import AnilistAPI
 import SwiftUI
 
 struct CharacterAnimesRow: View {
-    let anime: AnimeSmall
+    let anime: Anime
     let screenWidth = UIScreen.main.bounds.size.width
 
     var body: some View {
         HStack(alignment: .top) {
             ImageView(
-                url: (anime.coverImage?.large)!,
+                url: anime.coverImage.large,
                 width: 60,
                 height: 90,
                 cornerRadius: 5
@@ -23,25 +23,25 @@ struct CharacterAnimesRow: View {
             .id(anime.id)
 
             VStack(alignment: .leading, spacing: 5) {
-                Text(((anime.title?.english) ?? (anime.title?.romaji)) ?? "No Title")
+                Text(((anime.title.english) ?? (anime.title.romaji)) ?? "No Title")
                     .customFont(.regular, 16)
                     .lineLimit(1)
 
                 HStack {
-                    Text("\(String(anime.seasonYear ?? 0))")
+                    Text(anime.seasonYear)
                         .customFont(.regular, 12)
                         .foregroundStyle(.secondary)
                     Divider()
                         .frame(height: 10)
-                    Text(anime.format?.rawValue ?? "-")
+                    Text(anime.format.rawValue)
                         .customFont(.regular, 12)
                         .foregroundStyle(.secondary)
                 }
                 .padding(.leading, 2)
 
                 HStack(spacing: 3) {
-                    ForEach(anime.genres?.prefix(3) ?? [], id: \.self) { genre in
-                        Text(genre!)
+                    ForEach(anime.genres.prefix(3), id: \.self) { genre in
+                        Text(genre)
                             .customFont(.regular, 10)
                             .padding(3)
                             .background(Color("AppColor").opacity(0.4))

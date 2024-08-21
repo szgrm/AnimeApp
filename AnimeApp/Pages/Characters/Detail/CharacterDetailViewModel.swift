@@ -10,7 +10,7 @@ import Foundation
 
 class CharacterDetailViewModel: ObservableObject {
     private let characterService: CharacterService
-    @Published public var characterDetail: CharacterFull?
+    @Published public var characterDetail: CharacterDetail?
     @Published public var loadingState: LoadingState = .loading
     var characterID: Int
 
@@ -23,10 +23,5 @@ class CharacterDetailViewModel: ObservableObject {
     func getCharacterDetail() async {
         characterDetail = await characterService.getCharacterDetail(id: characterID)
         loadingState = characterDetail != nil ? .loaded : .error
-    }
-
-    var alternativeNamesFormatted: String? {
-        guard let alternative = characterDetail?.name?.alternative else { return nil }
-        return alternative.compactMap { $0 }.joined(separator: ", ")
     }
 }

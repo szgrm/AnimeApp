@@ -12,7 +12,7 @@ import Foundation
 @MainActor
 class AnimeListViewModel: ObservableObject {
     private let animeService: AnimeService
-    @Published public var animes: [AnimeSmall]? = []
+    @Published public var animes: [Anime]? = []
     @Published public var hasNextPage: Bool = false
     @Published public var loadingState: LoadingState = .loading
     @Published public var searchTerm: String = "" {

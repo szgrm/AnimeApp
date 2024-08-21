@@ -10,13 +10,13 @@ import NukeUI
 import SwiftUI
 
 struct CharacterGridView: View {
-    let character: CharacterSmall
+    let character: Characters
 
     var body: some View {
         VStack {
-            ImageView(url: (character.image?.large)!, width: 70, height: 100, cornerRadius: 5)
+            ImageView(url: character.image.large, width: 70, height: 100, cornerRadius: 5)
 
-            Text(character.name?.full ?? "unknown")
+            Text(character.name.full)
                 .customFont(.regular, 10)
                 .padding(.horizontal, 2)
                 .frame(width: 70)
