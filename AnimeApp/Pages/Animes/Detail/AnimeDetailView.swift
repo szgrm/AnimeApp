@@ -28,18 +28,16 @@ struct AnimeDetailView: View {
                     .task { await vm.getAnimeDetail() }
             case .loaded:
                 AnimeDetailContentView(animeDetail: vm.animeDetail!)
-            case .error:
-                Text("Error")
-                    .foregroundStyle(.secondary)
+            case let .error(error):
+                ErrorView(error: error)
             case .noResult:
                 NoResultView()
             }
         }
-
         .ignoresSafeArea()
     }
 }
 
 #Preview {
-    AnimeDetailView(animeID: 6)
+    AnimeDetailView(animeID: 1)
 }

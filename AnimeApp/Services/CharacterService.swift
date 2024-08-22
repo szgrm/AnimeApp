@@ -48,8 +48,8 @@ class CharacterService {
         }
     }
 
-    func getCharacterDetail(id: Int) async -> CharacterDetail? {
-        await withCheckedContinuation { continuation in
+    func getCharacterDetail(id: Int) async throws -> CharacterDetail? {
+        try await withCheckedThrowingContinuation { continuation in
             Network.shared.apollo.fetch(query: GetCharacterDetailQuery(id: id), cachePolicy: .fetchIgnoringCacheData) { result in
                 switch result {
                 case let .success(graphQLResult):
@@ -58,7 +58,7 @@ class CharacterService {
 
                 case let .failure(error):
                     self.logger.debug("error: \(error.localizedDescription)")
-                    continuation.resume(returning: nil)
+                    continuation.resume(throwing: error)
                 }
             }
         }

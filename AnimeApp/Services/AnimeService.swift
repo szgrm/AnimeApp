@@ -44,8 +44,8 @@ class AnimeService {
         }
     }
 
-    func getAnimeDetail(id: Int) async -> AnimeDetail? {
-        await withCheckedContinuation { continuation in
+    func getAnimeDetail(id: Int) async throws -> AnimeDetail? {
+        try await withCheckedThrowingContinuation { continuation in
             Network.shared.apollo.fetch(query: GetAnimeDetailQuery(id: id), cachePolicy: .fetchIgnoringCacheData) { result in
                 switch result {
                 case let .success(graphQLResult):
@@ -53,7 +53,7 @@ class AnimeService {
                     continuation.resume(returning: animeDetail)
                 case let .failure(error):
                     self.logger.debug("error: \(error.localizedDescription)")
-                    continuation.resume(returning: nil)
+                    continuation.resume(throwing: error)
                 }
             }
         }

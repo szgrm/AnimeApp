@@ -10,6 +10,6 @@ import Foundation
 enum LoadingState {
     case loading
     case loaded
-    case error
+    case error(Error)
     case noResult
 }

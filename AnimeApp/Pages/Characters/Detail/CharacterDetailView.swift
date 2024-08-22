@@ -29,9 +29,8 @@ struct CharacterDetailView: View {
                     .task { await vm.getCharacterDetail() }
             case .loaded:
                 CharacterDetailContentView(characterDetail: vm.characterDetail!)
-            case .error:
-                Text("Error")
-                    .foregroundStyle(.secondary)
+            case let .error(error):
+                ErrorView(error: error)
             case .noResult:
                 NoResultView()
             }

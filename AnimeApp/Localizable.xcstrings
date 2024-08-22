@@ -4,6 +4,9 @@
     "" : {
 
     },
+    "%@" : {
+
+    },
     "AGE" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -21,6 +24,22 @@
         }
       }
     },
+    "An error occurred" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "エラーが発生しました"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bir hata oluştu"
+          }
+        }
+      }
+    },
     "Animes" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -34,6 +53,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Animeler"
+          }
+        }
+      }
+    },
+    "Back" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "戻る"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geri"
           }
         }
       }
