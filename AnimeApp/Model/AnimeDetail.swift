@@ -35,7 +35,7 @@ struct AnimeDetail: Identifiable {
         seasonYear = if let year = animeDetail.seasonYear { "\(year)" } else { "-" }
         status = (animeDetail.status?.value)!
         trailer = AnimeTrailer(id: animeDetail.trailer?.id, site: animeDetail.trailer?.site, thumbnail: animeDetail.trailer?.thumbnail)
-        format = (animeDetail.format?.value)!
+        format = (animeDetail.format?.value) ?? MediaFormat.special
         bannerImage = animeDetail.bannerImage
     }
 }

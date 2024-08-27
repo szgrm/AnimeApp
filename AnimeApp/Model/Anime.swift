@@ -25,7 +25,7 @@ struct Anime: Identifiable {
         title = AnimeTitle(english: anime.title?.english, romaji: anime.title?.romaji)
         genres = anime.genres?.compactMap { $0 } ?? []
         description = anime.description ?? ""
-        format = (anime.format?.value)!
+        format = (anime.format?.value) ?? MediaFormat.special
         seasonYear = if let year = anime.seasonYear { "\(year)" } else { "-" }
     }
 }
