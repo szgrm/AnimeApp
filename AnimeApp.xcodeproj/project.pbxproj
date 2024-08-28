@@ -63,6 +63,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7501A7432C7F5DF7005BA315 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		750BD5572C59371500873CC2 /* YoutubeVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeVideoView.swift; sourceTree = "<group>"; };
 		750EE8F22C60BFC900761D4D /* CoverImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverImageView.swift; sourceTree = "<group>"; };
 		7513DBDD2C599191007953F4 /* CharacterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListView.swift; sourceTree = "<group>"; };
@@ -194,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				75752F912C413AC8000F447E /* apollo-codegen-config.json */,
+				7501A7432C7F5DF7005BA315 /* .gitignore */,
 				75CF43C32C4109A9003D24F1 /* AnimeApp */,
 				75CF43C22C4109A9003D24F1 /* Products */,
 			);
