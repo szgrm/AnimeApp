@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-class TextUtility {
-    static func cleanDescription(_ text: String) -> Text {
+extension String {
+    func cleanDescription() -> Text {
         var resultingText = Text("")
 
         var italics = false
         var bold = false
 
         let separators = CharacterSet(charactersIn: "<>")
-        let stringArray = text.components(separatedBy: separators)
+        let stringArray = components(separatedBy: separators)
 
         for i in 0 ..< stringArray.count {
             var tempText = Text(stringArray[i])

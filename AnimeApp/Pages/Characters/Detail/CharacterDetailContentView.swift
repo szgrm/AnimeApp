@@ -69,7 +69,7 @@ struct CharacterDetailContentView: View {
                         .frame(height: 40)
                         .overlay(.secondary)
 
-                    CharacterInfoCellView(cellTitle: "BIRTHDAY", cellVariable: DateUtil.formatDate(date: characterDetail.dateOfBirth))
+                    CharacterInfoCellView(cellTitle: "BIRTHDAY", cellVariable: characterDetail.dateOfBirth.formatDate())
                         .padding(.horizontal, 10)
                     Divider()
                         .frame(height: 40)

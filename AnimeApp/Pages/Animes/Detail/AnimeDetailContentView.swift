@@ -145,7 +145,7 @@ struct AnimeDetailContentView: View {
                 .customFont(.regular, 16)
                 .foregroundStyle(.secondary)
 
-            TextUtility.cleanDescription(animeDetail.description)
+            animeDetail.description.cleanDescription()
                 .customFont(.regular, 14)
                 .frame(maxWidth: screenWidth, alignment: .leading)
                 .lineLimit(isViewed ? 50 : 5)

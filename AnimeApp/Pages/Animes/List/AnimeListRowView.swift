@@ -50,7 +50,7 @@ struct AnimeListRowView: View {
                     }
                 }
 
-                TextUtility.cleanDescription(anime.description)
+                anime.description.cleanDescription()
                     .customFont(.regular, 10)
                     .frame(width: screenWidth * 3 / 5, alignment: .leading)
                     .lineLimit(6)

@@ -8,18 +8,19 @@
 import AnilistAPI
 import Foundation
 
-class DateUtil {
-    static func formatDate(date: DateOfBirth?) -> String {
+extension DateOfBirth {
+    func formatDate() -> String {
+        guard let day = day, let month = month else { return "-" }
         var dateComponents = DateComponents()
-        dateComponents.day = date?.day
-        dateComponents.month = date?.month
-        dateComponents.year = date?.year
+        dateComponents.day = day
+        dateComponents.month = month
+        dateComponents.year = year
 
         let calendar = Calendar.current
         guard let dateCalendar = calendar.date(from: dateComponents) else { return "" }
 
         let dateFormatter = DateFormatter()
-        if date?.year != nil {
+        if year != nil {
             dateFormatter.dateFormat = "d MMMM yyyy"
             return dateFormatter.string(from: dateCalendar)
         } else {

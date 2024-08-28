@@ -16,7 +16,7 @@ struct CharacterDetail {
     let gender: String
     let description: String
     let bloodType: String
-    let dateOfBirth: DateOfBirth?
+    let dateOfBirth: DateOfBirth
     let media: [Anime]?
 
     init(from characterDetail: CharacterFull) {
