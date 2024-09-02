@@ -17,10 +17,11 @@ struct AnimeListView: View {
                 Color("Background")
                     .ignoresSafeArea(edges: .all)
 
-                switch vm.loadingState {
+                switch vm.viewState {
                 case .loading:
                     KikiLoadingView(height: 100, size: 16)
-                case .loaded: content
+                case .loaded(let animes):
+                    content(animes: animes)
                 case .error:
                     Text("Error")
                         .foregroundStyle(.secondary)
@@ -52,12 +53,12 @@ struct AnimeListView: View {
         }
     }
 
-    private var content: some View {
+    private func content(animes: [Anime]) -> some View {
         ScrollViewReader { proxy in
             ZStack(alignment: .bottomTrailing) {
                 ScrollView {
                     LazyVStack {
-                        ForEach(vm.animes ?? []) { anime in
+                        ForEach(animes) { anime in
                             NavigationLink(destination: AnimeDetailView(animeID: anime.id), label: {
                                 AnimeListRowView(anime: anime)
                             })
@@ -72,7 +73,7 @@ struct AnimeListView: View {
 
                 Button {
                     withAnimation {
-                        proxy.scrollTo(vm.animes?.first?.id)
+                        proxy.scrollTo(animes.first?.id)
                     }
                 } label: {
                     Image(systemName: "arrow.up.circle.fill")

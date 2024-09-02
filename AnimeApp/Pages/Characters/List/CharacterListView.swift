@@ -19,10 +19,11 @@ struct CharacterListView: View {
                 Color("Background")
                     .ignoresSafeArea(edges: .all)
 
-                switch vm.loadingState {
+                switch vm.viewState {
                 case .loading:
                     KikiLoadingView(height: 100, size: 16)
-                case .loaded: content
+                case .loaded(let characters):
+                    content(characters: characters)
                 case .error:
                     Text("Error")
                         .foregroundStyle(.secondary)
@@ -54,7 +55,7 @@ struct CharacterListView: View {
         }
     }
 
-    private var content: some View {
+    private func content(characters: [Characters]) -> some View {
         ScrollViewReader { proxy in
             ZStack(alignment: .bottomTrailing) {
                 ScrollView {
@@ -63,7 +64,7 @@ struct CharacterListView: View {
                         .init(.flexible()),
                         .init(.flexible()),
                     ], spacing: 20) {
-                        ForEach(vm.characters ?? []) { character in
+                        ForEach(characters) { character in
                             NavigationLink(destination: CharacterDetailView(characterID: character.id), label: {
                                 CharactersListCellView(character: character)
                             })
@@ -79,7 +80,7 @@ struct CharacterListView: View {
 
                 Button {
                     withAnimation {
-                        proxy.scrollTo(vm.characters?.first?.id)
+                        proxy.scrollTo(characters.first?.id)
                     }
                 } label: {
                     Image(systemName: "arrow.up.circle.fill")

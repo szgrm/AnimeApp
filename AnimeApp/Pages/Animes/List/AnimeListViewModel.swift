@@ -12,13 +12,12 @@ import Foundation
 @MainActor
 class AnimeListViewModel: ObservableObject {
     private let animeService: AnimeService
-    @Published public var animes: [Anime]? = []
     @Published public var hasNextPage: Bool = false
-    @Published public var loadingState: LoadingState = .loading
+    @Published public var viewState: ViewState<[Anime]> = .loading
     @Published public var searchTerm: String = "" {
         willSet {
             DispatchQueue.main.async {
-                self.loadingState = .loading
+                self.viewState = .loading
                 self.searchSubject.send(newValue)
             }
         }
@@ -60,22 +59,25 @@ class AnimeListViewModel: ObservableObject {
     func getAnimes() async {
         let newAnimeData = await animeService.getAnimes(page: currentPage)
         let newAnimes = newAnimeData?.compactMap { Anime(from: $0) } ?? []
-        animes?.append(contentsOf: newAnimes)
+        if case .loaded(let animes) = viewState {
+            viewState = .loaded(animes + newAnimes)
+        } else {
+            viewState = .loaded(newAnimes)
+        }
         hasNextPage = true
-        loadingState = .loaded
     }
 
     func refresh() async {
         let animesData = await animeService.getAnimes(page: 1)
-        animes = animesData?.compactMap { Anime(from: $0) } ?? []
+        let animes = animesData?.compactMap { Anime(from: $0) } ?? []
         hasNextPage = true
-        loadingState = .loaded
+        viewState = .loaded(animes)
     }
 
     func searchAnime(search: String) async {
         let animesData = await animeService.searchAnimes(search: search)
-        animes = animesData?.compactMap { Anime(from: $0) } ?? []
+        let animes = animesData?.compactMap { Anime(from: $0) } ?? []
         hasNextPage = false
-        loadingState = animes?.isEmpty == false ? .loaded : .noResult
+        viewState = animes.isEmpty == false ? .loaded(animes) : .noResult
     }
 }

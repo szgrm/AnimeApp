@@ -10,8 +10,7 @@ import Foundation
 
 class AnimeDetailViewModel: ObservableObject {
     private let animeService: AnimeService
-    @Published public var animeDetail: AnimeDetail?
-    @Published public var loadingState: LoadingState = .loading
+    @Published public var viewState: ViewState<AnimeDetail> = .loading
     var animeID: Int
 
     init(animeID: Int, animeService: AnimeService) {
@@ -23,10 +22,10 @@ class AnimeDetailViewModel: ObservableObject {
     func getAnimeDetail() async {
         do {
             let animeDetailData = try await animeService.getAnimeDetail(id: animeID)
-            animeDetail = AnimeDetail(from: animeDetailData!)
-            loadingState = .loaded
+            let animeDetail = AnimeDetail(from: animeDetailData!)
+            viewState = .loaded(animeDetail)
         } catch {
-            loadingState = .error(error)
+            viewState = .error(error)
         }
     }
 }

@@ -56,7 +56,7 @@
 		75E310602C75C8DA00977DFA /* CharacterDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E3105F2C75C8DA00977DFA /* CharacterDetail.swift */; };
 		75F3112D2C5FFB4F00B1CB2A /* CharacterAnimesRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F3112C2C5FFB4F00B1CB2A /* CharacterAnimesRow.swift */; };
 		75F819F92C58FB7D00E82EED /* AnimeInfoCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F819F82C58FB7D00E82EED /* AnimeInfoCellView.swift */; };
-		75FAF2102C6F8EA300D17464 /* LoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FAF20F2C6F8EA300D17464 /* LoadingState.swift */; };
+		75FAF2102C6F8EA300D17464 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FAF20F2C6F8EA300D17464 /* ViewState.swift */; };
 		75FAF2122C6FA72D00D17464 /* NoResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FAF2112C6FA72D00D17464 /* NoResultView.swift */; };
 		75FAF2142C6FCB6B00D17464 /* FontUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FAF2132C6FCB6B00D17464 /* FontUtil.swift */; };
 		75FAF22A2C6FCF3500D17464 /* Onest.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 75FAF2292C6FCF3500D17464 /* Onest.ttf */; };
@@ -110,7 +110,7 @@
 		75E3105F2C75C8DA00977DFA /* CharacterDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetail.swift; sourceTree = "<group>"; };
 		75F3112C2C5FFB4F00B1CB2A /* CharacterAnimesRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterAnimesRow.swift; sourceTree = "<group>"; };
 		75F819F82C58FB7D00E82EED /* AnimeInfoCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeInfoCellView.swift; sourceTree = "<group>"; };
-		75FAF20F2C6F8EA300D17464 /* LoadingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingState.swift; sourceTree = "<group>"; };
+		75FAF20F2C6F8EA300D17464 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
 		75FAF2112C6FA72D00D17464 /* NoResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoResultView.swift; sourceTree = "<group>"; };
 		75FAF2132C6FCB6B00D17464 /* FontUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontUtil.swift; sourceTree = "<group>"; };
 		75FAF2292C6FCF3500D17464 /* Onest.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Onest.ttf; sourceTree = "<group>"; };
@@ -314,7 +314,7 @@
 		75FAF20E2C6F8E8E00D17464 /* Enums */ = {
 			isa = PBXGroup;
 			children = (
-				75FAF20F2C6F8EA300D17464 /* LoadingState.swift */,
+				75FAF20F2C6F8EA300D17464 /* ViewState.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -460,7 +460,7 @@
 				75356DE02C77B39D00132959 /* ErrorView.swift in Sources */,
 				75752F972C413F21000F447E /* Network.swift in Sources */,
 				7569EF642C44930B00E3DAF1 /* TextUtil.swift in Sources */,
-				75FAF2102C6F8EA300D17464 /* LoadingState.swift in Sources */,
+				75FAF2102C6F8EA300D17464 /* ViewState.swift in Sources */,
 				754913D32C47ECE400D09227 /* ResponseLoggingInterceptor.swift in Sources */,
 				75272B6C2C62D71900BA6699 /* DateUtil.swift in Sources */,
 				75356DDC2C75E92900132959 /* AnimeDetailContentView.swift in Sources */,

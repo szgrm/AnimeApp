@@ -12,13 +12,12 @@ import Foundation
 @MainActor
 class CharacterListViewModel: ObservableObject {
     private let characterService: CharacterService
-    @Published public var characters: [Characters]? = []
     @Published public var hasNextPage: Bool = false
-    @Published public var loadingState: LoadingState = .loading
+    @Published public var viewState: ViewState<[Characters]> = .loading
     @Published public var searchTerm: String = "" {
         willSet {
             DispatchQueue.main.async {
-                self.loadingState = .loading
+                self.viewState = .loading
                 self.searchSubject.send(newValue)
             }
         }
@@ -60,22 +59,25 @@ class CharacterListViewModel: ObservableObject {
     func getCharacters() async {
         let newCharactersData = await characterService.getCharacters(page: currentPage)
         let newCharacters = newCharactersData?.compactMap { Characters(from: $0) } ?? []
-        characters?.append(contentsOf: newCharacters)
+        if case .loaded(let characters) = viewState {
+            viewState = .loaded(characters + newCharacters)
+        } else {
+            viewState = .loaded(newCharacters)
+        }
         hasNextPage = true
-        loadingState = .loaded
     }
 
     func refresh() async {
         let charactersData = await characterService.getCharacters(page: 1)
-        characters = charactersData?.compactMap { Characters(from: $0) } ?? []
+        let characters = charactersData?.compactMap { Characters(from: $0) } ?? []
         hasNextPage = true
-        loadingState = .loaded
+        viewState = .loaded(characters)
     }
 
     func searchCharacter(search: String) async {
         let charactersData = await characterService.searchCharacter(search: search)
-        characters = charactersData?.compactMap { Characters(from: $0) } ?? []
+        let characters = charactersData?.compactMap { Characters(from: $0) } ?? []
         hasNextPage = false
-        loadingState = characters?.isEmpty == false ? .loaded : .noResult
+        viewState = characters.isEmpty == false ? .loaded(characters) : .noResult
     }
 }

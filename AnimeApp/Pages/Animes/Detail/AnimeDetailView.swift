@@ -22,12 +22,12 @@ struct AnimeDetailView: View {
         ZStack {
             Color("Background")
 
-            switch vm.loadingState {
+            switch vm.viewState {
             case .loading:
                 KikiLoadingView(height: 100, size: 16)
                     .task { await vm.getAnimeDetail() }
-            case .loaded:
-                AnimeDetailContentView(animeDetail: vm.animeDetail!)
+            case .loaded(let animeDetail):
+                AnimeDetailContentView(animeDetail: animeDetail)
             case let .error(error):
                 ErrorView(error: error)
             case .noResult:

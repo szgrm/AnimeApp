@@ -10,8 +10,7 @@ import Foundation
 
 class CharacterDetailViewModel: ObservableObject {
     private let characterService: CharacterService
-    @Published public var characterDetail: CharacterDetail?
-    @Published public var loadingState: LoadingState = .loading
+    @Published public var viewState: ViewState<CharacterDetail> = .loading
     var characterID: Int
 
     init(characterID: Int, characterService: CharacterService) {
@@ -23,10 +22,10 @@ class CharacterDetailViewModel: ObservableObject {
     func getCharacterDetail() async {
         do {
             let characterDetailData = try await characterService.getCharacterDetail(id: characterID)
-            characterDetail = CharacterDetail(from: characterDetailData!)
-            loadingState = .loaded
+            let characterDetail = CharacterDetail(from: characterDetailData!)
+            viewState = .loaded(characterDetail)
         } catch {
-            loadingState = .error(error)
+            viewState = .error(error)
         }
     }
 }

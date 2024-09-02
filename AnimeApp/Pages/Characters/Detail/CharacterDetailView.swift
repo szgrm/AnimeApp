@@ -23,12 +23,12 @@ struct CharacterDetailView: View {
             LinearGradient(colors: [Color("AppColor"), Color("Background"), Color("Background"), Color("Background")], startPoint: .top, endPoint: .bottom)
                 .ignoresSafeArea()
 
-            switch vm.loadingState {
+            switch vm.viewState {
             case .loading:
                 KikiLoadingView(height: 100, size: 16)
                     .task { await vm.getCharacterDetail() }
-            case .loaded:
-                CharacterDetailContentView(characterDetail: vm.characterDetail!)
+            case .loaded(let characterDetail):
+                CharacterDetailContentView(characterDetail: characterDetail)
             case let .error(error):
                 ErrorView(error: error)
             case .noResult:
