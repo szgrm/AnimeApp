@@ -22,7 +22,8 @@ class CharacterDetailViewModel: ObservableObject {
     @MainActor
     func getCharacterDetail() async {
         do {
-            characterDetail = try await characterService.getCharacterDetail(id: characterID)
+            let characterDetailData = try await characterService.getCharacterDetail(id: characterID)
+            characterDetail = CharacterDetail(from: characterDetailData!)
             loadingState = .loaded
         } catch {
             loadingState = .error(error)

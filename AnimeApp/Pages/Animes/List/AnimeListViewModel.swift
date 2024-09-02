@@ -58,20 +58,23 @@ class AnimeListViewModel: ObservableObject {
     }
 
     func getAnimes() async {
-        let newAnimes = await animeService.getAnimes(page: currentPage)
-        animes?.append(contentsOf: newAnimes ?? [])
+        let newAnimeData = await animeService.getAnimes(page: currentPage)
+        let newAnimes = newAnimeData?.compactMap { Anime(from: $0) } ?? []
+        animes?.append(contentsOf: newAnimes)
         hasNextPage = true
         loadingState = .loaded
     }
 
     func refresh() async {
-        animes = await animeService.getAnimes(page: 1)
+        let animesData = await animeService.getAnimes(page: 1)
+        animes = animesData?.compactMap { Anime(from: $0) } ?? []
         hasNextPage = true
         loadingState = .loaded
     }
 
     func searchAnime(search: String) async {
-        animes = await animeService.searchAnimes(search: search)
+        let animesData = await animeService.searchAnimes(search: search)
+        animes = animesData?.compactMap { Anime(from: $0) } ?? []
         hasNextPage = false
         loadingState = animes?.isEmpty == false ? .loaded : .noResult
     }

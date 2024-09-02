@@ -58,20 +58,23 @@ class CharacterListViewModel: ObservableObject {
     }
 
     func getCharacters() async {
-        let newCharacters = await characterService.getCharacters(page: currentPage)
-        characters?.append(contentsOf: newCharacters ?? [])
+        let newCharactersData = await characterService.getCharacters(page: currentPage)
+        let newCharacters = newCharactersData?.compactMap { Characters(from: $0) } ?? []
+        characters?.append(contentsOf: newCharacters)
         hasNextPage = true
         loadingState = .loaded
     }
 
     func refresh() async {
-        characters = await characterService.getCharacters(page: 1)
+        let charactersData = await characterService.getCharacters(page: 1)
+        characters = charactersData?.compactMap { Characters(from: $0) } ?? []
         hasNextPage = true
         loadingState = .loaded
     }
 
     func searchCharacter(search: String) async {
-        characters = await characterService.searchCharacter(search: search)
+        let charactersData = await characterService.searchCharacter(search: search)
+        characters = charactersData?.compactMap { Characters(from: $0) } ?? []
         hasNextPage = false
         loadingState = characters?.isEmpty == false ? .loaded : .noResult
     }

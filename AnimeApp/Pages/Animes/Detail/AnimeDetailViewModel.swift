@@ -22,7 +22,8 @@ class AnimeDetailViewModel: ObservableObject {
     @MainActor
     func getAnimeDetail() async {
         do {
-            animeDetail = try await animeService.getAnimeDetail(id: animeID)
+            let animeDetailData = try await animeService.getAnimeDetail(id: animeID)
+            animeDetail = AnimeDetail(from: animeDetailData!)
             loadingState = .loaded
         } catch {
             loadingState = .error(error)
