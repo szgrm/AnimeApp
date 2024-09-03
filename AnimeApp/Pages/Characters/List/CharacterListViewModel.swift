@@ -57,27 +57,39 @@ class CharacterListViewModel: ObservableObject {
     }
 
     func getCharacters() async {
-        let newCharactersData = await characterService.getCharacters(page: currentPage)
-        let newCharacters = newCharactersData?.compactMap { Characters(from: $0) } ?? []
-        if case let .loaded(characters) = viewState {
-            viewState = .loaded(characters + newCharacters)
-        } else {
-            viewState = .loaded(newCharacters)
+        do {
+            let newCharactersData = try await characterService.getCharacters(page: currentPage)
+            let newCharacters = newCharactersData?.compactMap { Characters(from: $0) } ?? []
+            if case let .loaded(characters) = viewState {
+                viewState = .loaded(characters + newCharacters)
+            } else {
+                viewState = .loaded(newCharacters)
+            }
+            hasNextPage = true
+        } catch {
+            viewState = .error(error)
         }
-        hasNextPage = true
     }
 
     func refresh() async {
-        let charactersData = await characterService.getCharacters(page: 1)
-        let characters = charactersData?.compactMap { Characters(from: $0) } ?? []
-        hasNextPage = true
-        viewState = .loaded(characters)
+        do {
+            let charactersData = try await characterService.getCharacters(page: 1)
+            let characters = charactersData?.compactMap { Characters(from: $0) } ?? []
+            hasNextPage = true
+            viewState = .loaded(characters)
+        } catch {
+            viewState = .error(error)
+        }
     }
 
     func searchCharacter(search: String) async {
-        let charactersData = await characterService.searchCharacter(search: search)
-        let characters = charactersData?.compactMap { Characters(from: $0) } ?? []
-        hasNextPage = false
-        viewState = characters.isEmpty == false ? .loaded(characters) : .noResult
+        do {
+            let charactersData = try await characterService.searchCharacter(search: search)
+            let characters = charactersData?.compactMap { Characters(from: $0) } ?? []
+            hasNextPage = false
+            viewState = characters.isEmpty == false ? .loaded(characters) : .noResult
+        } catch {
+            viewState = .error(error)
+        }
     }
 }

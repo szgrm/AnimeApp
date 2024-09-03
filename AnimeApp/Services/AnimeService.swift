@@ -14,8 +14,8 @@ class AnimeService {
         category: String(describing: AnimeService.self)
     )
 
-    func getAnimes(page: Int) async -> [AnimeSmall]? {
-        await withCheckedContinuation { continuation in
+    func getAnimes(page: Int) async throws -> [AnimeSmall]? {
+        try await withCheckedThrowingContinuation { continuation in
             Network.shared.apollo.fetch(query: GetAnimesQuery(page: page)) { result in
                 switch result {
                 case let .success(graphQLResult):
@@ -23,14 +23,14 @@ class AnimeService {
                     continuation.resume(returning: animes)
                 case let .failure(error):
                     self.logger.debug("error: \(error.localizedDescription)")
-                    continuation.resume(returning: nil)
+                    continuation.resume(throwing: error)
                 }
             }
         }
     }
 
-    func searchAnimes(search: String) async -> [AnimeSmall]? {
-        await withCheckedContinuation { continuation in
+    func searchAnimes(search: String) async throws -> [AnimeSmall]? {
+        try await withCheckedThrowingContinuation { continuation in
             Network.shared.apollo.fetch(query: SearchAnimeQuery(search: search)) { result in
                 switch result {
                 case let .success(graphQLResult):
@@ -38,7 +38,7 @@ class AnimeService {
                     continuation.resume(returning: animes)
                 case let .failure(error):
                     self.logger.debug("error: \(error.localizedDescription)")
-                    continuation.resume(returning: nil)
+                    continuation.resume(throwing: error)
                 }
             }
         }

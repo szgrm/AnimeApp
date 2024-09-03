@@ -24,9 +24,8 @@ struct CharacterListView: View {
                     KikiLoadingView(height: 100, size: 16)
                 case let .loaded(characters):
                     content(characters: characters)
-                case .error:
-                    Text("Error")
-                        .foregroundStyle(.secondary)
+                case let .error(error):
+                    ErrorView(error: error)
                 case .noResult:
                     NoResultView()
                 }

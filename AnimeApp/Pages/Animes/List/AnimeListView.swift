@@ -22,9 +22,8 @@ struct AnimeListView: View {
                     KikiLoadingView(height: 100, size: 16)
                 case let .loaded(animes):
                     content(animes: animes)
-                case .error:
-                    Text("Error")
-                        .foregroundStyle(.secondary)
+                case let .error(error):
+                    ErrorView(error: error)
                 case .noResult:
                     NoResultView()
                 }

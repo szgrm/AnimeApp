@@ -57,27 +57,39 @@ class AnimeListViewModel: ObservableObject {
     }
 
     func getAnimes() async {
-        let newAnimeData = await animeService.getAnimes(page: currentPage)
-        let newAnimes = newAnimeData?.compactMap { Anime(from: $0) } ?? []
-        if case let .loaded(animes) = viewState {
-            viewState = .loaded(animes + newAnimes)
-        } else {
-            viewState = .loaded(newAnimes)
+        do {
+            let newAnimeData = try await animeService.getAnimes(page: currentPage)
+            let newAnimes = newAnimeData?.compactMap { Anime(from: $0) } ?? []
+            if case let .loaded(animes) = viewState {
+                viewState = .loaded(animes + newAnimes)
+            } else {
+                viewState = .loaded(newAnimes)
+            }
+            hasNextPage = true
+        } catch {
+            viewState = .error(error)
         }
-        hasNextPage = true
     }
 
     func refresh() async {
-        let animesData = await animeService.getAnimes(page: 1)
-        let animes = animesData?.compactMap { Anime(from: $0) } ?? []
-        hasNextPage = true
-        viewState = .loaded(animes)
+        do {
+            let animesData = try await animeService.getAnimes(page: 1)
+            let animes = animesData?.compactMap { Anime(from: $0) } ?? []
+            hasNextPage = true
+            viewState = .loaded(animes)
+        } catch {
+            viewState = .error(error)
+        }
     }
 
     func searchAnime(search: String) async {
-        let animesData = await animeService.searchAnimes(search: search)
-        let animes = animesData?.compactMap { Anime(from: $0) } ?? []
-        hasNextPage = false
-        viewState = animes.isEmpty == false ? .loaded(animes) : .noResult
+        do {
+            let animesData = try await animeService.searchAnimes(search: search)
+            let animes = animesData?.compactMap { Anime(from: $0) } ?? []
+            hasNextPage = false
+            viewState = animes.isEmpty == false ? .loaded(animes) : .noResult
+        } catch {
+            viewState = .error(error)
+        }
     }
 }
