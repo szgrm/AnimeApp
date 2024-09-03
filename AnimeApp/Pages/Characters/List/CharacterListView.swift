@@ -10,6 +10,7 @@ import SwiftUI
 
 struct CharacterListView: View {
     @StateObject private var viewModel = CharacterListViewModel(characterService: CharacterService())
+    @State private var searchTerm = ""
 
     let screenWidth = UIScreen.main.bounds.size.width
 
@@ -49,7 +50,10 @@ struct CharacterListView: View {
                     .padding(.bottom, 10)
                 }
             }
-            .searchable(text: $viewModel.searchTerm, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search Character")
+            .searchable(text: $searchTerm, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search Character")
+            .onChange(of: searchTerm) {
+                viewModel.searchTerm = searchTerm
+            }
             .toolbarBackground(.visible)
         }
     }

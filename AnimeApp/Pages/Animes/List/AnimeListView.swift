@@ -10,6 +10,7 @@ import SwiftUI
 
 struct AnimeListView: View {
     @StateObject private var viewModel = AnimeListViewModel(animeService: AnimeService())
+    @State private var searchTerm = ""
 
     var body: some View {
         NavigationStack {
@@ -47,7 +48,10 @@ struct AnimeListView: View {
                     .padding(.bottom, 10)
                 }
             }
-            .searchable(text: $viewModel.searchTerm, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search Anime")
+            .searchable(text: $searchTerm, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search Anime")
+            .onChange(of: searchTerm) {
+                viewModel.searchTerm = searchTerm
+            }
             .toolbarBackground(.visible)
         }
     }

@@ -16,15 +16,14 @@ class CharacterListViewModel: ObservableObject {
     @Published public var viewState: ViewState<[Characters]> = .loading
     @Published public var searchTerm: String = "" {
         willSet {
-            DispatchQueue.main.async {
-                self.viewState = .loading
-                self.searchSubject.send(newValue)
+            if newValue != searchTerm, !searchTerm.isEmpty {
+                viewState = .loading
+                searchSubject.send(newValue)
             }
         }
         didSet {
-            guard !searchTerm.isEmpty else {
+            if oldValue != searchTerm, searchTerm.isEmpty {
                 Task { await refresh() }
-                return
             }
         }
     }
