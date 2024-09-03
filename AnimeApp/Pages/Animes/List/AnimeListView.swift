@@ -9,7 +9,7 @@ import AnilistAPI
 import SwiftUI
 
 struct AnimeListView: View {
-    @StateObject private var vm = AnimeListViewModel(animeService: AnimeService())
+    @StateObject private var viewModel = AnimeListViewModel(animeService: AnimeService())
 
     var body: some View {
         NavigationStack {
@@ -17,10 +17,10 @@ struct AnimeListView: View {
                 Color("Background")
                     .ignoresSafeArea(edges: .all)
 
-                switch vm.viewState {
+                switch viewModel.viewState {
                 case .loading:
                     KikiLoadingView(height: 100, size: 16)
-                case .loaded(let animes):
+                case let .loaded(animes):
                     content(animes: animes)
                 case .error:
                     Text("Error")
@@ -30,7 +30,7 @@ struct AnimeListView: View {
                 }
             }
             .refreshable {
-                await vm.refresh()
+                await viewModel.refresh()
             }
             .navigationTitle("Animes")
             .navigationBarTitleDisplayMode(.inline)
@@ -48,7 +48,7 @@ struct AnimeListView: View {
                     .padding(.bottom, 10)
                 }
             }
-            .searchable(text: $vm.searchTerm, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search Anime")
+            .searchable(text: $viewModel.searchTerm, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search Anime")
             .toolbarBackground(.visible)
         }
     }
@@ -64,8 +64,8 @@ struct AnimeListView: View {
                             })
                             .id(anime.id)
                         }
-                        if vm.hasNextPage {
-                            LoadMoreView(loader: vm.loadMore)
+                        if viewModel.hasNextPage {
+                            LoadMoreView(loader: viewModel.loadMore)
                         }
                     }
                 }

@@ -10,12 +10,12 @@ import NukeUI
 import SwiftUI
 
 struct CharacterDetailView: View {
-    @ObservedObject var vm: CharacterDetailViewModel
+    @ObservedObject var viewModel: CharacterDetailViewModel
     let characterID: Int
 
     init(characterID: Int) {
         self.characterID = characterID
-        vm = CharacterDetailViewModel(characterID: characterID, characterService: CharacterService())
+        viewModel = CharacterDetailViewModel(characterID: characterID, characterService: CharacterService())
     }
 
     var body: some View {
@@ -23,11 +23,11 @@ struct CharacterDetailView: View {
             LinearGradient(colors: [Color("AppColor"), Color("Background"), Color("Background"), Color("Background")], startPoint: .top, endPoint: .bottom)
                 .ignoresSafeArea()
 
-            switch vm.viewState {
+            switch viewModel.viewState {
             case .loading:
                 KikiLoadingView(height: 100, size: 16)
-                    .task { await vm.getCharacterDetail() }
-            case .loaded(let characterDetail):
+                    .task { await viewModel.getCharacterDetail() }
+            case let .loaded(characterDetail):
                 CharacterDetailContentView(characterDetail: characterDetail)
             case let .error(error):
                 ErrorView(error: error)

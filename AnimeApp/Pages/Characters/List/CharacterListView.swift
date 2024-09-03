@@ -9,7 +9,7 @@ import AnilistAPI
 import SwiftUI
 
 struct CharacterListView: View {
-    @StateObject private var vm = CharacterListViewModel(characterService: CharacterService())
+    @StateObject private var viewModel = CharacterListViewModel(characterService: CharacterService())
 
     let screenWidth = UIScreen.main.bounds.size.width
 
@@ -19,10 +19,10 @@ struct CharacterListView: View {
                 Color("Background")
                     .ignoresSafeArea(edges: .all)
 
-                switch vm.viewState {
+                switch viewModel.viewState {
                 case .loading:
                     KikiLoadingView(height: 100, size: 16)
-                case .loaded(let characters):
+                case let .loaded(characters):
                     content(characters: characters)
                 case .error:
                     Text("Error")
@@ -32,7 +32,7 @@ struct CharacterListView: View {
                 }
             }
             .refreshable {
-                await vm.refresh()
+                await viewModel.refresh()
             }
             .navigationTitle("Characters")
             .navigationBarTitleDisplayMode(.inline)
@@ -50,7 +50,7 @@ struct CharacterListView: View {
                     .padding(.bottom, 10)
                 }
             }
-            .searchable(text: $vm.searchTerm, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search Character")
+            .searchable(text: $viewModel.searchTerm, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search Character")
             .toolbarBackground(.visible)
         }
     }
@@ -62,7 +62,7 @@ struct CharacterListView: View {
                     LazyVGrid(columns: [
                         .init(.flexible()),
                         .init(.flexible()),
-                        .init(.flexible()),
+                        .init(.flexible())
                     ], spacing: 20) {
                         ForEach(characters) { character in
                             NavigationLink(destination: CharacterDetailView(characterID: character.id), label: {
@@ -70,8 +70,8 @@ struct CharacterListView: View {
                             })
                             .id(character.id)
                         }
-                        if vm.hasNextPage {
-                            LoadMoreView(loader: vm.loadMore)
+                        if viewModel.hasNextPage {
+                            LoadMoreView(loader: viewModel.loadMore)
                         }
                     }
                 }

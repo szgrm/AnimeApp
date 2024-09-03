@@ -1,5 +1,5 @@
 //
-//  LoadingState.swift
+//  ViewState.swift
 //  AnimeApp
 //
 //  Created by Sezgi İrem İlgar on 16.08.2024.

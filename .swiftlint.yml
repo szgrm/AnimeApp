@@ -1,0 +1,10 @@
+disabled_rules:
+  - trailing_whitespace
+  - shorthand_operator
+opt_in_rules:
+  - empty_count
+  - missing_docs
+excluded:
+  - AnilistAPI
+line_length:
+  warning: 160

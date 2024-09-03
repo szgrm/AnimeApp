@@ -59,7 +59,7 @@ class CharacterListViewModel: ObservableObject {
     func getCharacters() async {
         let newCharactersData = await characterService.getCharacters(page: currentPage)
         let newCharacters = newCharactersData?.compactMap { Characters(from: $0) } ?? []
-        if case .loaded(let characters) = viewState {
+        if case let .loaded(characters) = viewState {
             viewState = .loaded(characters + newCharacters)
         } else {
             viewState = .loaded(newCharacters)

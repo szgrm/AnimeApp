@@ -64,6 +64,8 @@
 
 /* Begin PBXFileReference section */
 		7501A7432C7F5DF7005BA315 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		75096A112C86E0D900A656BD /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		75096A122C86E0D900A656BD /* .swiftformat */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftformat; sourceTree = "<group>"; };
 		750BD5572C59371500873CC2 /* YoutubeVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeVideoView.swift; sourceTree = "<group>"; };
 		750EE8F22C60BFC900761D4D /* CoverImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverImageView.swift; sourceTree = "<group>"; };
 		7513DBDD2C599191007953F4 /* CharacterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListView.swift; sourceTree = "<group>"; };
@@ -194,6 +196,8 @@
 		75CF43B82C4109A9003D24F1 = {
 			isa = PBXGroup;
 			children = (
+				75096A122C86E0D900A656BD /* .swiftformat */,
+				75096A112C86E0D900A656BD /* .swiftlint.yml */,
 				75752F912C413AC8000F447E /* apollo-codegen-config.json */,
 				7501A7432C7F5DF7005BA315 /* .gitignore */,
 				75CF43C32C4109A9003D24F1 /* AnimeApp */,
@@ -351,6 +355,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 75CF43CF2C4109AB003D24F1 /* Build configuration list for PBXNativeTarget "AnimeApp" */;
 			buildPhases = (
+				75096A0F2C86DE7100A656BD /* Run Script Swiftformat */,
+				75096A102C86DEC000A656BD /* Run Script Swiftlint */,
 				75CF43BD2C4109A9003D24F1 /* Sources */,
 				75CF43BE2C4109A9003D24F1 /* Frameworks */,
 				75CF43BF2C4109A9003D24F1 /* Resources */,
@@ -429,6 +435,47 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		75096A0F2C86DE7100A656BD /* Run Script Swiftformat */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script Swiftformat";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "   export PATH=\"$PATH:/opt/homebrew/bin\"\n   if which swiftformat >/dev/null; then\n     swiftformat .\n   else\n     echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\n   fi\n";
+		};
+		75096A102C86DEC000A656BD /* Run Script Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script Swiftlint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"/opt/homebrew/bin:$PATH\"\nif which swiftlint > /dev/null; then\n swiftlint\nelse\n echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		75CF43BD2C4109A9003D24F1 /* Sources */ = {
@@ -611,6 +658,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"AnimeApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 8LC9944F6M;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AnimeApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = AnimeApp;
@@ -643,6 +691,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"AnimeApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 8LC9944F6M;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AnimeApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = AnimeApp;

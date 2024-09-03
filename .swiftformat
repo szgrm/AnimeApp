@@ -1,0 +1,7 @@
+--swiftversion 6.0
+--indent 4
+--wrapcollections before-first
+--wraparguments before-first
+--maxwidth 160
+--exclude AnilistAPI
+--commas inline

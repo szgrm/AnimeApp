@@ -10,7 +10,7 @@ import Foundation
 
 extension DateOfBirth {
     func formatDate() -> String {
-        guard let day = day, let month = month else { return "-" }
+        guard let day, let month else { return "-" }
         var dateComponents = DateComponents()
         dateComponents.day = day
         dateComponents.month = month

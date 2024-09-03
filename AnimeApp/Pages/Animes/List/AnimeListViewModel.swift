@@ -59,7 +59,7 @@ class AnimeListViewModel: ObservableObject {
     func getAnimes() async {
         let newAnimeData = await animeService.getAnimes(page: currentPage)
         let newAnimes = newAnimeData?.compactMap { Anime(from: $0) } ?? []
-        if case .loaded(let animes) = viewState {
+        if case let .loaded(animes) = viewState {
             viewState = .loaded(animes + newAnimes)
         } else {
             viewState = .loaded(newAnimes)

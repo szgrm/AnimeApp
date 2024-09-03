@@ -44,6 +44,6 @@ extension Font {
 
 extension Text {
     func customFont(_ fontWeight: FontWeight? = .regular, _ size: CGFloat? = nil) -> Text {
-        return font(.customFont(fontWeight ?? .regular, size ?? 16))
+        font(.customFont(fontWeight ?? .regular, size ?? 16))
     }
 }

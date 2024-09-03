@@ -43,10 +43,12 @@ struct AnimeDetailContentView: View {
 
             ZStack {
                 if let bannerUrl = animeDetail.bannerImage {
-                    BannerImageView(url: bannerUrl,
-                                    height: isScrolled ? 250 + offsetY : 250,
-                                    hex: animeDetail.coverImage.color ?? "#A176AD")
-                        .offset(y: isScrolled ? -offsetY : 0)
+                    BannerImageView(
+                        url: bannerUrl,
+                        height: isScrolled ? 250 + offsetY : 250,
+                        hex: animeDetail.coverImage.color ?? "#A176AD"
+                    )
+                    .offset(y: isScrolled ? -offsetY : 0)
                 } else {
                     Rectangle()
                         .foregroundStyle(Color(hex: animeDetail.coverImage.color ?? "#A176AD"))
@@ -198,7 +200,7 @@ struct AnimeDetailContentView: View {
                     .customFont(.regular, 16)
                     .frame(width: screenWidth - 30, alignment: .leading)
                     .foregroundStyle(.secondary)
-                YoutubeVideoView(ID: ytID)
+                YoutubeVideoView(youtubeId: ytID)
                     .frame(width: screenWidth - 30, height: 250)
                     .cornerRadius(10)
             }

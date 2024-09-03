@@ -11,22 +11,22 @@ import SwiftUI
 
 struct AnimeDetailView: View {
     let animeID: Int
-    @ObservedObject var vm: AnimeDetailViewModel
+    @ObservedObject var viewModel: AnimeDetailViewModel
 
     init(animeID: Int) {
         self.animeID = animeID
-        vm = AnimeDetailViewModel(animeID: animeID, animeService: AnimeService())
+        viewModel = AnimeDetailViewModel(animeID: animeID, animeService: AnimeService())
     }
 
     var body: some View {
         ZStack {
             Color("Background")
 
-            switch vm.viewState {
+            switch viewModel.viewState {
             case .loading:
                 KikiLoadingView(height: 100, size: 16)
-                    .task { await vm.getAnimeDetail() }
-            case .loaded(let animeDetail):
+                    .task { await viewModel.getAnimeDetail() }
+            case let .loaded(animeDetail):
                 AnimeDetailContentView(animeDetail: animeDetail)
             case let .error(error):
                 ErrorView(error: error)

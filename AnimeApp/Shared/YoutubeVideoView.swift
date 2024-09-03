@@ -9,22 +9,22 @@ import SwiftUI
 import WebKit
 
 struct YoutubeVideoView: View {
-    let ID: String
+    let youtubeId: String
     var body: some View {
-        Video(videoID: ID)
+        Video(videoID: youtubeId)
     }
 }
 
 struct Video: UIViewRepresentable {
     let videoID: String
     func makeUIView(context _: Context) -> some WKWebView {
-        return WKWebView()
+        WKWebView()
     }
 
     func updateUIView(_ uiView: UIViewType, context _: Context) {
-        guard let YoutubeUrl = URL(string: "https://www.youtube.com/embed/\(videoID)")
+        guard let youtubeUrl = URL(string: "https://www.youtube.com/embed/\(videoID)")
         else { return }
         uiView.scrollView.isScrollEnabled = false
-        uiView.load(URLRequest(url: YoutubeUrl))
+        uiView.load(URLRequest(url: youtubeUrl))
     }
 }
