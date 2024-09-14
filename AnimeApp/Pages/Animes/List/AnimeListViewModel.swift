@@ -15,12 +15,6 @@ class AnimeListViewModel: ObservableObject {
     @Published public var hasNextPage: Bool = false
     @Published public var viewState: ViewState<[Anime]> = .loading
     @Published public var searchTerm: String = "" {
-        willSet {
-            if newValue != searchTerm, !searchTerm.isEmpty {
-                viewState = .loading
-                searchSubject.send(newValue)
-            }
-        }
         didSet {
             if oldValue != searchTerm, searchTerm.isEmpty {
                 Task { await refresh() }
@@ -28,7 +22,6 @@ class AnimeListViewModel: ObservableObject {
         }
     }
 
-    private let searchSubject = PassthroughSubject<String, Never>()
     private var searchCancellable: AnyCancellable? {
         didSet {
             oldValue?.cancel()
@@ -40,10 +33,10 @@ class AnimeListViewModel: ObservableObject {
     init(animeService: AnimeService) {
         self.animeService = animeService
         Task { await getAnimes() }
-        searchCancellable = searchSubject.eraseToAnyPublisher()
-            .map { $0 }
+        searchCancellable = $searchTerm
             .debounce(for: .milliseconds(500), scheduler: DispatchQueue.main)
             .removeDuplicates()
+            .dropFirst()
             .filter { !$0.isEmpty }
             .sink(receiveValue: { [weak self] searchText in
                 Task { await self?.searchAnime(search: searchText) }
