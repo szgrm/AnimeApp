@@ -10,14 +10,12 @@ import SwiftUI
 struct TabbarView: View {
     var body: some View {
         TabView {
-            AnimeListView()
-                .tabItem {
-                    Label("Animes", systemImage: "display")
-                }
-            CharacterListView()
-                .tabItem {
-                    Label("Characters", systemImage: "person.crop.square.filled.and.at.rectangle")
-                }
+            Tab("Animes", systemImage: "display") {
+                AnimeListView()
+            }
+            Tab("Characters", systemImage: "person.crop.square.filled.and.at.rectangle") {
+                CharacterListView()
+            }
         }
         .tint(Color("AppColor"))
     }
