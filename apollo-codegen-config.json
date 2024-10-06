@@ -9,10 +9,11 @@
     ]
   },
   "output" : {
-    "testMocks" : {
-      "none" : {
-      }
-    },
+      "testMocks" : {
+        "swiftPackage" : {
+          "targetName" : "SchemaTestMocks"
+        }
+      },
     "schemaTypes" : {
       "path" : "./AnilistAPI",
       "moduleType" : {
