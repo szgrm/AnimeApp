@@ -11,7 +11,7 @@ import Foundation
 
 @MainActor
 class AnimeListViewModel: ObservableObject {
-    private let animeService: AnimeService
+    private let animeService: AnimeServiceProtocol
     @Published public var hasNextPage: Bool = false
     @Published public var viewState: ViewState<[Anime]> = .loading
     @Published public var searchTerm: String = "" {
@@ -30,7 +30,7 @@ class AnimeListViewModel: ObservableObject {
 
     var currentPage: Int = 1
 
-    init(animeService: AnimeService) {
+    init(animeService: AnimeServiceProtocol) {
         self.animeService = animeService
         Task { await getAnimes() }
         searchCancellable = $searchTerm

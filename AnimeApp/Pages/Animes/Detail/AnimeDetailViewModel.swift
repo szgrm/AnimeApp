@@ -9,11 +9,11 @@ import AnilistAPI
 import Foundation
 
 class AnimeDetailViewModel: ObservableObject {
-    private let animeService: AnimeService
+    private let animeService: AnimeServiceProtocol
     @Published public var viewState: ViewState<AnimeDetail> = .loading
     var animeID: Int
 
-    init(animeID: Int, animeService: AnimeService) {
+    init(animeID: Int, animeService: AnimeServiceProtocol) {
         self.animeID = animeID
         self.animeService = animeService
     }
