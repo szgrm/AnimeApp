@@ -1,4 +1,4 @@
-<img src="https://github.com/user-attachments/assets/37d8ab31-66cc-4a08-953e-68dc01e395ff" height="100" /> <img src="https://github.com/user-attachments/assets/7d5a9658-77a1-4561-a28c-ba1d65458b84" height="100" />
+[<img src="https://github.com/user-attachments/assets/37d8ab31-66cc-4a08-953e-68dc01e395ff" height="100" />](https://github.com/szgrm/AnimeApp) [<img src="https://github.com/user-attachments/assets/7d5a9658-77a1-4561-a28c-ba1d65458b84" height="100" />](https://docs.anilist.co/)
 
 # AnimeApp
 
@@ -17,13 +17,13 @@ AnimeApp is a SwiftUI-based iOS application that allows users to explore and dis
 
 ## Technologies Used
 
-- <img src="https://github.com/user-attachments/assets/9ad11072-16d1-43aa-b0ae-13f372c168b2" height="50" /> Swift SwiftUI 
+- [<img src="https://github.com/user-attachments/assets/9ad11072-16d1-43aa-b0ae-13f372c168b2" height="50" />](https://developer.apple.com/documentation/swiftui/) Swift SwiftUI 
 
-- <img src="https://github.com/user-attachments/assets/9ea2bdb2-315a-456a-8a11-e599a23d0da7" height="50" /> Apollo GraphQL
+- [<img src="https://github.com/user-attachments/assets/9ea2bdb2-315a-456a-8a11-e599a23d0da7" height="50" />](https://github.com/apollographql/apollo-ios) Apollo GraphQL
 
-- <img src="https://github.com/user-attachments/assets/ffadf5da-db66-487f-8ba8-58f469cb593d" height="50" /> Nuke
+- [<img src="https://github.com/user-attachments/assets/ffadf5da-db66-487f-8ba8-58f469cb593d" height="50" />](https://github.com/kean/Nuke) Nuke
 
-- <img src="https://github.com/user-attachments/assets/919734cf-9a8c-4643-887b-a4aad561d7ad" height="50" /> Lottie
+- [<img src="https://github.com/user-attachments/assets/919734cf-9a8c-4643-887b-a4aad561d7ad" height="50" />](https://lottiefiles.com/) Lottie
 
 
 ## Running on Your Machine
