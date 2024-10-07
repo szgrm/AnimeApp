@@ -8,10 +8,10 @@ AnimeApp is a SwiftUI-based iOS application that allows users to explore and dis
 ## Screenshots and GIF
 
 
-<img src="https://github.com/user-attachments/assets/ac7fc54b-c4ad-4309-8b99-9b01ed312ba2" height="500" />
+<img src="https://github.com/user-attachments/assets/ac7fc54b-c4ad-4309-8b99-9b01ed312ba2" height="400" />
 
 
-<img src="https://github.com/user-attachments/assets/ade4f825-79b6-4911-9da9-aea2580a15d4" height="500" />
+<img src="https://github.com/user-attachments/assets/ade4f825-79b6-4911-9da9-aea2580a15d4" height="400" />
 
 
 
