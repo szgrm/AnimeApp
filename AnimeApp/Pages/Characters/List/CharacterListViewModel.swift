@@ -11,7 +11,7 @@ import Foundation
 
 @MainActor
 class CharacterListViewModel: ObservableObject {
-    private let characterService: CharacterService
+    private let characterService: CharacterServiceProtocol
     @Published public var hasNextPage: Bool = false
     @Published public var viewState: ViewState<[Characters]> = .initial
     @Published public var searchTerm: String = "" {
@@ -30,9 +30,8 @@ class CharacterListViewModel: ObservableObject {
 
     var currentPage: Int = 1
 
-    init(characterService: CharacterService) {
+    init(characterService: CharacterServiceProtocol) {
         self.characterService = characterService
-        Task { await getCharacters() }
         searchCancellable = $searchTerm
             .debounce(for: .milliseconds(500), scheduler: DispatchQueue.main)
             .removeDuplicates()

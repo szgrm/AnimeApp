@@ -8,7 +8,7 @@
 import AnilistAPI
 import OSLog
 
-class CharacterService {
+class CharacterService: CharacterServiceProtocol {
     private let logger = Logger(
         subsystem: Bundle.main.bundleIdentifier!,
         category: String(describing: AnimeService.self)
