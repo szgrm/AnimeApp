@@ -31,6 +31,10 @@
 		754913D32C47ECE400D09227 /* ResponseLoggingInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754913D22C47ECE400D09227 /* ResponseLoggingInterceptor.swift */; };
 		754913D52C47F27900D09227 /* NetworkInterceptorProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754913D42C47F27900D09227 /* NetworkInterceptorProvider.swift */; };
 		755FB84D2C5E3B3F00C1652C /* ColorUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755FB84C2C5E3B3F00C1652C /* ColorUtil.swift */; };
+		755FE0812CB40A0400ED9FA9 /* AnimeDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755FE0802CB409F100ED9FA9 /* AnimeDetailViewModelTests.swift */; };
+		755FE0852CB506DD00ED9FA9 /* MockCharacterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755FE0842CB506D800ED9FA9 /* MockCharacterService.swift */; };
+		755FE0872CB5073200ED9FA9 /* CharacterServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755FE0862CB5072600ED9FA9 /* CharacterServiceProtocol.swift */; };
+		755FE0892CB50B9500ED9FA9 /* CharacterListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755FE0882CB50B8200ED9FA9 /* CharacterListViewModelTests.swift */; };
 		7569EF642C44930B00E3DAF1 /* TextUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7569EF632C44930B00E3DAF1 /* TextUtil.swift */; };
 		75752F952C413D30000F447E /* AnilistAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 75752F942C413D30000F447E /* AnilistAPI */; };
 		75752F972C413F21000F447E /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75752F962C413F21000F447E /* Network.swift */; };
@@ -99,6 +103,10 @@
 		754913D22C47ECE400D09227 /* ResponseLoggingInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseLoggingInterceptor.swift; sourceTree = "<group>"; };
 		754913D42C47F27900D09227 /* NetworkInterceptorProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkInterceptorProvider.swift; sourceTree = "<group>"; };
 		755FB84C2C5E3B3F00C1652C /* ColorUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorUtil.swift; sourceTree = "<group>"; };
+		755FE0802CB409F100ED9FA9 /* AnimeDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeDetailViewModelTests.swift; sourceTree = "<group>"; };
+		755FE0842CB506D800ED9FA9 /* MockCharacterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCharacterService.swift; sourceTree = "<group>"; };
+		755FE0862CB5072600ED9FA9 /* CharacterServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterServiceProtocol.swift; sourceTree = "<group>"; };
+		755FE0882CB50B8200ED9FA9 /* CharacterListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewModelTests.swift; sourceTree = "<group>"; };
 		7569EF632C44930B00E3DAF1 /* TextUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextUtil.swift; sourceTree = "<group>"; };
 		75752F912C413AC8000F447E /* apollo-codegen-config.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "apollo-codegen-config.json"; sourceTree = SOURCE_ROOT; };
 		75752F962C413F21000F447E /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -230,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				7585A3772C9D60F300C40CF7 /* AnimeListViewModelTests.swift */,
+				755FE0802CB409F100ED9FA9 /* AnimeDetailViewModelTests.swift */,
 				7585A3792C9D62A500C40CF7 /* MockAnimeService.swift */,
 			);
 			path = Animes;
@@ -238,6 +247,8 @@
 		7585A3762C9D606500C40CF7 /* Characters */ = {
 			isa = PBXGroup;
 			children = (
+				755FE0882CB50B8200ED9FA9 /* CharacterListViewModelTests.swift */,
+				755FE0842CB506D800ED9FA9 /* MockCharacterService.swift */,
 			);
 			path = Characters;
 			sourceTree = "<group>";
@@ -396,6 +407,7 @@
 				75272B672C62093D00BA6699 /* AnimeService.swift */,
 				75272B692C62CD5A00BA6699 /* CharacterService.swift */,
 				75C8134E2C9D739900B0D139 /* AnimeServiceProtocol.swift */,
+				755FE0862CB5072600ED9FA9 /* CharacterServiceProtocol.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -566,6 +578,9 @@
 			files = (
 				7585A37A2C9D62A500C40CF7 /* MockAnimeService.swift in Sources */,
 				7585A3782C9D60F300C40CF7 /* AnimeListViewModelTests.swift in Sources */,
+				755FE0852CB506DD00ED9FA9 /* MockCharacterService.swift in Sources */,
+				755FE0812CB40A0400ED9FA9 /* AnimeDetailViewModelTests.swift in Sources */,
+				755FE0892CB50B9500ED9FA9 /* CharacterListViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -574,6 +589,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7548C1EC2C6E23AA0034F82A /* KikiLoadingView.swift in Sources */,
+				755FE0872CB5073200ED9FA9 /* CharacterServiceProtocol.swift in Sources */,
 				75F819F92C58FB7D00E82EED /* AnimeInfoCellView.swift in Sources */,
 				75356DDE2C75EE1900132959 /* CharacterDetailContentView.swift in Sources */,
 				757BA5532C4C58D2007C0F2D /* CharacterGridView.swift in Sources */,
