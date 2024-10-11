@@ -9,11 +9,11 @@ import AnilistAPI
 import Foundation
 
 class CharacterDetailViewModel: ObservableObject {
-    private let characterService: CharacterService
+    private let characterService: CharacterServiceProtocol
     @Published public var viewState: ViewState<CharacterDetail> = .initial
     var characterID: Int
 
-    init(characterID: Int, characterService: CharacterService) {
+    init(characterID: Int, characterService: CharacterServiceProtocol) {
         self.characterID = characterID
         self.characterService = characterService
     }

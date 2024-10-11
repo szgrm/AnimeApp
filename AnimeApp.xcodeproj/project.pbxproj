@@ -47,6 +47,9 @@
 		75891AB92C5840100014E33A /* BannerImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75891AB82C5840100014E33A /* BannerImageView.swift */; };
 		759FDE032C48FE9E00C85976 /* AnimeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759FDE022C48FE9E00C85976 /* AnimeDetailViewModel.swift */; };
 		75C45F332C6DF8BD001A7C65 /* netfox in Frameworks */ = {isa = PBXBuildFile; productRef = 75C45F322C6DF8BD001A7C65 /* netfox */; };
+		75C657FB2CB94293009282A7 /* MockAnimeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C657FA2CB94287009282A7 /* MockAnimeData.swift */; };
+		75C657FD2CB9480F009282A7 /* MockCharacterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C657FC2CB94803009282A7 /* MockCharacterData.swift */; };
+		75C657FF2CB94B4F009282A7 /* CharacterDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C657FE2CB94B32009282A7 /* CharacterDetailViewModelTests.swift */; };
 		75C8134F2C9D739900B0D139 /* AnimeServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8134E2C9D739900B0D139 /* AnimeServiceProtocol.swift */; };
 		75CF43C52C4109A9003D24F1 /* AnimeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CF43C42C4109A9003D24F1 /* AnimeApp.swift */; };
 		75CF43C92C4109AB003D24F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75CF43C82C4109AB003D24F1 /* Assets.xcassets */; };
@@ -119,6 +122,9 @@
 		7585A3792C9D62A500C40CF7 /* MockAnimeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAnimeService.swift; sourceTree = "<group>"; };
 		75891AB82C5840100014E33A /* BannerImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerImageView.swift; sourceTree = "<group>"; };
 		759FDE022C48FE9E00C85976 /* AnimeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeDetailViewModel.swift; sourceTree = "<group>"; };
+		75C657FA2CB94287009282A7 /* MockAnimeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAnimeData.swift; sourceTree = "<group>"; };
+		75C657FC2CB94803009282A7 /* MockCharacterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCharacterData.swift; sourceTree = "<group>"; };
+		75C657FE2CB94B32009282A7 /* CharacterDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewModelTests.swift; sourceTree = "<group>"; };
 		75C8134E2C9D739900B0D139 /* AnimeServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeServiceProtocol.swift; sourceTree = "<group>"; };
 		75CF43C12C4109A9003D24F1 /* AnimeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75CF43C42C4109A9003D24F1 /* AnimeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeApp.swift; sourceTree = "<group>"; };
@@ -239,6 +245,7 @@
 			children = (
 				7585A3772C9D60F300C40CF7 /* AnimeListViewModelTests.swift */,
 				755FE0802CB409F100ED9FA9 /* AnimeDetailViewModelTests.swift */,
+				75C657FA2CB94287009282A7 /* MockAnimeData.swift */,
 				7585A3792C9D62A500C40CF7 /* MockAnimeService.swift */,
 			);
 			path = Animes;
@@ -248,6 +255,8 @@
 			isa = PBXGroup;
 			children = (
 				755FE0882CB50B8200ED9FA9 /* CharacterListViewModelTests.swift */,
+				75C657FE2CB94B32009282A7 /* CharacterDetailViewModelTests.swift */,
+				75C657FC2CB94803009282A7 /* MockCharacterData.swift */,
 				755FE0842CB506D800ED9FA9 /* MockCharacterService.swift */,
 			);
 			path = Characters;
@@ -580,6 +589,9 @@
 				7585A3782C9D60F300C40CF7 /* AnimeListViewModelTests.swift in Sources */,
 				755FE0852CB506DD00ED9FA9 /* MockCharacterService.swift in Sources */,
 				755FE0812CB40A0400ED9FA9 /* AnimeDetailViewModelTests.swift in Sources */,
+				75C657FD2CB9480F009282A7 /* MockCharacterData.swift in Sources */,
+				75C657FF2CB94B4F009282A7 /* CharacterDetailViewModelTests.swift in Sources */,
+				75C657FB2CB94293009282A7 /* MockAnimeData.swift in Sources */,
 				755FE0892CB50B9500ED9FA9 /* CharacterListViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
