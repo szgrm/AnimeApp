@@ -23,9 +23,11 @@ struct AnimeDetailView: View {
             Color("Background")
 
             switch viewModel.viewState {
-            case .loading:
+            case .initial:
                 KikiLoadingView(height: 100, size: 16)
                     .task { await viewModel.getAnimeDetail() }
+            case .loading:
+                KikiLoadingView(height: 100, size: 16)
             case let .loaded(animeDetail):
                 AnimeDetailContentView(animeDetail: animeDetail)
             case let .error(error):

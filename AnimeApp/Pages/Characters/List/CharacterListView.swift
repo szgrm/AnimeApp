@@ -21,6 +21,9 @@ struct CharacterListView: View {
                     .ignoresSafeArea(edges: .all)
 
                 switch viewModel.viewState {
+                case .initial:
+                    KikiLoadingView(height: 100, size: 16)
+                        .task { await viewModel.getCharacters() }
                 case .loading:
                     KikiLoadingView(height: 100, size: 16)
                 case let .loaded(characters):

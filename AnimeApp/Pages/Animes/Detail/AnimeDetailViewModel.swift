@@ -10,7 +10,7 @@ import Foundation
 
 class AnimeDetailViewModel: ObservableObject {
     private let animeService: AnimeServiceProtocol
-    @Published public var viewState: ViewState<AnimeDetail> = .loading
+    @Published public var viewState: ViewState<AnimeDetail> = .initial
     var animeID: Int
 
     init(animeID: Int, animeService: AnimeServiceProtocol) {

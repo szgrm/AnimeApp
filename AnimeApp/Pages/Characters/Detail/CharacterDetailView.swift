@@ -24,9 +24,11 @@ struct CharacterDetailView: View {
                 .ignoresSafeArea()
 
             switch viewModel.viewState {
-            case .loading:
+            case .initial:
                 KikiLoadingView(height: 100, size: 16)
                     .task { await viewModel.getCharacterDetail() }
+            case .loading:
+                KikiLoadingView(height: 100, size: 16)
             case let .loaded(characterDetail):
                 CharacterDetailContentView(characterDetail: characterDetail)
             case let .error(error):

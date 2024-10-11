@@ -13,7 +13,7 @@ import Foundation
 class CharacterListViewModel: ObservableObject {
     private let characterService: CharacterService
     @Published public var hasNextPage: Bool = false
-    @Published public var viewState: ViewState<[Characters]> = .loading
+    @Published public var viewState: ViewState<[Characters]> = .initial
     @Published public var searchTerm: String = "" {
         didSet {
             if oldValue != searchTerm, searchTerm.isEmpty {

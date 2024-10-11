@@ -10,7 +10,7 @@ import Foundation
 
 class CharacterDetailViewModel: ObservableObject {
     private let characterService: CharacterService
-    @Published public var viewState: ViewState<CharacterDetail> = .loading
+    @Published public var viewState: ViewState<CharacterDetail> = .initial
     var characterID: Int
 
     init(characterID: Int, characterService: CharacterService) {

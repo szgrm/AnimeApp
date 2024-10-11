@@ -13,7 +13,7 @@ import Foundation
 class AnimeListViewModel: ObservableObject {
     private let animeService: AnimeServiceProtocol
     @Published public var hasNextPage: Bool = false
-    @Published public var viewState: ViewState<[Anime]> = .loading
+    @Published public var viewState: ViewState<[Anime]> = .initial
     @Published public var searchTerm: String = "" {
         didSet {
             if oldValue != searchTerm, searchTerm.isEmpty {
@@ -32,7 +32,6 @@ class AnimeListViewModel: ObservableObject {
 
     init(animeService: AnimeServiceProtocol) {
         self.animeService = animeService
-        Task { await getAnimes() }
         searchCancellable = $searchTerm
             .debounce(for: .milliseconds(500), scheduler: DispatchQueue.main)
             .removeDuplicates()
