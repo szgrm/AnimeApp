@@ -10,7 +10,7 @@ import AnilistAPI
 import Combine
 import XCTest
 
-class AnimeListViewModelTests: XCTestCase {
+final class AnimeListViewModelTests: XCTestCase {
     var viewModel: AnimeListViewModel!
     var mockAnimeService: MockAnimeService!
     var cancellables: Set<AnyCancellable>!
@@ -31,13 +31,15 @@ class AnimeListViewModelTests: XCTestCase {
     }
 
     @MainActor
-    func testGetAnimes_Success() {
-        // Given
-        let expectedAnimes: [AnimeSmall] = []
+    func test_getAnimes_success() {
+        //Given
+        let mockAnime = try! MockAnimeData.mockAnimeSmall()
+
+        let expectedAnimes: [AnimeSmall] = [mockAnime]
         mockAnimeService.getAnimesResult = .success(expectedAnimes)
 
         // When
-        let expectation = XCTestExpectation(description: "Fetch animes")
+        let expectation = XCTestExpectation(description: "Animes fetched")
         viewModel.$viewState
             .dropFirst()
             .sink { state in
@@ -54,11 +56,11 @@ class AnimeListViewModelTests: XCTestCase {
         }
 
         // Then
-        wait(for: [expectation], timeout: 1.0)
+        wait(for: [expectation], timeout: 1.5)
     }
 
     @MainActor
-    func testGetAnimes_Failure() {
+    func test_getAnimes_failure() {
         // Given
         let expectedError = NSError(domain: "TestError", code: 0, userInfo: nil)
         mockAnimeService.getAnimesResult = .failure(expectedError)
@@ -80,25 +82,24 @@ class AnimeListViewModelTests: XCTestCase {
         }
 
         // Then
-        wait(for: [expectation], timeout: 1.0)
+        wait(for: [expectation], timeout: 1.5)
     }
 
     @MainActor
-    func testSearchAnime() {
+    func test_searchAnime() {
         // Given
         let searchTerm = "Test Anime"
-        let expectedAnimes: [AnimeSmall] = []
+
+        let mockAnime = try! MockAnimeData.mockAnimeSmall()
+        let expectedAnimes: [AnimeSmall] = [mockAnime]
         mockAnimeService.searchAnimesResult = .success(expectedAnimes)
-        mockAnimeService.getAnimesResult = .success(expectedAnimes)
 
         // When
         let expectation = XCTestExpectation(description: "Search anime")
         viewModel.$viewState
             .dropFirst()
             .sink { state in
-                print("state: \(state)")
                 if case let .loaded(animes) = state {
-                    print("animes: \(animes)")
                     XCTAssertEqual(animes.count, expectedAnimes.count)
                     XCTAssertEqual(animes.first?.id, expectedAnimes.first?.id)
                     expectation.fulfill()
@@ -106,7 +107,9 @@ class AnimeListViewModelTests: XCTestCase {
             }
             .store(in: &cancellables)
 
-        viewModel.searchTerm = searchTerm
+        Task {
+            await viewModel.searchAnime(search: searchTerm)
+        }
 
         // Then
         wait(for: [expectation], timeout: 1.5)

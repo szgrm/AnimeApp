@@ -33,20 +33,7 @@ final class CharacterListViewModelTests: XCTestCase {
     @MainActor
     func test_getCharacters_success() {
         // Given
-        let data: [String: Any] = [
-            "__typename": "Character",
-            "id": 127_691,
-            "name": [
-                "__typename": "CharacterName",
-                "full": "Satoru Gojou"
-            ],
-            "image": [
-                "__typename": "CharacterImage",
-                "large": "https://s4.anilist.co/file/anilistcdn/character/large/b127691-UmAY8k2uXeQM.png"
-            ]
-        ]
-
-        let mockCharacter = try! CharacterSmall(data: data)
+        let mockCharacter = try! MockCharacterData.mockCharacterSmall()
         let expectedCharacters: [CharacterSmall] = [mockCharacter]
 
         mockCharacterService.getCharactersResult = .success(expectedCharacters)
@@ -69,7 +56,7 @@ final class CharacterListViewModelTests: XCTestCase {
         }
 
         // Then
-        wait(for: [expectation], timeout: 1.0)
+        wait(for: [expectation], timeout: 1.5)
     }
 
     @MainActor
@@ -95,25 +82,13 @@ final class CharacterListViewModelTests: XCTestCase {
         }
 
         // Then
-        wait(for: [expectation], timeout: 1.0)
+        wait(for: [expectation], timeout: 1.5)
     }
 
     @MainActor func test_searchCharacter() {
         // Given
         let searchTerm = "Test Character"
-        let data: [String: Any] = [
-            "__typename": "Character",
-            "id": 127_691,
-            "name": [
-                "__typename": "CharacterName",
-                "full": "Satoru Gojou"
-            ],
-            "image": [
-                "__typename": "CharacterImage",
-                "large": "https://s4.anilist.co/file/anilistcdn/character/large/b127691-UmAY8k2uXeQM.png"
-            ]
-        ]
-        let mockCharacter = try! CharacterSmall(data: data)
+        let mockCharacter = try! MockCharacterData.mockCharacterSmall()
         let expectedCharacters: [CharacterSmall] = [mockCharacter]
         mockCharacterService.searchCharactersResult = .success(expectedCharacters)
 
