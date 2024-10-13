@@ -69,6 +69,7 @@ struct AnimeListView: View {
                                 AnimeListRowView(anime: anime)
                             })
                             .id(anime.id)
+                            .accessibilityIdentifier("animeResult")
                         }
                         if viewModel.hasNextPage {
                             LoadMoreView(loader: viewModel.loadMore)

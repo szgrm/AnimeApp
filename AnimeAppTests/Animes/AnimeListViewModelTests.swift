@@ -32,7 +32,7 @@ final class AnimeListViewModelTests: XCTestCase {
 
     @MainActor
     func test_getAnimes_success() {
-        //Given
+        // Given
         let mockAnime = try! MockAnimeData.mockAnimeSmall()
 
         let expectedAnimes: [AnimeSmall] = [mockAnime]
