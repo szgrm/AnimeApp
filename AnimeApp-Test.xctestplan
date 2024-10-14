@@ -1,0 +1,36 @@
+{
+  "configurations" : [
+    {
+      "id" : "F178ABD2-9AF9-4EC2-8189-6515D015C03B",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:AnimeApp.xcodeproj",
+      "identifier" : "75CF43C02C4109A9003D24F1",
+      "name" : "AnimeApp"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : false,
+      "target" : {
+        "containerPath" : "container:AnimeApp.xcodeproj",
+        "identifier" : "7585A3692C9D5B6900C40CF7",
+        "name" : "AnimeAppTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:AnimeApp.xcodeproj",
+        "identifier" : "75C658472CBB307F009282A7",
+        "name" : "AnimeAppUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

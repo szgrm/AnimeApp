@@ -75,6 +75,7 @@ struct CharacterListView: View {
                                 CharactersListCellView(character: character)
                             })
                             .id(character.id)
+                            .accessibilityIdentifier("characterResult")
                         }
                         if viewModel.hasNextPage {
                             LoadMoreView(loader: viewModel.loadMore)

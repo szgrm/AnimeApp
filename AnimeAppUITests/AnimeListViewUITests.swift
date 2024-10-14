@@ -56,8 +56,8 @@ final class AnimeListViewUITests: XCTestCase {
     }
 
     func test_scrollToTop() throws {
-        let scrollView = XCUIApplication().scrollViews
-        scrollView.element.swipeUp()
+        let scrollView = app.scrollViews
+        scrollView.element.swipeUp(velocity: .fast)
 
         let upButton = app.buttons["arrow.up.circle.fill"]
         XCTAssertTrue(upButton.waitForExistence(timeout: 2), "upButton should exist")

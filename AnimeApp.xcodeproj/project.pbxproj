@@ -117,6 +117,7 @@
 		755FE0842CB506D800ED9FA9 /* MockCharacterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCharacterService.swift; sourceTree = "<group>"; };
 		755FE0862CB5072600ED9FA9 /* CharacterServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterServiceProtocol.swift; sourceTree = "<group>"; };
 		755FE0882CB50B8200ED9FA9 /* CharacterListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewModelTests.swift; sourceTree = "<group>"; };
+		756133462CBD0EC4005F591C /* AnimeApp-Test.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "AnimeApp-Test.xctestplan"; sourceTree = "<group>"; };
 		7569EF632C44930B00E3DAF1 /* TextUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextUtil.swift; sourceTree = "<group>"; };
 		75752F912C413AC8000F447E /* apollo-codegen-config.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "apollo-codegen-config.json"; sourceTree = SOURCE_ROOT; };
 		75752F962C413F21000F447E /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -284,6 +285,7 @@
 		75CF43B82C4109A9003D24F1 = {
 			isa = PBXGroup;
 			children = (
+				756133462CBD0EC4005F591C /* AnimeApp-Test.xctestplan */,
 				75096A122C86E0D900A656BD /* .swiftformat */,
 				75096A112C86E0D900A656BD /* .swiftlint.yml */,
 				75752F912C413AC8000F447E /* apollo-codegen-config.json */,
