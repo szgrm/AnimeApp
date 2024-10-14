@@ -96,6 +96,7 @@ struct CharacterDetailContentView: View {
                 .customFont(.regular, 14)
                 .frame(maxWidth: screenWidth, alignment: .leading)
                 .lineLimit(isViewed ? 60 : 5)
+                .accessibilityIdentifier("descriptionText")
             Button(action: {
                 withAnimation {
                     isViewed.toggle()
@@ -104,6 +105,7 @@ struct CharacterDetailContentView: View {
                 Text(isViewed ? "Show Less" : "Show More")
                     .customFont(.semiBold, 14)
             })
+            .accessibilityIdentifier("showMoreToggle")
         }
         .padding(.horizontal, 15)
     }
@@ -123,6 +125,7 @@ struct CharacterDetailContentView: View {
                             NavigationLink(destination: AnimeDetailView(animeID: anime.id), label: {
                                 CharacterAnimesRow(anime: anime)
                             })
+                            .accessibilityIdentifier("animeCell")
                         }
                     }
                 }

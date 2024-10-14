@@ -19,8 +19,6 @@ final class CharacterListViewUITests: XCTestCase {
         XCTAssertTrue(app.navigationBars["Characters"].exists, "Characters navigation bar should exist")
     }
 
-    override func tearDownWithError() throws {}
-
     func test_initialLoad() throws {
         let searchField = app.searchFields["Search Character"]
         XCTAssertTrue(searchField.exists, "Search field should exist")
