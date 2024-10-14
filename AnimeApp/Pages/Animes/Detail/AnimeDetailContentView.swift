@@ -33,6 +33,7 @@ struct AnimeDetailContentView: View {
         }
         .sheet(isPresented: $showDetail) {
             CoverImageView(coverImageUrl: animeDetail.coverImage.extraLarge)
+                .accessibilityIdentifier("fullCoverImage")
         }
     }
 
@@ -49,6 +50,7 @@ struct AnimeDetailContentView: View {
                         hex: animeDetail.coverImage.color ?? "#A176AD"
                     )
                     .offset(y: isScrolled ? -offsetY : 0)
+                    .accessibilityIdentifier("BannerImageView")
                 } else {
                     Rectangle()
                         .foregroundStyle(Color(hex: animeDetail.coverImage.color ?? "#A176AD"))
@@ -74,6 +76,7 @@ struct AnimeDetailContentView: View {
                     cornerRadius: 10
                 )
             })
+            .accessibilityIdentifier("coverImage")
 
             VStack {
                 Text(((animeDetail.title.english) ?? (animeDetail.title.romaji)) ?? "")
@@ -151,6 +154,7 @@ struct AnimeDetailContentView: View {
                 .customFont(.regular, 14)
                 .frame(maxWidth: screenWidth, alignment: .leading)
                 .lineLimit(isViewed ? 50 : 5)
+                .accessibilityIdentifier("summaryText")
 
             Button(action: {
                 withAnimation {
@@ -160,6 +164,7 @@ struct AnimeDetailContentView: View {
                 Text(isViewed ? "Show Less" : "Show More")
                     .customFont(.semiBold, 14)
             })
+            .accessibilityIdentifier("showMoreToggle")
         }
         .padding(.horizontal, 15)
     }
@@ -182,6 +187,7 @@ struct AnimeDetailContentView: View {
                             })
                         }
                     }
+                    .accessibilityIdentifier("characterCell")
                 }
                 .foregroundStyle(.primary)
                 .contentMargins(.leading, 15, for: .scrollContent)

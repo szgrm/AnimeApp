@@ -14,8 +14,6 @@ final class AnimeListViewUITests: XCTestCase {
         app.launch()
     }
 
-    override func tearDownWithError() throws {}
-
     func test_initialLoad() throws {
         XCTAssertTrue(app.navigationBars["Animes"].exists, "Animes navigation bar should exist")
 
