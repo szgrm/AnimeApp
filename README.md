@@ -75,8 +75,7 @@ Note: This project uses Swift Package Manager for dependency management, which s
 
 ## Roadmap
 
-- [ ] Implement user authentication
+- [x] Implement user authentication
 - [ ] Add favorite anime and character lists
 - [ ] Add sorting and filtering features for lists
-- [ ] Add social features like sharing and commenting
 
