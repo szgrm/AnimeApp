@@ -217,6 +217,47 @@
         }
       }
     },
+    "Login" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ログイン"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Giriş Yap"
+          }
+        }
+      }
+    },
+    "loginText" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You must be logged in to your Anilist account to use this feature."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この機能を利用するには、Anilist アカウントにログインする必要があります"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu özellikten yararlanmak için Anilist hesabınıza giriş yapmanız gerekmektedir."
+          }
+        }
+      }
+    },
+    "Logout" : {
+
+    },
     "MEDIA" : {
       "localizations" : {
         "ja" : {
@@ -245,6 +286,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sonuç Yok."
+          }
+        }
+      }
+    },
+    "Profile" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロフィール"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profil"
           }
         }
       }

@@ -16,6 +16,9 @@ struct TabbarView: View {
             Tab("Characters", systemImage: "person.crop.square.filled.and.at.rectangle") {
                 CharacterListView()
             }
+            Tab("Profile", systemImage: "person.fill") {
+                UserProfileView()
+            }
         }
         .tint(Color("AppColor"))
     }
