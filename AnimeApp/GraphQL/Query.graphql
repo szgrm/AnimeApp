@@ -47,6 +47,12 @@ query SearchCharacter($search: String!) {
   }
 }
 
+query GetUserInfo {
+  Viewer {
+    ...UserInfoDTO
+  }
+}
+
 fragment AnimeSmall on Media {
   id
   isAdult
@@ -125,6 +131,27 @@ fragment CharacterFull on Character {
   media(sort: POPULARITY_DESC) {
     nodes {
       ...AnimeSmall
+    }
+  }
+}
+
+fragment UserInfoDTO on User {
+  id
+  avatar {
+    large
+  }
+  bannerImage
+  name
+  favourites {
+    anime {
+      nodes {
+        ...AnimeSmall
+      }
+    }
+    characters {
+      nodes {
+        ...CharacterSmall
+      }
     }
   }
 }

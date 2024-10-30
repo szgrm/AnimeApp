@@ -14,6 +14,8 @@
 		7513DBE22C599594007953F4 /* CharactersListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7513DBE12C599594007953F4 /* CharactersListCellView.swift */; };
 		7513DBE42C5998E6007953F4 /* CharacterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7513DBE32C5998E6007953F4 /* CharacterDetailView.swift */; };
 		75140FA42C6CAFCB005B607C /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 75140FA32C6CAFCB005B607C /* Localizable.xcstrings */; };
+		751B30802CC8D28D000E01CC /* UserLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751B307F2CC8D28D000E01CC /* UserLoginViewModel.swift */; };
+		751B30832CC8FDD4000E01CC /* KeychainUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751B30822CC8FDD4000E01CC /* KeychainUtil.swift */; };
 		75272B682C62093D00BA6699 /* AnimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75272B672C62093D00BA6699 /* AnimeService.swift */; };
 		75272B6A2C62CD5A00BA6699 /* CharacterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75272B692C62CD5A00BA6699 /* CharacterService.swift */; };
 		75272B6C2C62D71900BA6699 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75272B6B2C62D71900BA6699 /* DateUtil.swift */; };
@@ -30,6 +32,7 @@
 		754913CF2C47E74C00D09227 /* RequestLoggingInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754913CE2C47E74C00D09227 /* RequestLoggingInterceptor.swift */; };
 		754913D32C47ECE400D09227 /* ResponseLoggingInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754913D22C47ECE400D09227 /* ResponseLoggingInterceptor.swift */; };
 		754913D52C47F27900D09227 /* NetworkInterceptorProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754913D42C47F27900D09227 /* NetworkInterceptorProvider.swift */; };
+		755B9CCA2CD0EFE60084F8AB /* AuthorizationInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755B9CC92CD0EFE60084F8AB /* AuthorizationInterceptor.swift */; };
 		755FB84D2C5E3B3F00C1652C /* ColorUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755FB84C2C5E3B3F00C1652C /* ColorUtil.swift */; };
 		755FE0812CB40A0400ED9FA9 /* AnimeDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755FE0802CB409F100ED9FA9 /* AnimeDetailViewModelTests.swift */; };
 		755FE0852CB506DD00ED9FA9 /* MockCharacterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755FE0842CB506D800ED9FA9 /* MockCharacterService.swift */; };
@@ -46,6 +49,7 @@
 		7585A37A2C9D62A500C40CF7 /* MockAnimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7585A3792C9D62A500C40CF7 /* MockAnimeService.swift */; };
 		75891AB92C5840100014E33A /* BannerImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75891AB82C5840100014E33A /* BannerImageView.swift */; };
 		759FDE032C48FE9E00C85976 /* AnimeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759FDE022C48FE9E00C85976 /* AnimeDetailViewModel.swift */; };
+		75B800062CC57CEE0038CFE7 /* UserLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B800052CC57CEE0038CFE7 /* UserLoginView.swift */; };
 		75C45F332C6DF8BD001A7C65 /* netfox in Frameworks */ = {isa = PBXBuildFile; productRef = 75C45F322C6DF8BD001A7C65 /* netfox */; };
 		75C657FB2CB94293009282A7 /* MockAnimeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C657FA2CB94287009282A7 /* MockAnimeData.swift */; };
 		75C657FD2CB9480F009282A7 /* MockCharacterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C657FC2CB94803009282A7 /* MockCharacterData.swift */; };
@@ -60,6 +64,14 @@
 		75CF43F82C412DBA003D24F1 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 75CF43F72C412DBA003D24F1 /* Apollo */; };
 		75D1CF4E2C5EA83B0038095B /* CharacterDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D1CF4D2C5EA83A0038095B /* CharacterDetailViewModel.swift */; };
 		75D1CF502C5EC9810038095B /* CharacterInfoCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D1CF4F2C5EC9810038095B /* CharacterInfoCellView.swift */; };
+		75DD78A52CD0F337004974A3 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD78A42CD0F32E004974A3 /* UserInfo.swift */; };
+		75DD78A72CD0FB8D004974A3 /* UserProfileContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD78A62CD0FB8D004974A3 /* UserProfileContentView.swift */; };
+		75DD78A92CD220F2004974A3 /* UserSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD78A82CD220F2004974A3 /* UserSettingsView.swift */; };
+		75DFDF8B2CC8FEC700360FC8 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 75DFDF8A2CC8FEC700360FC8 /* KeychainSwift */; };
+		75DFDF8D2CD0C08F00360FC8 /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DFDF8C2CD0C08F00360FC8 /* UserProfileView.swift */; };
+		75DFDF902CD0E7A000360FC8 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DFDF8F2CD0E7A000360FC8 /* UserProfileViewModel.swift */; };
+		75DFDF942CD0E8AD00360FC8 /* UserServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DFDF932CD0E8AD00360FC8 /* UserServiceProtocol.swift */; };
+		75DFDF962CD0E8BF00360FC8 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DFDF952CD0E8BF00360FC8 /* UserService.swift */; };
 		75E310582C74CAB500977DFA /* Anime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E310572C74CAB500977DFA /* Anime.swift */; };
 		75E3105C2C74CB0B00977DFA /* AnimeDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E3105B2C74CB0B00977DFA /* AnimeDetail.swift */; };
 		75E3105E2C75C8C400977DFA /* Characters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E3105D2C75C8C400977DFA /* Characters.swift */; };
@@ -100,6 +112,8 @@
 		7513DBE12C599594007953F4 /* CharactersListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListCellView.swift; sourceTree = "<group>"; };
 		7513DBE32C5998E6007953F4 /* CharacterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailView.swift; sourceTree = "<group>"; };
 		75140FA32C6CAFCB005B607C /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		751B307F2CC8D28D000E01CC /* UserLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginViewModel.swift; sourceTree = "<group>"; };
+		751B30822CC8FDD4000E01CC /* KeychainUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainUtil.swift; sourceTree = "<group>"; };
 		75272B672C62093D00BA6699 /* AnimeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeService.swift; sourceTree = "<group>"; };
 		75272B692C62CD5A00BA6699 /* CharacterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterService.swift; sourceTree = "<group>"; };
 		75272B6B2C62D71900BA6699 /* DateUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
@@ -112,6 +126,7 @@
 		754913D12C47EAEC00D09227 /* schema.graphqls */ = {isa = PBXFileReference; lastKnownFileType = text; path = schema.graphqls; sourceTree = "<group>"; };
 		754913D22C47ECE400D09227 /* ResponseLoggingInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseLoggingInterceptor.swift; sourceTree = "<group>"; };
 		754913D42C47F27900D09227 /* NetworkInterceptorProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkInterceptorProvider.swift; sourceTree = "<group>"; };
+		755B9CC92CD0EFE60084F8AB /* AuthorizationInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationInterceptor.swift; sourceTree = "<group>"; };
 		755FB84C2C5E3B3F00C1652C /* ColorUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorUtil.swift; sourceTree = "<group>"; };
 		755FE0802CB409F100ED9FA9 /* AnimeDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeDetailViewModelTests.swift; sourceTree = "<group>"; };
 		755FE0842CB506D800ED9FA9 /* MockCharacterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCharacterService.swift; sourceTree = "<group>"; };
@@ -130,6 +145,7 @@
 		7585A3792C9D62A500C40CF7 /* MockAnimeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAnimeService.swift; sourceTree = "<group>"; };
 		75891AB82C5840100014E33A /* BannerImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerImageView.swift; sourceTree = "<group>"; };
 		759FDE022C48FE9E00C85976 /* AnimeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeDetailViewModel.swift; sourceTree = "<group>"; };
+		75B800052CC57CEE0038CFE7 /* UserLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginView.swift; sourceTree = "<group>"; };
 		75C657FA2CB94287009282A7 /* MockAnimeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAnimeData.swift; sourceTree = "<group>"; };
 		75C657FC2CB94803009282A7 /* MockCharacterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCharacterData.swift; sourceTree = "<group>"; };
 		75C657FE2CB94B32009282A7 /* CharacterDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewModelTests.swift; sourceTree = "<group>"; };
@@ -146,6 +162,13 @@
 		75D1CF4D2C5EA83A0038095B /* CharacterDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewModel.swift; sourceTree = "<group>"; };
 		75D1CF4F2C5EC9810038095B /* CharacterInfoCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterInfoCellView.swift; sourceTree = "<group>"; };
 		75D5A90D2C65F4240059C5B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		75DD78A42CD0F32E004974A3 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		75DD78A62CD0FB8D004974A3 /* UserProfileContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileContentView.swift; sourceTree = "<group>"; };
+		75DD78A82CD220F2004974A3 /* UserSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsView.swift; sourceTree = "<group>"; };
+		75DFDF8C2CD0C08F00360FC8 /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
+		75DFDF8F2CD0E7A000360FC8 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
+		75DFDF932CD0E8AD00360FC8 /* UserServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceProtocol.swift; sourceTree = "<group>"; };
+		75DFDF952CD0E8BF00360FC8 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		75E310572C74CAB500977DFA /* Anime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anime.swift; sourceTree = "<group>"; };
 		75E3105B2C74CB0B00977DFA /* AnimeDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeDetail.swift; sourceTree = "<group>"; };
 		75E3105D2C75C8C400977DFA /* Characters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Characters.swift; sourceTree = "<group>"; };
@@ -181,6 +204,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75DFDF8B2CC8FEC700360FC8 /* KeychainSwift in Frameworks */,
 				754913CB2C47DB0300D09227 /* NukeUI in Frameworks */,
 				754913CD2C47DB0300D09227 /* NukeVideo in Frameworks */,
 				754913C72C47DB0300D09227 /* Nuke in Frameworks */,
@@ -233,6 +257,7 @@
 				755FB84C2C5E3B3F00C1652C /* ColorUtil.swift */,
 				75272B6B2C62D71900BA6699 /* DateUtil.swift */,
 				75FAF2132C6FCB6B00D17464 /* FontUtil.swift */,
+				751B30822CC8FDD4000E01CC /* KeychainUtil.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -282,6 +307,17 @@
 			path = Characters;
 			sourceTree = "<group>";
 		};
+		75B800042CC57C790038CFE7 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				75DFDF8C2CD0C08F00360FC8 /* UserProfileView.swift */,
+				75DD78A62CD0FB8D004974A3 /* UserProfileContentView.swift */,
+				75DD78A82CD220F2004974A3 /* UserSettingsView.swift */,
+				75DFDF8F2CD0E7A000360FC8 /* UserProfileViewModel.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		75CF43B82C4109A9003D24F1 = {
 			isa = PBXGroup;
 			children = (
@@ -293,6 +329,7 @@
 				75CF43C32C4109A9003D24F1 /* AnimeApp */,
 				7585A36B2C9D5B6900C40CF7 /* AnimeAppTests */,
 				75C658492CBB3080009282A7 /* AnimeAppUITests */,
+				75DFDF892CC8FEC700360FC8 /* Frameworks */,
 				75CF43C22C4109A9003D24F1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -338,6 +375,8 @@
 			isa = PBXGroup;
 			children = (
 				75CF43D42C410C09003D24F1 /* Tabbar */,
+				75DFDF8E2CD0E70700360FC8 /* Login */,
+				75B800042CC57C790038CFE7 /* Profile */,
 				75CF43D52C410C2A003D24F1 /* Animes */,
 				7513DBDA2C5990E2007953F4 /* Characters */,
 			);
@@ -392,9 +431,26 @@
 				75752F962C413F21000F447E /* Network.swift */,
 				754913CE2C47E74C00D09227 /* RequestLoggingInterceptor.swift */,
 				754913D22C47ECE400D09227 /* ResponseLoggingInterceptor.swift */,
+				755B9CC92CD0EFE60084F8AB /* AuthorizationInterceptor.swift */,
 				754913D42C47F27900D09227 /* NetworkInterceptorProvider.swift */,
 			);
 			path = GraphQL;
+			sourceTree = "<group>";
+		};
+		75DFDF892CC8FEC700360FC8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		75DFDF8E2CD0E70700360FC8 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				75B800052CC57CEE0038CFE7 /* UserLoginView.swift */,
+				751B307F2CC8D28D000E01CC /* UserLoginViewModel.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		75FAF20D2C6F8E7A00D17464 /* Model */ = {
@@ -404,6 +460,7 @@
 				75E3105B2C74CB0B00977DFA /* AnimeDetail.swift */,
 				75E3105D2C75C8C400977DFA /* Characters.swift */,
 				75E3105F2C75C8DA00977DFA /* CharacterDetail.swift */,
+				75DD78A42CD0F32E004974A3 /* UserInfo.swift */,
 				75FAF20E2C6F8E8E00D17464 /* Enums */,
 			);
 			path = Model;
@@ -438,8 +495,10 @@
 			children = (
 				75272B672C62093D00BA6699 /* AnimeService.swift */,
 				75272B692C62CD5A00BA6699 /* CharacterService.swift */,
+				75DFDF952CD0E8BF00360FC8 /* UserService.swift */,
 				75C8134E2C9D739900B0D139 /* AnimeServiceProtocol.swift */,
 				755FE0862CB5072600ED9FA9 /* CharacterServiceProtocol.swift */,
+				75DFDF932CD0E8AD00360FC8 /* UserServiceProtocol.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -512,6 +571,7 @@
 				754913CC2C47DB0300D09227 /* NukeVideo */,
 				75C45F322C6DF8BD001A7C65 /* netfox */,
 				7548C1EE2C6E35410034F82A /* Lottie */,
+				75DFDF8A2CC8FEC700360FC8 /* KeychainSwift */,
 			);
 			productName = AnimeApp;
 			productReference = 75CF43C12C4109A9003D24F1 /* AnimeApp.app */;
@@ -557,6 +617,7 @@
 				754913C52C47DB0300D09227 /* XCRemoteSwiftPackageReference "Nuke" */,
 				75C45F312C6DF8BD001A7C65 /* XCRemoteSwiftPackageReference "netfox" */,
 				7548C1ED2C6E35410034F82A /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				751B30812CC8FD7E000E01CC /* XCRemoteSwiftPackageReference "keychain-swift" */,
 			);
 			productRefGroup = 75CF43C22C4109A9003D24F1 /* Products */;
 			projectDirPath = "";
@@ -669,10 +730,12 @@
 				755FE0872CB5073200ED9FA9 /* CharacterServiceProtocol.swift in Sources */,
 				75F819F92C58FB7D00E82EED /* AnimeInfoCellView.swift in Sources */,
 				75356DDE2C75EE1900132959 /* CharacterDetailContentView.swift in Sources */,
+				75DD78A92CD220F2004974A3 /* UserSettingsView.swift in Sources */,
 				757BA5532C4C58D2007C0F2D /* CharacterGridView.swift in Sources */,
 				75272B6A2C62CD5A00BA6699 /* CharacterService.swift in Sources */,
 				7513DBDE2C599191007953F4 /* CharacterListView.swift in Sources */,
 				75FAF2122C6FA72D00D17464 /* NoResultView.swift in Sources */,
+				75DD78A52CD0F337004974A3 /* UserInfo.swift in Sources */,
 				759FDE032C48FE9E00C85976 /* AnimeDetailViewModel.swift in Sources */,
 				750EE8F32C60BFC900761D4D /* CoverImageView.swift in Sources */,
 				75E310582C74CAB500977DFA /* Anime.swift in Sources */,
@@ -682,14 +745,20 @@
 				75CF43EF2C411168003D24F1 /* AnimeDetailView.swift in Sources */,
 				754913CF2C47E74C00D09227 /* RequestLoggingInterceptor.swift in Sources */,
 				754913D52C47F27900D09227 /* NetworkInterceptorProvider.swift in Sources */,
+				75DFDF902CD0E7A000360FC8 /* UserProfileViewModel.swift in Sources */,
+				75B800062CC57CEE0038CFE7 /* UserLoginView.swift in Sources */,
 				75CF43EB2C41111B003D24F1 /* TabbarView.swift in Sources */,
+				751B30832CC8FDD4000E01CC /* KeychainUtil.swift in Sources */,
 				757BA5562C4CFC86007C0F2D /* ImageView.swift in Sources */,
+				75DD78A72CD0FB8D004974A3 /* UserProfileContentView.swift in Sources */,
 				7513DBE02C59920C007953F4 /* CharacterListViewModel.swift in Sources */,
 				7513DBE42C5998E6007953F4 /* CharacterDetailView.swift in Sources */,
 				750BD5582C59371500873CC2 /* YoutubeVideoView.swift in Sources */,
 				75272B682C62093D00BA6699 /* AnimeService.swift in Sources */,
+				75DFDF962CD0E8BF00360FC8 /* UserService.swift in Sources */,
 				75356DE02C77B39D00132959 /* ErrorView.swift in Sources */,
 				75752F972C413F21000F447E /* Network.swift in Sources */,
+				75DFDF942CD0E8AD00360FC8 /* UserServiceProtocol.swift in Sources */,
 				7569EF642C44930B00E3DAF1 /* TextUtil.swift in Sources */,
 				75FAF2102C6F8EA300D17464 /* ViewState.swift in Sources */,
 				754913D32C47ECE400D09227 /* ResponseLoggingInterceptor.swift in Sources */,
@@ -697,7 +766,9 @@
 				75356DDC2C75E92900132959 /* AnimeDetailContentView.swift in Sources */,
 				75752F9B2C4155FF000F447E /* AnimeListRowView.swift in Sources */,
 				75C8134F2C9D739900B0D139 /* AnimeServiceProtocol.swift in Sources */,
+				75DFDF8D2CD0C08F00360FC8 /* UserProfileView.swift in Sources */,
 				75E3105C2C74CB0B00977DFA /* AnimeDetail.swift in Sources */,
+				751B30802CC8D28D000E01CC /* UserLoginViewModel.swift in Sources */,
 				75CF43C52C4109A9003D24F1 /* AnimeApp.swift in Sources */,
 				75D1CF502C5EC9810038095B /* CharacterInfoCellView.swift in Sources */,
 				7548C1F32C6F36E70034F82A /* LoadMoreView.swift in Sources */,
@@ -708,6 +779,7 @@
 				75E310602C75C8DA00977DFA /* CharacterDetail.swift in Sources */,
 				75F3112D2C5FFB4F00B1CB2A /* CharacterAnimesRow.swift in Sources */,
 				75E3105E2C75C8C400977DFA /* Characters.swift in Sources */,
+				755B9CCA2CD0EFE60084F8AB /* AuthorizationInterceptor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -803,7 +875,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AnimeApp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "AnimeApp(TEST)";
+				INFOPLIST_KEY_CFBundleDisplayName = AnimeApp;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -893,7 +965,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AnimeApp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "AnimeApp(TEST)";
+				INFOPLIST_KEY_CFBundleDisplayName = AnimeApp;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1724,6 +1796,14 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		751B30812CC8FD7E000E01CC /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/keychain-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 24.0.0;
+			};
+		};
 		7548C1ED2C6E35410034F82A /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
@@ -1797,6 +1877,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 75CF43F62C412DBA003D24F1 /* XCRemoteSwiftPackageReference "apollo-ios" */;
 			productName = Apollo;
+		};
+		75DFDF8A2CC8FEC700360FC8 /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 751B30812CC8FD7E000E01CC /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
